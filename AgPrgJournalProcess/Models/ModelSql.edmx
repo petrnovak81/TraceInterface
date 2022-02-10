@@ -1,0 +1,2299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TRACEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCashPayment">
+          <Key>
+            <PropertyRef Name="IDCashPayment" />
+          </Key>
+          <Property Name="IDCashPayment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" />
+          <Property Name="IDVisitReport" Type="int" />
+          <Property Name="IDPaymentOrder" Type="int" />
+          <Property Name="DatePaymentPickup" Type="smalldatetime" />
+          <Property Name="AmountPickup" Type="float" />
+          <Property Name="AmountSended" Type="float" />
+          <Property Name="rr_CashPaymState" Type="tinyint" />
+          <Property Name="DatePaymentOnCentrale" Type="smalldatetime" />
+          <Property Name="IDSpisyPlatbyDosle" Type="int" />
+          <Property Name="CashDocNumber" Type="int" />
+          <Property Name="rr_Journal" Type="tinyint" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="AmountOnCentrale" Type="float" />
+        </EntityType>
+        <EntityType Name="tblCreditor">
+          <Key>
+            <PropertyRef Name="IDCreditor" />
+          </Key>
+          <Property Name="IDCreditor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSrcCreditor" Type="bigint" />
+          <Property Name="CreditorName" Type="varchar" MaxLength="100" />
+          <Property Name="CreditorAlias" Type="varchar" MaxLength="100" />
+          <Property Name="CreditorStreet" Type="varchar" MaxLength="80" />
+          <Property Name="CreditorHouseNum" Type="varchar" MaxLength="10" />
+          <Property Name="CreditorCity" Type="varchar" MaxLength="80" />
+          <Property Name="CreditorZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="CreditorAddrFull" Type="varchar" MaxLength="300" />
+          <Property Name="LimitDaysFor1OSN" Type="smallint" />
+          <Property Name="LimitDaysForNOSN" Type="smallint" />
+          <Property Name="Processor" Type="varchar" MaxLength="3" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="TemplateDLSpis" Type="varchar" MaxLength="150" />
+          <Property Name="TemplateDLSpisValid" Type="bit" Nullable="false" />
+          <Property Name="TemplateFVLetter" Type="varchar" MaxLength="150" />
+          <Property Name="TemplateFVLetterValid" Type="bit" Nullable="false" />
+          <Property Name="TemplateUZSK" Type="varchar" MaxLength="150" />
+          <Property Name="TemplateUZSKValid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblError">
+          <Key>
+            <PropertyRef Name="IDError" />
+          </Key>
+          <Property Name="IDError" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrDate" Type="datetime" Nullable="false" />
+          <Property Name="ErrSource" Type="varchar" MaxLength="40" />
+          <Property Name="ErrText" Type="nvarchar" MaxLength="400" />
+          <Property Name="ErrSended" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLogService">
+          <Key>
+            <PropertyRef Name="IDLog" />
+          </Key>
+          <Property Name="IDLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="L" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="LogTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOtherInfo">
+          <Key>
+            <PropertyRef Name="IDOtherInfo" />
+          </Key>
+          <Property Name="IDOtherInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" Nullable="false" />
+          <Property Name="OtherInfoXML" Type="xml" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblRegisterRestrictions">
+          <Key>
+            <PropertyRef Name="Register" />
+            <PropertyRef Name="IDOrder" />
+          </Key>
+          <Property Name="Register" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDOrder" Type="smallint" Nullable="false" />
+          <Property Name="Val" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Val2" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblSpisy">
+          <Key>
+            <PropertyRef Name="IDSpisu" />
+          </Key>
+          <Property Name="IDSpisu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSrcSpisy" Type="bigint" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="ACC" Type="varchar" MaxLength="30" />
+          <Property Name="ActualDebit" Type="float" />
+          <Property Name="IDCreditor" Type="int" />
+          <Property Name="Principal" Type="float" />
+          <Property Name="Interest" Type="float" />
+          <Property Name="Costs" Type="float" />
+          <Property Name="YetPaid" Type="float" />
+          <Property Name="rr_Currency" Type="varchar" MaxLength="3" />
+          <Property Name="KindOfEnforcement" Type="varchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="35" />
+          <Property Name="BankCode" Type="varchar" MaxLength="6" />
+          <Property Name="VariableSymbol" Type="varchar" MaxLength="12" />
+          <Property Name="SpecificSymbol" Type="varchar" MaxLength="10" />
+          <Property Name="LastPaymentDate" Type="smalldatetime" />
+          <Property Name="LastPaymentAmount" Type="float" />
+          <Property Name="LastCallDate" Type="smalldatetime" />
+          <Property Name="LastCallText" Type="nvarchar(max)" />
+          <Property Name="TaskForIP" Type="nvarchar(max)" />
+          <Property Name="FileAction" Type="nvarchar" MaxLength="100" />
+          <Property Name="VisitDateSentFromMother" Type="smalldatetime" />
+          <Property Name="VisitDateReceiveFromMotherMax" Type="smalldatetime" />
+          <Property Name="VisitDateReceiveFromMother" Type="smalldatetime" />
+          <Property Name="VisitDateSentToMother" Type="smalldatetime" />
+          <Property Name="IDUserWhoClosedFile" Type="int" />
+          <Property Name="rr_ClosedFile" Type="smallint" />
+          <Property Name="VisitDateD1Max" Type="smalldatetime" />
+          <Property Name="VisitDateD1OSN" Type="smalldatetime" />
+          <Property Name="FirstVisitExecuted" Type="bit" Nullable="false" />
+          <Property Name="VisitDateDNMax" Type="smalldatetime" />
+          <Property Name="VisitDateDNOSN" Type="smalldatetime" />
+          <Property Name="VisitDateDXSK" Type="smalldatetime" />
+          <Property Name="DateReturnToCreditor" Type="smalldatetime" />
+          <Property Name="DateLapse" Type="smalldatetime" />
+          <Property Name="DateSignSKUZ" Type="smalldatetime" />
+          <Property Name="MaxCommission" Type="float" />
+          <Property Name="FirstVisitFee" Type="float" />
+          <Property Name="SumPaymentFromVisits" Type="float" />
+          <Property Name="ConditionSK" Type="char" MaxLength="1" />
+          <Property Name="TypeSK" Type="smallint" />
+          <Property Name="TotalCountSK" Type="smallint" />
+          <Property Name="PardonCampaign" Type="bit" Nullable="false" />
+          <Property Name="MaxCountPayments" Type="smallint" />
+          <Property Name="rr_State" Type="smallint" Nullable="false" />
+          <Property Name="LL_LastLapse" Type="int" Nullable="false" />
+          <Property Name="FirstFieldVisitUpToDay" Type="smallint" />
+          <Property Name="NextFieldVisitUpToDay" Type="smallint" />
+          <Property Name="IDSpisyRecordHistory_For61" Type="int" />
+          <Property Name="DebtLastContact" Type="smalldatetime" />
+          <Property Name="DOHL" Type="varchar" MaxLength="3" />
+          <Property Name="ActualActions" Type="nvarchar" MaxLength="100" />
+          <Property Name="CountOfFV" Type="smallint" Nullable="false" />
+          <Property Name="FV_TerminationDate" Type="smalldatetime" />
+          <Property Name="InReturnRequest" Type="bit" Nullable="false" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="Commission" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyDocument">
+          <Key>
+            <PropertyRef Name="IDSpisyDocument" />
+          </Key>
+          <Property Name="IDSpisyDocument" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyDocument" Type="bigint" />
+          <Property Name="rr_DocumentKind" Type="tinyint" Nullable="false" />
+          <Property Name="DocuSentDate" Type="smalldatetime" />
+          <Property Name="DocuSentComment" Type="nvarchar" MaxLength="255" />
+          <Property Name="DocuPrintPDF" Type="nvarchar" MaxLength="200" />
+          <Property Name="DocuPrintSelected" Type="bit" Nullable="false" />
+          <Property Name="DocuLink" Type="nvarchar" MaxLength="800" />
+          <Property Name="GPSLat" Type="varchar" MaxLength="22" />
+          <Property Name="GPSLng" Type="varchar" MaxLength="22" />
+          <Property Name="IDVisitReport" Type="int" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyDohody">
+          <Key>
+            <PropertyRef Name="IDSpisyDohody" />
+          </Key>
+          <Property Name="IDSpisyDohody" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyDohody" Type="bigint" />
+          <Property Name="PaymentDate" Type="smalldatetime" />
+          <Property Name="PaymentAmountAwait" Type="float" />
+          <Property Name="CommissionAwait" Type="float" />
+          <Property Name="PaymentAmountReal" Type="float" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblSpisyFinanceInfo">
+          <Key>
+            <PropertyRef Name="IDInfo" />
+          </Key>
+          <Property Name="IDInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSrcInfo" Type="bigint" />
+          <Property Name="IDSpisu" Type="int" Nullable="false" />
+          <Property Name="InfoTxt" Type="nvarchar" MaxLength="50" />
+          <Property Name="InfoKind" Type="nvarchar" MaxLength="50" />
+          <Property Name="InfoInvoice" Type="nvarchar" MaxLength="50" />
+          <Property Name="InfoAmount" Type="float" />
+          <Property Name="InfoAmountBalance" Type="float" />
+          <Property Name="InfoAmountBalanceUpdated" Type="float" />
+          <Property Name="InfoDate" Type="smalldatetime" />
+          <Property Name="InfoDueDate" Type="smalldatetime" />
+          <Property Name="InfoCurrency" Type="varchar" MaxLength="3" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblSpisyHistorieDohod">
+          <Key>
+            <PropertyRef Name="IDSpisyHistorieDohod" />
+          </Key>
+          <Property Name="IDSpisyHistorieDohod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyHistorieDohod" Type="bigint" />
+          <Property Name="DateSK" Type="smalldatetime" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="CountOfPaymentsSK" Type="smallint" />
+          <Property Name="rr_PAValidityType" Type="smallint" />
+          <Property Name="rr_PAType" Type="smallint" />
+          <Property Name="PAInvalid" Type="bit" Nullable="false" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsoby">
+          <Key>
+            <PropertyRef Name="IDSpisyOsoby" />
+          </Key>
+          <Property Name="IDSpisyOsoby" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSrcSpisyOsoby" Type="bigint" />
+          <Property Name="PersSurname" Type="nvarchar" MaxLength="80" />
+          <Property Name="PersName" Type="nvarchar" MaxLength="80" />
+          <Property Name="PersRC" Type="varchar" MaxLength="20" />
+          <Property Name="PersIC" Type="varchar" MaxLength="20" />
+          <Property Name="PersBirthDate" Type="smalldatetime" />
+          <Property Name="PersSurname2" Type="nvarchar" MaxLength="60" />
+          <Property Name="BonitaKatastr" Type="nvarchar" MaxLength="100" />
+          <Property Name="BonitaPocetExe" Type="smallint" />
+          <Property Name="BonitaDatLustrace" Type="smalldatetime" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyAdresy">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyAdresy" />
+          </Key>
+          <Property Name="IDSpisyOsobyAdresy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisyOsoby" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyAdresy" Type="bigint" />
+          <Property Name="PersCity" Type="nvarchar" MaxLength="80" />
+          <Property Name="PersHouseNum" Type="varchar" MaxLength="50" />
+          <Property Name="PersStreet" Type="nvarchar" MaxLength="80" />
+          <Property Name="PersZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="PersRegion" Type="nvarchar" MaxLength="100" />
+          <Property Name="PersAddressVisited" Type="bit" />
+          <Property Name="PersMainAddress" Type="bit" />
+          <Property Name="PersAddressForItinerary" Type="bit" />
+          <Property Name="VisitDatePlan" Type="smalldatetime" />
+          <Property Name="VisitDatePlanNoChange" Type="bit" Nullable="false" />
+          <Property Name="rr_AddressValidity" Type="smallint" />
+          <Property Name="rr_AddressType" Type="smallint" />
+          <Property Name="GPSLat" Type="varchar" MaxLength="22" />
+          <Property Name="GPSLng" Type="varchar" MaxLength="22" />
+          <Property Name="GPSValid" Type="bit" Nullable="false" />
+          <Property Name="PersAddrFull" Type="varchar" MaxLength="300" />
+          <Property Name="AddrFVisitComment" Type="nvarchar" MaxLength="2000" />
+          <Property Name="NCName" Type="nvarchar" MaxLength="60" />
+          <Property Name="NCSurname" Type="nvarchar" MaxLength="60" />
+          <Property Name="NCEmail" Type="varchar" MaxLength="80" />
+          <Property Name="NCEmailValid" Type="bit" />
+          <Property Name="NCPhone" Type="varchar" MaxLength="50" />
+          <Property Name="NCPhoneValid" Type="smallint" />
+          <Property Name="NCrr_PersType" Type="smallint" />
+          <Property Name="NextContact" Type="bit" Nullable="false" />
+          <Property Name="New_PersMainAddress" Type="bit" />
+          <Property Name="New_rr_AddressType" Type="smallint" />
+          <Property Name="New_rr_AddressValidity" Type="smallint" />
+          <Property Name="New_PersAddressVisited" Type="bit" />
+          <Property Name="rr_Journal" Type="tinyint" Nullable="false" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="LastUpdate" Type="datetime" />
+          <Property Name="GPSValidDetail" Type="tinyint" Nullable="false" />
+          <Property Name="TimeValidityUpdate" Type="datetime" Nullable="false" />
+          <Property Name="TimeCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyEmail">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyEmail" />
+          </Key>
+          <Property Name="IDSpisyOsobyEmail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisyOsoby" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyEmail" Type="bigint" />
+          <Property Name="PersEmail" Type="varchar" MaxLength="80" />
+          <Property Name="PersEmailValid" Type="bit" />
+          <Property Name="EmailFVisitComment" Type="nvarchar" MaxLength="1000" />
+          <Property Name="New_PersEmailValid" Type="nchar" MaxLength="10" />
+          <Property Name="IntfcState" Type="tinyint" Nullable="false" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="tinyint" Nullable="false" />
+          <Property Name="TimeValidityUpdate" Type="datetime" Nullable="false" />
+          <Property Name="TimeCreated" Type="datetime" Nullable="false" />
+          <Property Name="PersEmailMain" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyPhone">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyPhone" />
+          </Key>
+          <Property Name="IDSpisyOsobyPhone" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisyOsoby" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyPhone" Type="bigint" />
+          <Property Name="PersPhone" Type="varchar" MaxLength="50" />
+          <Property Name="rr_PhoneValidity" Type="smallint" Nullable="false" />
+          <Property Name="PersPhoneMain" Type="bit" Nullable="false" />
+          <Property Name="PhoneFVisitComment" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="tinyint" Nullable="false" />
+          <Property Name="TimeValidityUpdate" Type="datetime" Nullable="false" />
+          <Property Name="TimeCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyZam">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyZam" />
+          </Key>
+          <Property Name="IDSpisyOsobyZam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisyOsoby" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyZam" Type="bigint" />
+          <Property Name="EmployerName" Type="varchar" MaxLength="200" />
+          <Property Name="EmployerIC" Type="varchar" MaxLength="20" />
+          <Property Name="EmployerCity" Type="nvarchar" MaxLength="80" />
+          <Property Name="EmployerHouseNum" Type="varchar" MaxLength="10" />
+          <Property Name="EmployerStreet" Type="nvarchar" MaxLength="80" />
+          <Property Name="EmployerZipCode" Type="varchar" MaxLength="10" />
+          <Property Name="EmployerType" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="rr_AddressValidity" Type="smallint" Nullable="false" />
+          <Property Name="EmployerAddrFull" Type="varchar" MaxLength="300" />
+          <Property Name="EmployerContactSurname" Type="nvarchar" MaxLength="60" />
+          <Property Name="EmployerContactName" Type="nvarchar" MaxLength="60" />
+          <Property Name="EmployerContactEmail" Type="varchar" MaxLength="80" />
+          <Property Name="EmployerContactPhone" Type="varchar" MaxLength="50" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="tinyint" Nullable="false" />
+          <Property Name="TimeCreated" Type="datetime" Nullable="false" />
+          <Property Name="TimeValidityUpdate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyPlatbyDosle">
+          <Key>
+            <PropertyRef Name="IDSpisyPlatbyDosle" />
+          </Key>
+          <Property Name="IDSpisyPlatbyDosle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" Nullable="false" />
+          <Property Name="IDSrcSpisyPlatbyDosle" Type="bigint" />
+          <Property Name="PaymentDate" Type="smalldatetime" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="CommissionForIP" Type="float" />
+          <Property Name="rr_PaymentLabel" Type="tinyint" Nullable="false" />
+          <Property Name="OverPayment" Type="float" />
+          <Property Name="Paired" Type="bit" Nullable="false" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Charged" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyPrintInfo">
+          <Key>
+            <PropertyRef Name="IDSpisyPrintInfo" />
+          </Key>
+          <Property Name="IDSpisyPrintInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" />
+          <Property Name="IDSrcACC" Type="varchar" MaxLength="30" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerID2" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisterInfo" Type="nvarchar" MaxLength="500" />
+          <Property Name="ACC_Comment9" Type="nvarchar" MaxLength="500" />
+          <Property Name="ACC_comment13" Type="nvarchar" MaxLength="500" />
+          <Property Name="ACC_comment14" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ACC_comment17" Type="nvarchar" MaxLength="500" />
+          <Property Name="ACC_Comment23" Type="nvarchar" MaxLength="500" />
+          <Property Name="ACC_comment27" Type="nvarchar" MaxLength="500" />
+          <Property Name="PF_Agreement" Type="nvarchar" MaxLength="4000" />
+          <Property Name="AmountByWords" Type="nvarchar" MaxLength="4000" />
+          <Property Name="AmountByWordsHal" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="tblSpisyPrintInfoCEZ">
+          <Key>
+            <PropertyRef Name="IDSpisyPrintInfoCEZ" />
+          </Key>
+          <Property Name="IDSpisyPrintInfoCEZ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" />
+          <Property Name="CEZ_IDSrcACC" Type="varchar" MaxLength="30" />
+          <Property Name="CEZ_SuplyPlace" Type="nvarchar" MaxLength="500" />
+          <Property Name="CEZ_VariableSymbol" Type="varchar" MaxLength="50" />
+          <Property Name="CEZ_DueDate" Type="date" />
+          <Property Name="CEZ_AmountTotal" Type="decimal" Precision="16" Scale="6" />
+          <Property Name="CEZ_AmountSupplement" Type="decimal" Precision="16" Scale="6" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblSpisyRecordHistory">
+          <Key>
+            <PropertyRef Name="IDSpisyRecordHistory" />
+          </Key>
+          <Property Name="IDSpisyRecordHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDSpisu" Type="int" />
+          <Property Name="RecordDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="RecordCommentType" Type="nvarchar" MaxLength="200" />
+          <Property Name="RecordCommentTxt" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RecordDocuDate" Type="smalldatetime" />
+          <Property Name="RecordDocuType" Type="nvarchar" MaxLength="200" />
+          <Property Name="RecordSended" Type="tinyint" Nullable="false" />
+          <Property Name="IDSrcSpisyRecordHistory" Type="bigint" />
+          <Property Name="IDSrcSpisyRecordHistory2" Type="bigint" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblSpisyTypOsoby">
+          <Key>
+            <PropertyRef Name="IDSpisu" />
+            <PropertyRef Name="IDSpisyOsoby" />
+            <PropertyRef Name="rr_PersType" />
+            <PropertyRef Name="PersMain" />
+          </Key>
+          <Property Name="IDSpisu" Type="int" Nullable="false" />
+          <Property Name="IDSpisyOsoby" Type="int" Nullable="false" />
+          <Property Name="rr_PersType" Type="smallint" Nullable="false" />
+          <Property Name="PersMain" Type="bit" Nullable="false" />
+          <Property Name="DateSignSKUZ" Type="smalldatetime" />
+          <Property Name="TStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblTMPSpisyRecordHistory">
+          <Key>
+            <PropertyRef Name="COLLENT_COMMENT_ID" />
+          </Key>
+          <Property Name="COLLENT_COMMENT_ID" Type="int" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="int" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="smalldatetime" />
+          <Property Name="COMMENT_TYPE_NAME" Type="varchar" MaxLength="200" />
+          <Property Name="USER_COMMENT" Type="varchar(max)" />
+          <Property Name="IDSpisu" Type="int" />
+          <Property Name="IDSpisyRecordHistory" Type="int" />
+        </EntityType>
+        <Association Name="FK_tblCashPayment_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="0..1" />
+          <End Role="tblCashPayment" Type="Self.tblCashPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblCashPayment">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOtherInfo_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblOtherInfo" Type="Self.tblOtherInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblOtherInfo">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisy_tblCreditor">
+          <End Role="tblCreditor" Type="Self.tblCreditor" Multiplicity="0..1" />
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCreditor">
+              <PropertyRef Name="IDCreditor" />
+            </Principal>
+            <Dependent Role="tblSpisy">
+              <PropertyRef Name="IDCreditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyDohody_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyDohody" Type="Self.tblSpisyDohody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyDohody">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyFinanceInfo_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyFinanceInfo" Type="Self.tblSpisyFinanceInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyFinanceInfo">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyHistorieDohod_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyHistorieDohod" Type="Self.tblSpisyHistorieDohod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyHistorieDohod">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyOsobyEmail_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyOsobyEmail" Type="Self.tblSpisyOsobyEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyOsobyEmail">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyOsobyPhone_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyOsobyPhone" Type="Self.tblSpisyOsobyPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyOsobyPhone">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyOsobyZam_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyOsobyZam" Type="Self.tblSpisyOsobyZam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyOsobyZam">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyPlatbyDosle_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyPlatbyDosle" Type="Self.tblSpisyPlatbyDosle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyPlatbyDosle">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyRecordHistory_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="0..1" />
+          <End Role="tblSpisyRecordHistory" Type="Self.tblSpisyRecordHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyRecordHistory">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyTypOsoby_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyTypOsoby" Type="Self.tblSpisyTypOsoby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyTypOsoby">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyTypOsoby_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyTypOsoby" Type="Self.tblSpisyTypOsoby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyTypOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_Do_FinishSync" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDSync" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_Do_VisitReportUpdateJournal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDVisitReport" Type="int" Mode="In" />
+          <Parameter Name="rr_Journal" Type="tinyint" Mode="In" />
+        </Function>
+        <Function Name="sp_Get_LastTimeStamp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NewIDSync" Type="bigint" Mode="InOut" />
+          <Parameter Name="LastTStamp" Type="bigint" Mode="InOut" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="InOut" />
+        </Function>
+        <Function Name="sp_Get_Region" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PSC" Type="varchar" Mode="In" />
+          <Parameter Name="Region" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="sp_INT_Cash_AddFee_SKUZ" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_INT_FindAndPairPayments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_INT_NewAddresses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastTStamp" Type="bigint" Mode="In" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_INT_NewDocuments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastTStamp" Type="bigint" Mode="In" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_INT_NewEmails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastTStamp" Type="bigint" Mode="In" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_INT_NewEmployers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastTStamp" Type="bigint" Mode="In" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_INT_NewPayments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastTStamp" Type="bigint" Mode="In" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_INT_NewPhones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastTStamp" Type="bigint" Mode="In" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_INT_NewVisitReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastTStamp" Type="bigint" Mode="In" />
+          <Parameter Name="NewTStamp" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_INT_O2S_tblSpisyRecordHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_INT_Truncate_tblTMPSpisyRecordHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Run_AfterSyncInterface" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="TRACEModelStoreContainer">
+          <EntitySet Name="tblCashPayment" EntityType="Self.tblCashPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCreditor" EntityType="Self.tblCreditor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblError" EntityType="Self.tblError" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogService" EntityType="Self.tblLogService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOtherInfo" EntityType="Self.tblOtherInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegisterRestrictions" EntityType="Self.tblRegisterRestrictions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisy" EntityType="Self.tblSpisy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyDocument" EntityType="Self.tblSpisyDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyDohody" EntityType="Self.tblSpisyDohody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyFinanceInfo" EntityType="Self.tblSpisyFinanceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyHistorieDohod" EntityType="Self.tblSpisyHistorieDohod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyOsoby" EntityType="Self.tblSpisyOsoby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyOsobyAdresy" EntityType="Self.tblSpisyOsobyAdresy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyOsobyEmail" EntityType="Self.tblSpisyOsobyEmail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyOsobyPhone" EntityType="Self.tblSpisyOsobyPhone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyOsobyZam" EntityType="Self.tblSpisyOsobyZam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyPlatbyDosle" EntityType="Self.tblSpisyPlatbyDosle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyPrintInfo" EntityType="Self.tblSpisyPrintInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyPrintInfoCEZ" EntityType="Self.tblSpisyPrintInfoCEZ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyRecordHistory" EntityType="Self.tblSpisyRecordHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSpisyTypOsoby" EntityType="Self.tblSpisyTypOsoby" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTMPSpisyRecordHistory" EntityType="Self.tblTMPSpisyRecordHistory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblCashPayment_tblSpisy" Association="Self.FK_tblCashPayment_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblCashPayment" EntitySet="tblCashPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOtherInfo_tblSpisy" Association="Self.FK_tblOtherInfo_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblOtherInfo" EntitySet="tblOtherInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisy_tblCreditor" Association="Self.FK_tblSpisy_tblCreditor">
+            <End Role="tblCreditor" EntitySet="tblCreditor" />
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyDohody_tblSpisy" Association="Self.FK_tblSpisyDohody_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblSpisyDohody" EntitySet="tblSpisyDohody" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyFinanceInfo_tblSpisy" Association="Self.FK_tblSpisyFinanceInfo_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblSpisyFinanceInfo" EntitySet="tblSpisyFinanceInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyHistorieDohod_tblSpisy" Association="Self.FK_tblSpisyHistorieDohod_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblSpisyHistorieDohod" EntitySet="tblSpisyHistorieDohod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyOsobyEmail_tblSpisyOsoby" Association="Self.FK_tblSpisyOsobyEmail_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsoby" />
+            <End Role="tblSpisyOsobyEmail" EntitySet="tblSpisyOsobyEmail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyOsobyPhone_tblSpisyOsoby" Association="Self.FK_tblSpisyOsobyPhone_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsoby" />
+            <End Role="tblSpisyOsobyPhone" EntitySet="tblSpisyOsobyPhone" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyOsobyZam_tblSpisyOsoby" Association="Self.FK_tblSpisyOsobyZam_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsoby" />
+            <End Role="tblSpisyOsobyZam" EntitySet="tblSpisyOsobyZam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyPlatbyDosle_tblSpisy" Association="Self.FK_tblSpisyPlatbyDosle_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblSpisyPlatbyDosle" EntitySet="tblSpisyPlatbyDosle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyRecordHistory_tblSpisy" Association="Self.FK_tblSpisyRecordHistory_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblSpisyRecordHistory" EntitySet="tblSpisyRecordHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyTypOsoby_tblSpisy" Association="Self.FK_tblSpisyTypOsoby_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisy" />
+            <End Role="tblSpisyTypOsoby" EntitySet="tblSpisyTypOsoby" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyTypOsoby_tblSpisyOsoby" Association="Self.FK_tblSpisyTypOsoby_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsoby" />
+            <End Role="tblSpisyTypOsoby" EntitySet="tblSpisyTypOsoby" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TRACEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCashPayment">
+          <Key>
+            <PropertyRef Name="IDCashPayment" />
+          </Key>
+          <Property Name="IDCashPayment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" />
+          <Property Name="IDVisitReport" Type="Int32" />
+          <Property Name="IDPaymentOrder" Type="Int32" />
+          <Property Name="DatePaymentPickup" Type="DateTime" Precision="0" />
+          <Property Name="AmountPickup" Type="Double" />
+          <Property Name="AmountSended" Type="Double" />
+          <Property Name="rr_CashPaymState" Type="Byte" />
+          <Property Name="DatePaymentOnCentrale" Type="DateTime" Precision="0" />
+          <Property Name="IDSpisyPlatbyDosle" Type="Int32" />
+          <Property Name="CashDocNumber" Type="Int32" />
+          <Property Name="rr_Journal" Type="Byte" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="AmountOnCentrale" Type="Double" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblCashPayment_tblSpisy" FromRole="tblCashPayment" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblCreditor">
+          <Key>
+            <PropertyRef Name="IDCreditor" />
+          </Key>
+          <Property Name="IDCreditor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSrcCreditor" Type="Int64" />
+          <Property Name="CreditorName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreditorAlias" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreditorStreet" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreditorHouseNum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreditorCity" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CreditorZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreditorAddrFull" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="LimitDaysFor1OSN" Type="Int16" />
+          <Property Name="LimitDaysForNOSN" Type="Int16" />
+          <Property Name="Processor" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="TemplateDLSpis" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateDLSpisValid" Type="Boolean" Nullable="false" />
+          <Property Name="TemplateFVLetter" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateFVLetterValid" Type="Boolean" Nullable="false" />
+          <Property Name="TemplateUZSK" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateUZSKValid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblSpisies" Relationship="Self.FK_tblSpisy_tblCreditor" FromRole="tblCreditor" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblError">
+          <Key>
+            <PropertyRef Name="IDError" />
+          </Key>
+          <Property Name="IDError" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ErrSource" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ErrText" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ErrSended" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLogService">
+          <Key>
+            <PropertyRef Name="IDLog" />
+          </Key>
+          <Property Name="IDLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="L" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblOtherInfo">
+          <Key>
+            <PropertyRef Name="IDOtherInfo" />
+          </Key>
+          <Property Name="IDOtherInfo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" />
+          <Property Name="OtherInfoXML" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblOtherInfo_tblSpisy" FromRole="tblOtherInfo" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblRegisterRestriction">
+          <Key>
+            <PropertyRef Name="Register" />
+            <PropertyRef Name="IDOrder" />
+          </Key>
+          <Property Name="Register" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IDOrder" Type="Int16" Nullable="false" />
+          <Property Name="Val" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Val2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSpisy">
+          <Key>
+            <PropertyRef Name="IDSpisu" />
+          </Key>
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSrcSpisy" Type="Int64" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="ACC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ActualDebit" Type="Double" />
+          <Property Name="IDCreditor" Type="Int32" />
+          <Property Name="Principal" Type="Double" />
+          <Property Name="Interest" Type="Double" />
+          <Property Name="Costs" Type="Double" />
+          <Property Name="YetPaid" Type="Double" />
+          <Property Name="rr_Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="KindOfEnforcement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="BankCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="VariableSymbol" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SpecificSymbol" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LastPaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="LastPaymentAmount" Type="Double" />
+          <Property Name="LastCallDate" Type="DateTime" Precision="0" />
+          <Property Name="LastCallText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TaskForIP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileAction" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="VisitDateSentFromMother" Type="DateTime" Precision="0" />
+          <Property Name="VisitDateReceiveFromMotherMax" Type="DateTime" Precision="0" />
+          <Property Name="VisitDateReceiveFromMother" Type="DateTime" Precision="0" />
+          <Property Name="VisitDateSentToMother" Type="DateTime" Precision="0" />
+          <Property Name="IDUserWhoClosedFile" Type="Int32" />
+          <Property Name="rr_ClosedFile" Type="Int16" />
+          <Property Name="VisitDateD1Max" Type="DateTime" Precision="0" />
+          <Property Name="VisitDateD1OSN" Type="DateTime" Precision="0" />
+          <Property Name="FirstVisitExecuted" Type="Boolean" Nullable="false" />
+          <Property Name="VisitDateDNMax" Type="DateTime" Precision="0" />
+          <Property Name="VisitDateDNOSN" Type="DateTime" Precision="0" />
+          <Property Name="VisitDateDXSK" Type="DateTime" Precision="0" />
+          <Property Name="DateReturnToCreditor" Type="DateTime" Precision="0" />
+          <Property Name="DateLapse" Type="DateTime" Precision="0" />
+          <Property Name="DateSignSKUZ" Type="DateTime" Precision="0" />
+          <Property Name="MaxCommission" Type="Double" />
+          <Property Name="FirstVisitFee" Type="Double" />
+          <Property Name="SumPaymentFromVisits" Type="Double" />
+          <Property Name="ConditionSK" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="TypeSK" Type="Int16" />
+          <Property Name="TotalCountSK" Type="Int16" />
+          <Property Name="PardonCampaign" Type="Boolean" Nullable="false" />
+          <Property Name="MaxCountPayments" Type="Int16" />
+          <Property Name="rr_State" Type="Int16" Nullable="false" />
+          <Property Name="LL_LastLapse" Type="Int32" Nullable="false" />
+          <Property Name="FirstFieldVisitUpToDay" Type="Int16" />
+          <Property Name="NextFieldVisitUpToDay" Type="Int16" />
+          <Property Name="IDSpisyRecordHistory_For61" Type="Int32" />
+          <Property Name="DebtLastContact" Type="DateTime" Precision="0" />
+          <Property Name="DOHL" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ActualActions" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountOfFV" Type="Int16" Nullable="false" />
+          <Property Name="FV_TerminationDate" Type="DateTime" Precision="0" />
+          <Property Name="InReturnRequest" Type="Boolean" Nullable="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Commission" Type="Double" Nullable="false" />
+          <NavigationProperty Name="tblCashPayments" Relationship="Self.FK_tblCashPayment_tblSpisy" FromRole="tblSpisy" ToRole="tblCashPayment" />
+          <NavigationProperty Name="tblCreditor" Relationship="Self.FK_tblSpisy_tblCreditor" FromRole="tblSpisy" ToRole="tblCreditor" />
+          <NavigationProperty Name="tblOtherInfoes" Relationship="Self.FK_tblOtherInfo_tblSpisy" FromRole="tblSpisy" ToRole="tblOtherInfo" />
+          <NavigationProperty Name="tblSpisyDohodies" Relationship="Self.FK_tblSpisyDohody_tblSpisy" FromRole="tblSpisy" ToRole="tblSpisyDohody" />
+          <NavigationProperty Name="tblSpisyFinanceInfoes" Relationship="Self.FK_tblSpisyFinanceInfo_tblSpisy" FromRole="tblSpisy" ToRole="tblSpisyFinanceInfo" />
+          <NavigationProperty Name="tblSpisyHistorieDohods" Relationship="Self.FK_tblSpisyHistorieDohod_tblSpisy" FromRole="tblSpisy" ToRole="tblSpisyHistorieDohod" />
+          <NavigationProperty Name="tblSpisyPlatbyDosles" Relationship="Self.FK_tblSpisyPlatbyDosle_tblSpisy" FromRole="tblSpisy" ToRole="tblSpisyPlatbyDosle" />
+          <NavigationProperty Name="tblSpisyRecordHistories" Relationship="Self.FK_tblSpisyRecordHistory_tblSpisy" FromRole="tblSpisy" ToRole="tblSpisyRecordHistory" />
+          <NavigationProperty Name="tblSpisyTypOsobies" Relationship="Self.FK_tblSpisyTypOsoby_tblSpisy" FromRole="tblSpisy" ToRole="tblSpisyTypOsoby" />
+        </EntityType>
+        <EntityType Name="tblSpisyDocument">
+          <Key>
+            <PropertyRef Name="IDSpisyDocument" />
+          </Key>
+          <Property Name="IDSpisyDocument" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyDocument" Type="Int64" />
+          <Property Name="rr_DocumentKind" Type="Byte" Nullable="false" />
+          <Property Name="DocuSentDate" Type="DateTime" Precision="0" />
+          <Property Name="DocuSentComment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DocuPrintPDF" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DocuPrintSelected" Type="Boolean" Nullable="false" />
+          <Property Name="DocuLink" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="GPSLat" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="GPSLng" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="IDVisitReport" Type="Int32" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblSpisyDohody">
+          <Key>
+            <PropertyRef Name="IDSpisyDohody" />
+          </Key>
+          <Property Name="IDSpisyDohody" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyDohody" Type="Int64" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="PaymentAmountAwait" Type="Double" />
+          <Property Name="CommissionAwait" Type="Double" />
+          <Property Name="PaymentAmountReal" Type="Double" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblSpisyDohody_tblSpisy" FromRole="tblSpisyDohody" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblSpisyFinanceInfo">
+          <Key>
+            <PropertyRef Name="IDInfo" />
+          </Key>
+          <Property Name="IDInfo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSrcInfo" Type="Int64" />
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" />
+          <Property Name="InfoTxt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InfoKind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InfoInvoice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InfoAmount" Type="Double" />
+          <Property Name="InfoAmountBalance" Type="Double" />
+          <Property Name="InfoAmountBalanceUpdated" Type="Double" />
+          <Property Name="InfoDate" Type="DateTime" Precision="0" />
+          <Property Name="InfoDueDate" Type="DateTime" Precision="0" />
+          <Property Name="InfoCurrency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblSpisyFinanceInfo_tblSpisy" FromRole="tblSpisyFinanceInfo" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblSpisyHistorieDohod">
+          <Key>
+            <PropertyRef Name="IDSpisyHistorieDohod" />
+          </Key>
+          <Property Name="IDSpisyHistorieDohod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyHistorieDohod" Type="Int64" />
+          <Property Name="DateSK" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="CountOfPaymentsSK" Type="Int16" />
+          <Property Name="rr_PAValidityType" Type="Int16" />
+          <Property Name="rr_PAType" Type="Int16" />
+          <Property Name="PAInvalid" Type="Boolean" Nullable="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblSpisyHistorieDohod_tblSpisy" FromRole="tblSpisyHistorieDohod" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsoby">
+          <Key>
+            <PropertyRef Name="IDSpisyOsoby" />
+          </Key>
+          <Property Name="IDSpisyOsoby" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSrcSpisyOsoby" Type="Int64" />
+          <Property Name="PersSurname" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="PersName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="PersRC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PersIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PersBirthDate" Type="DateTime" Precision="0" />
+          <Property Name="PersSurname2" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="BonitaKatastr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BonitaPocetExe" Type="Int16" />
+          <Property Name="BonitaDatLustrace" Type="DateTime" Precision="0" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblSpisyOsobyEmails" Relationship="Self.FK_tblSpisyOsobyEmail_tblSpisyOsoby" FromRole="tblSpisyOsoby" ToRole="tblSpisyOsobyEmail" />
+          <NavigationProperty Name="tblSpisyOsobyPhones" Relationship="Self.FK_tblSpisyOsobyPhone_tblSpisyOsoby" FromRole="tblSpisyOsoby" ToRole="tblSpisyOsobyPhone" />
+          <NavigationProperty Name="tblSpisyOsobyZams" Relationship="Self.FK_tblSpisyOsobyZam_tblSpisyOsoby" FromRole="tblSpisyOsoby" ToRole="tblSpisyOsobyZam" />
+          <NavigationProperty Name="tblSpisyTypOsobies" Relationship="Self.FK_tblSpisyTypOsoby_tblSpisyOsoby" FromRole="tblSpisyOsoby" ToRole="tblSpisyTypOsoby" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyAdresy">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyAdresy" />
+          </Key>
+          <Property Name="IDSpisyOsobyAdresy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisyOsoby" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyAdresy" Type="Int64" />
+          <Property Name="PersCity" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="PersHouseNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PersStreet" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="PersZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PersRegion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersAddressVisited" Type="Boolean" />
+          <Property Name="PersMainAddress" Type="Boolean" />
+          <Property Name="PersAddressForItinerary" Type="Boolean" />
+          <Property Name="VisitDatePlan" Type="DateTime" Precision="0" />
+          <Property Name="VisitDatePlanNoChange" Type="Boolean" Nullable="false" />
+          <Property Name="rr_AddressValidity" Type="Int16" />
+          <Property Name="rr_AddressType" Type="Int16" />
+          <Property Name="GPSLat" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="GPSLng" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="GPSValid" Type="Boolean" Nullable="false" />
+          <Property Name="PersAddrFull" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AddrFVisitComment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="NCName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="NCSurname" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="NCEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="NCEmailValid" Type="Boolean" />
+          <Property Name="NCPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NCPhoneValid" Type="Int16" />
+          <Property Name="NCrr_PersType" Type="Int16" />
+          <Property Name="NextContact" Type="Boolean" Nullable="false" />
+          <Property Name="New_PersMainAddress" Type="Boolean" />
+          <Property Name="New_rr_AddressType" Type="Int16" />
+          <Property Name="New_rr_AddressValidity" Type="Int16" />
+          <Property Name="New_PersAddressVisited" Type="Boolean" />
+          <Property Name="rr_Journal" Type="Byte" Nullable="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="GPSValidDetail" Type="Byte" Nullable="false" />
+          <Property Name="TimeValidityUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeCreated" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyEmail">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyEmail" />
+          </Key>
+          <Property Name="IDSpisyOsobyEmail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisyOsoby" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyEmail" Type="Int64" />
+          <Property Name="PersEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="PersEmailValid" Type="Boolean" />
+          <Property Name="EmailFVisitComment" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="New_PersEmailValid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IntfcState" Type="Byte" Nullable="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="Byte" Nullable="false" />
+          <Property Name="TimeValidityUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersEmailMain" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblSpisyOsoby" Relationship="Self.FK_tblSpisyOsobyEmail_tblSpisyOsoby" FromRole="tblSpisyOsobyEmail" ToRole="tblSpisyOsoby" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyPhone">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyPhone" />
+          </Key>
+          <Property Name="IDSpisyOsobyPhone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisyOsoby" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyPhone" Type="Int64" />
+          <Property Name="PersPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rr_PhoneValidity" Type="Int16" Nullable="false" />
+          <Property Name="PersPhoneMain" Type="Boolean" Nullable="false" />
+          <Property Name="PhoneFVisitComment" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="Byte" Nullable="false" />
+          <Property Name="TimeValidityUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblSpisyOsoby" Relationship="Self.FK_tblSpisyOsobyPhone_tblSpisyOsoby" FromRole="tblSpisyOsobyPhone" ToRole="tblSpisyOsoby" />
+        </EntityType>
+        <EntityType Name="tblSpisyOsobyZam">
+          <Key>
+            <PropertyRef Name="IDSpisyOsobyZam" />
+          </Key>
+          <Property Name="IDSpisyOsobyZam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisyOsoby" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyOsobyZam" Type="Int64" />
+          <Property Name="EmployerName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerCity" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerHouseNum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerStreet" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerZipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rr_AddressValidity" Type="Int16" Nullable="false" />
+          <Property Name="EmployerAddrFull" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerContactSurname" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerContactName" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="EmployerContactEmail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="EmployerContactPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Journal" Type="Byte" Nullable="false" />
+          <Property Name="TimeCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeValidityUpdate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblSpisyOsoby" Relationship="Self.FK_tblSpisyOsobyZam_tblSpisyOsoby" FromRole="tblSpisyOsobyZam" ToRole="tblSpisyOsoby" />
+        </EntityType>
+        <EntityType Name="tblSpisyPlatbyDosle">
+          <Key>
+            <PropertyRef Name="IDSpisyPlatbyDosle" />
+          </Key>
+          <Property Name="IDSpisyPlatbyDosle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" />
+          <Property Name="IDSrcSpisyPlatbyDosle" Type="Int64" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="0" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="CommissionForIP" Type="Double" />
+          <Property Name="rr_PaymentLabel" Type="Byte" Nullable="false" />
+          <Property Name="OverPayment" Type="Double" />
+          <Property Name="Paired" Type="Boolean" Nullable="false" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rr_Charged" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblSpisyPlatbyDosle_tblSpisy" FromRole="tblSpisyPlatbyDosle" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblSpisyPrintInfo">
+          <Key>
+            <PropertyRef Name="IDSpisyPrintInfo" />
+          </Key>
+          <Property Name="IDSpisyPrintInfo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" />
+          <Property Name="IDSrcACC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterInfo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ACC_Comment9" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ACC_comment13" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ACC_comment14" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ACC_comment17" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ACC_Comment23" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ACC_comment27" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PF_Agreement" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="AmountByWords" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="AmountByWordsHal" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSpisyPrintInfoCEZ">
+          <Key>
+            <PropertyRef Name="IDSpisyPrintInfoCEZ" />
+          </Key>
+          <Property Name="IDSpisyPrintInfoCEZ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" />
+          <Property Name="CEZ_IDSrcACC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="CEZ_SuplyPlace" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CEZ_VariableSymbol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CEZ_DueDate" Type="DateTime" Precision="0" />
+          <Property Name="CEZ_AmountTotal" Type="Decimal" Precision="16" Scale="6" />
+          <Property Name="CEZ_AmountSupplement" Type="Decimal" Precision="16" Scale="6" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tblSpisyRecordHistory">
+          <Key>
+            <PropertyRef Name="IDSpisyRecordHistory" />
+          </Key>
+          <Property Name="IDSpisyRecordHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDSpisu" Type="Int32" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RecordCommentType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RecordCommentTxt" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="RecordDocuDate" Type="DateTime" Precision="0" />
+          <Property Name="RecordDocuType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RecordSended" Type="Byte" Nullable="false" />
+          <Property Name="IDSrcSpisyRecordHistory" Type="Int64" />
+          <Property Name="IDSrcSpisyRecordHistory2" Type="Int64" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblSpisyRecordHistory_tblSpisy" FromRole="tblSpisyRecordHistory" ToRole="tblSpisy" />
+        </EntityType>
+        <EntityType Name="tblSpisyTypOsoby">
+          <Key>
+            <PropertyRef Name="IDSpisu" />
+            <PropertyRef Name="IDSpisyOsoby" />
+            <PropertyRef Name="rr_PersType" />
+            <PropertyRef Name="PersMain" />
+          </Key>
+          <Property Name="IDSpisu" Type="Int32" Nullable="false" />
+          <Property Name="IDSpisyOsoby" Type="Int32" Nullable="false" />
+          <Property Name="rr_PersType" Type="Int16" Nullable="false" />
+          <Property Name="PersMain" Type="Boolean" Nullable="false" />
+          <Property Name="DateSignSKUZ" Type="DateTime" Precision="0" />
+          <Property Name="TStamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="tblSpisy" Relationship="Self.FK_tblSpisyTypOsoby_tblSpisy" FromRole="tblSpisyTypOsoby" ToRole="tblSpisy" />
+          <NavigationProperty Name="tblSpisyOsoby" Relationship="Self.FK_tblSpisyTypOsoby_tblSpisyOsoby" FromRole="tblSpisyTypOsoby" ToRole="tblSpisyOsoby" />
+        </EntityType>
+        <EntityType Name="tblTMPSpisyRecordHistory">
+          <Key>
+            <PropertyRef Name="COLLENT_COMMENT_ID" />
+          </Key>
+          <Property Name="COLLENT_COMMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="Int32" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="DateTime" Precision="0" />
+          <Property Name="COMMENT_TYPE_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="USER_COMMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IDSpisu" Type="Int32" />
+          <Property Name="IDSpisyRecordHistory" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_tblCashPayment_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="0..1" />
+          <End Role="tblCashPayment" Type="Self.tblCashPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblCashPayment">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisy_tblCreditor">
+          <End Role="tblCreditor" Type="Self.tblCreditor" Multiplicity="0..1" />
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCreditor">
+              <PropertyRef Name="IDCreditor" />
+            </Principal>
+            <Dependent Role="tblSpisy">
+              <PropertyRef Name="IDCreditor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblOtherInfo_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblOtherInfo" Type="Self.tblOtherInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblOtherInfo">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyDohody_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyDohody" Type="Self.tblSpisyDohody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyDohody">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyFinanceInfo_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyFinanceInfo" Type="Self.tblSpisyFinanceInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyFinanceInfo">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyHistorieDohod_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyHistorieDohod" Type="Self.tblSpisyHistorieDohod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyHistorieDohod">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyPlatbyDosle_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyPlatbyDosle" Type="Self.tblSpisyPlatbyDosle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyPlatbyDosle">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyRecordHistory_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="0..1" />
+          <End Role="tblSpisyRecordHistory" Type="Self.tblSpisyRecordHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyRecordHistory">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyTypOsoby_tblSpisy">
+          <End Role="tblSpisy" Type="Self.tblSpisy" Multiplicity="1" />
+          <End Role="tblSpisyTypOsoby" Type="Self.tblSpisyTypOsoby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisy">
+              <PropertyRef Name="IDSpisu" />
+            </Principal>
+            <Dependent Role="tblSpisyTypOsoby">
+              <PropertyRef Name="IDSpisu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyOsobyEmail_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyOsobyEmail" Type="Self.tblSpisyOsobyEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyOsobyEmail">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyOsobyPhone_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyOsobyPhone" Type="Self.tblSpisyOsobyPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyOsobyPhone">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyOsobyZam_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyOsobyZam" Type="Self.tblSpisyOsobyZam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyOsobyZam">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSpisyTypOsoby_tblSpisyOsoby">
+          <End Role="tblSpisyOsoby" Type="Self.tblSpisyOsoby" Multiplicity="1" />
+          <End Role="tblSpisyTypOsoby" Type="Self.tblSpisyTypOsoby" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSpisyOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Principal>
+            <Dependent Role="tblSpisyTypOsoby">
+              <PropertyRef Name="IDSpisyOsoby" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SqlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCashPayments" EntityType="Self.tblCashPayment" />
+          <EntitySet Name="tblCreditors" EntityType="Self.tblCreditor" />
+          <EntitySet Name="tblErrors" EntityType="Self.tblError" />
+          <EntitySet Name="tblLogServices" EntityType="Self.tblLogService" />
+          <EntitySet Name="tblOtherInfoes" EntityType="Self.tblOtherInfo" />
+          <EntitySet Name="tblRegisterRestrictions" EntityType="Self.tblRegisterRestriction" />
+          <EntitySet Name="tblSpisies" EntityType="Self.tblSpisy" />
+          <EntitySet Name="tblSpisyDocuments" EntityType="Self.tblSpisyDocument" />
+          <EntitySet Name="tblSpisyDohodies" EntityType="Self.tblSpisyDohody" />
+          <EntitySet Name="tblSpisyFinanceInfoes" EntityType="Self.tblSpisyFinanceInfo" />
+          <EntitySet Name="tblSpisyHistorieDohods" EntityType="Self.tblSpisyHistorieDohod" />
+          <EntitySet Name="tblSpisyOsobies" EntityType="Self.tblSpisyOsoby" />
+          <EntitySet Name="tblSpisyOsobyAdresies" EntityType="Self.tblSpisyOsobyAdresy" />
+          <EntitySet Name="tblSpisyOsobyEmails" EntityType="Self.tblSpisyOsobyEmail" />
+          <EntitySet Name="tblSpisyOsobyPhones" EntityType="Self.tblSpisyOsobyPhone" />
+          <EntitySet Name="tblSpisyOsobyZams" EntityType="Self.tblSpisyOsobyZam" />
+          <EntitySet Name="tblSpisyPlatbyDosles" EntityType="Self.tblSpisyPlatbyDosle" />
+          <EntitySet Name="tblSpisyPrintInfoes" EntityType="Self.tblSpisyPrintInfo" />
+          <EntitySet Name="tblSpisyPrintInfoCEZs" EntityType="Self.tblSpisyPrintInfoCEZ" />
+          <EntitySet Name="tblSpisyRecordHistories" EntityType="Self.tblSpisyRecordHistory" />
+          <EntitySet Name="tblSpisyTypOsobies" EntityType="Self.tblSpisyTypOsoby" />
+          <EntitySet Name="tblTMPSpisyRecordHistories" EntityType="Self.tblTMPSpisyRecordHistory" />
+          <AssociationSet Name="FK_tblCashPayment_tblSpisy" Association="Self.FK_tblCashPayment_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblCashPayment" EntitySet="tblCashPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisy_tblCreditor" Association="Self.FK_tblSpisy_tblCreditor">
+            <End Role="tblCreditor" EntitySet="tblCreditors" />
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblOtherInfo_tblSpisy" Association="Self.FK_tblOtherInfo_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblOtherInfo" EntitySet="tblOtherInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyDohody_tblSpisy" Association="Self.FK_tblSpisyDohody_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblSpisyDohody" EntitySet="tblSpisyDohodies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyFinanceInfo_tblSpisy" Association="Self.FK_tblSpisyFinanceInfo_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblSpisyFinanceInfo" EntitySet="tblSpisyFinanceInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyHistorieDohod_tblSpisy" Association="Self.FK_tblSpisyHistorieDohod_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblSpisyHistorieDohod" EntitySet="tblSpisyHistorieDohods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyPlatbyDosle_tblSpisy" Association="Self.FK_tblSpisyPlatbyDosle_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblSpisyPlatbyDosle" EntitySet="tblSpisyPlatbyDosles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyRecordHistory_tblSpisy" Association="Self.FK_tblSpisyRecordHistory_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblSpisyRecordHistory" EntitySet="tblSpisyRecordHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyTypOsoby_tblSpisy" Association="Self.FK_tblSpisyTypOsoby_tblSpisy">
+            <End Role="tblSpisy" EntitySet="tblSpisies" />
+            <End Role="tblSpisyTypOsoby" EntitySet="tblSpisyTypOsobies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyOsobyEmail_tblSpisyOsoby" Association="Self.FK_tblSpisyOsobyEmail_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsobies" />
+            <End Role="tblSpisyOsobyEmail" EntitySet="tblSpisyOsobyEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyOsobyPhone_tblSpisyOsoby" Association="Self.FK_tblSpisyOsobyPhone_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsobies" />
+            <End Role="tblSpisyOsobyPhone" EntitySet="tblSpisyOsobyPhones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyOsobyZam_tblSpisyOsoby" Association="Self.FK_tblSpisyOsobyZam_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsobies" />
+            <End Role="tblSpisyOsobyZam" EntitySet="tblSpisyOsobyZams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSpisyTypOsoby_tblSpisyOsoby" Association="Self.FK_tblSpisyTypOsoby_tblSpisyOsoby">
+            <End Role="tblSpisyOsoby" EntitySet="tblSpisyOsobies" />
+            <End Role="tblSpisyTypOsoby" EntitySet="tblSpisyTypOsobies" />
+          </AssociationSet>
+          <FunctionImport Name="sp_INT_Cash_AddFee_SKUZ" />
+          <FunctionImport Name="sp_INT_FindAndPairPayments" />
+          <FunctionImport Name="sp_INT_NewAddresses" ReturnType="Collection(TRACEModel.sp_INT_NewAddresses_Result)">
+            <Parameter Name="LastTStamp" Mode="In" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INT_NewDocuments" ReturnType="Collection(TRACEModel.sp_INT_NewDocuments_Result)">
+            <Parameter Name="LastTStamp" Mode="In" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INT_NewEmails" ReturnType="Collection(TRACEModel.sp_INT_NewEmails_Result)">
+            <Parameter Name="LastTStamp" Mode="In" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INT_NewEmployers" ReturnType="Collection(TRACEModel.sp_INT_NewEmployers_Result)">
+            <Parameter Name="LastTStamp" Mode="In" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INT_NewPayments" ReturnType="Collection(TRACEModel.sp_INT_NewPayments_Result)">
+            <Parameter Name="LastTStamp" Mode="In" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INT_NewPhones" ReturnType="Collection(TRACEModel.sp_INT_NewPhones_Result)">
+            <Parameter Name="LastTStamp" Mode="In" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INT_NewVisitReport" ReturnType="Collection(TRACEModel.sp_INT_NewVisitReport_Result)">
+            <Parameter Name="LastTStamp" Mode="In" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_INT_O2S_tblSpisyRecordHistory" />
+          <FunctionImport Name="sp_INT_Truncate_tblTMPSpisyRecordHistory" />
+          <FunctionImport Name="sp_Get_Region">
+            <Parameter Name="PSC" Mode="In" Type="String" />
+            <Parameter Name="Region" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Run_AfterSyncInterface" />
+          <FunctionImport Name="sp_Get_LastTimeStamp">
+            <Parameter Name="NewIDSync" Mode="InOut" Type="Int64" />
+            <Parameter Name="LastTStamp" Mode="InOut" Type="Int64" />
+            <Parameter Name="NewTStamp" Mode="InOut" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Do_FinishSync">
+          <Parameter Name="IDSync" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Do_VisitReportUpdateJournal">
+            <Parameter Name="IDVisitReport" Mode="In" Type="Int32" />
+            <Parameter Name="rr_Journal" Mode="In" Type="Byte" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_INT_NewAddresses_Result">
+          <Property Type="Int64" Name="IDSrcSpisyOsoby" Nullable="true" />
+          <Property Type="Int64" Name="IDSrcSpisyOsobyAdresy" Nullable="true" />
+          <Property Type="String" Name="PersCity" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="PersHouseNum" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PersStreet" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="PersZipCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="PersRegion" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="PersMainAddress" Nullable="true" />
+          <Property Type="Int16" Name="rr_AddressValidity" Nullable="true" />
+          <Property Type="Int16" Name="rr_AddressType" Nullable="true" />
+          <Property Type="Int32" Name="IDSpisyOsobyAdresy" Nullable="false" />
+          <Property Type="Int64" Name="TStamp" Nullable="true" />
+          <Property Type="Byte" Name="rr_Journal" Nullable="false" />
+          <Property Type="DateTime" Name="TimeValidityUpdate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="TimeCreated" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_INT_NewDocuments_Result">
+          <Property Type="Int64" Name="IDSrcSpisy" Nullable="true" />
+          <Property Type="Int64" Name="IDSrcSpisyDocument" Nullable="true" />
+          <Property Type="DateTime" Name="DocuSentDate" Nullable="true" Precision="16" />
+          <Property Type="String" Name="DocuSentComment" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="DocuLink" Nullable="true" MaxLength="800" />
+          <Property Type="Int32" Name="IDSpisyDocument" Nullable="false" />
+          <Property Type="String" Name="GPSLat" Nullable="true" MaxLength="22" />
+          <Property Type="String" Name="GPSLng" Nullable="true" MaxLength="22" />
+          <Property Type="Int64" Name="TStamp" Nullable="true" />
+          <Property Type="Byte" Name="rr_Journal" Nullable="false" />
+          <Property Type="Byte" Name="rr_DocumentKind" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_INT_NewEmails_Result">
+          <Property Type="Int64" Name="IDSrcSpisyOsoby" Nullable="true" />
+          <Property Type="Int64" Name="IDSrcSpisyOsobyEmail" Nullable="true" />
+          <Property Type="String" Name="PersEmail" Nullable="true" MaxLength="80" />
+          <Property Type="Boolean" Name="PersEmailValid" Nullable="true" />
+          <Property Type="Int32" Name="FV_ORIGIN" Nullable="false" />
+          <Property Type="Int32" Name="IDSpisyOsobyEmail" Nullable="false" />
+          <Property Type="String" Name="EmailFVisitComment" Nullable="true" MaxLength="1000" />
+          <Property Type="Int64" Name="TStamp" Nullable="true" />
+          <Property Type="Byte" Name="rr_Journal" Nullable="false" />
+          <Property Type="DateTime" Name="TimeValidityUpdate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="TimeCreated" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_INT_NewEmployers_Result">
+          <Property Type="Int64" Name="IDSrcSpisyOsoby" Nullable="true" />
+          <Property Type="Int64" Name="IDSrcSpisyOsobyZam" Nullable="true" />
+          <Property Type="String" Name="EmployerName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="EmployerCity" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="EmployerHouseNum" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EmployerStreet" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="EmployerZipCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="EmployerContactEmail" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="EmployerContactPhone" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmployerAddrFull" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="FV_ORIGIN" Nullable="false" />
+          <Property Type="Int32" Name="IDSpisyOsobyZam" Nullable="false" />
+          <Property Type="Int64" Name="TStamp" Nullable="true" />
+          <Property Type="Byte" Name="rr_Journal" Nullable="false" />
+          <Property Type="DateTime" Name="TimeCreated" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="TimeValidityUpdate" Nullable="false" Precision="23" />
+          <Property Type="Int16" Name="rr_AddressValidity" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_INT_NewPayments_Result">
+          <Property Type="Int32" Name="IDCashPayment" Nullable="false" />
+          <Property Type="Int64" Name="TStamp" Nullable="true" />
+          <Property Type="Byte" Name="rr_Journal" Nullable="true" />
+          <Property Type="String" Name="ACC" Nullable="true" MaxLength="30" />
+          <Property Type="DateTime" Name="DatePaymentPickup" Nullable="true" Precision="16" />
+          <Property Type="Double" Name="AmountSended" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_INT_NewPhones_Result">
+          <Property Type="Int64" Name="IDSrcSpisyOsoby" Nullable="true" />
+          <Property Type="Int64" Name="IDSrcSpisyOsobyPhone" Nullable="true" />
+          <Property Type="String" Name="PersPhone" Nullable="true" MaxLength="50" />
+          <Property Type="Int16" Name="rr_PhoneValidity" Nullable="false" />
+          <Property Type="Boolean" Name="PersPhoneMain" Nullable="false" />
+          <Property Type="Int32" Name="FV_ORIGIN" Nullable="false" />
+          <Property Type="Int32" Name="IDSpisyOsobyPhone" Nullable="false" />
+          <Property Type="String" Name="PhoneFVisitComment" Nullable="true" MaxLength="1000" />
+          <Property Type="Int64" Name="TStamp" Nullable="true" />
+          <Property Type="Byte" Name="rr_Journal" Nullable="false" />
+          <Property Type="DateTime" Name="TimeValidityUpdate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="TimeCreated" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_INT_NewVisitReport_Result">
+          <Property Type="Int32" Name="IDVisitReport" Nullable="false" />
+          <Property Type="Int32" Name="IDUser" Nullable="true" />
+          <Property Type="Int16" Name="rr_VisitType" Nullable="true" />
+          <Property Type="Int32" Name="IDSpisu" Nullable="true" />
+          <Property Type="Int64" Name="IDSrcSpisy" Nullable="true" />
+          <Property Type="Int32" Name="IDSpisyOsoby" Nullable="true" />
+          <Property Type="Int64" Name="IDSrcSpisyOsoby" Nullable="true" />
+          <Property Type="DateTime" Name="VR1_DateOSN" Nullable="true" Precision="16" />
+          <Property Type="DateTime" Name="VR1_Date" Nullable="true" Precision="16" />
+          <Property Type="String" Name="VR1_GPSLat" Nullable="true" MaxLength="22" />
+          <Property Type="String" Name="VR1_GPSLng" Nullable="true" MaxLength="22" />
+          <Property Type="Int32" Name="VR2_IDSpisyOsobyAdresy" Nullable="true" />
+          <Property Type="Int16" Name="VR3_rr_VisitResult" Nullable="true" />
+          <Property Type="String" Name="VR3_Comment" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="VR41_CashGain" Nullable="true" />
+          <Property Type="DateTime" Name="VR41_CashDate" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="VR41_CashDocNumber" Nullable="true" />
+          <Property Type="Int32" Name="VR41_CashAmount" Nullable="true" />
+          <Property Type="String" Name="VR41_CashCurrency" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="VR41_CashComment" Nullable="true" MaxLength="300" />
+          <Property Type="Boolean" Name="VR41_AgreementForNextCash" Nullable="true" />
+          <Property Type="DateTime" Name="VR41_DateForNextCash" Nullable="true" Precision="16" />
+          <Property Type="Byte" Name="VR5_rr_ProtocolPhoneDirect" Nullable="true" />
+          <Property Type="DateTime" Name="VR51_PhoneDate" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="VR51_IDSpisyOsobyPhone" Nullable="true" />
+          <Property Type="Boolean" Name="VR51_PhoneNumber" Nullable="true" />
+          <Property Type="String" Name="VR51_PhoneComment" Nullable="true" MaxLength="300" />
+          <Property Type="Byte" Name="VR6_rr_ProtocolMailDirect" Nullable="true" />
+          <Property Type="DateTime" Name="VR61_EmailDate" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="VR61_IDSpisyOsobyEmail" Nullable="true" />
+          <Property Type="String" Name="VR61_Email" Nullable="true" MaxLength="80" />
+          <Property Type="String" Name="VR61_Comment" Nullable="true" MaxLength="300" />
+          <Property Type="Int16" Name="VR312_rr_VisitOtherPerson" Nullable="true" />
+          <Property Type="String" Name="VR314_Comment" Nullable="true" MaxLength="500" />
+          <Property Type="Int16" Name="VR511_rr_VisitCasePhoneResultOut" Nullable="true" />
+          <Property Type="Int16" Name="VR511a_rr_VisitCasePhoneResultIncom" Nullable="true" />
+          <Property Type="Int16" Name="VR54_rr_CaseAfterDeny" Nullable="true" />
+          <Property Type="Int16" Name="VR3132_rr_Result3132" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_NewAddressAdded" Nullable="true" />
+          <Property Type="Int32" Name="VR3132_IDSpisyOsobyAdresy" Nullable="true" />
+          <Property Type="Int16" Name="VR3132_2_rr_HousingProperty" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_2_rr_HousingPropertyOwner" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_2_rr_HousingPropertyFamily" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_2_rr_HousingPropertyRent" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_2_CarOwner" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_2_OtherOwner" Nullable="true" />
+          <Property Type="String" Name="VR3132_2_OtherOwnerComment" Nullable="true" MaxLength="300" />
+          <Property Type="Boolean" Name="VR3132_2_LowStandardOfLiving" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_3_Deny" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_3_Incomeless" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_3_Confiscation" Nullable="true" />
+          <Property Type="Int16" Name="VR3132_3_rr_PersType" Nullable="true" />
+          <Property Type="String" Name="VR3132_3_PersType_Comment" Nullable="true" MaxLength="300" />
+          <Property Type="Boolean" Name="VR3132_3_Employment" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_3_Brigade" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_3_MaternityLeave" Nullable="true" />
+          <Property Type="Boolean" Name="VR3132_3_EmplDepartment" Nullable="true" />
+          <Property Type="Double" Name="VR3132_3_Pension" Nullable="true" />
+          <Property Type="Double" Name="VR3132_3_SocialBenefits" Nullable="true" />
+          <Property Type="Double" Name="VR3132_3_OtherIncome" Nullable="true" />
+          <Property Type="String" Name="VR3132_3_OtherInc_Comment" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="VR3132_3_Coment" Nullable="true" MaxLength="300" />
+          <Property Type="Int16" Name="VR3136_rr_NextActivity" Nullable="true" />
+          <Property Type="Int32" Name="VR3136_1_NextIDSpisyOsobyAdresy" Nullable="true" />
+          <Property Type="DateTime" Name="VR3136_1_FVDatePlanned" Nullable="true" Precision="16" />
+          <Property Type="Int16" Name="VR3136_2_rr_CaseNextActivity" Nullable="true" />
+          <Property Type="String" Name="VR3136_2_CaseNextActivityComment" Nullable="true" MaxLength="300" />
+          <Property Type="DateTime" Name="VR3136_2_DeadLine" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="VR3137_PaymentAgreementCancel" Nullable="true" />
+          <Property Type="DateTime" Name="VR3137_DateAgreementCancel" Nullable="true" Precision="16" />
+          <Property Type="Int16" Name="VR3137_rr_AnotherPersNextActivity" Nullable="true" />
+          <Property Type="Int16" Name="VR3137_1_rr_PaymentAgreement" Nullable="true" />
+          <Property Type="String" Name="VR3137_12_Comment" Nullable="true" MaxLength="300" />
+          <Property Type="DateTime" Name="VR3137_12_PaymentDate" Nullable="true" Precision="16" />
+          <Property Type="Boolean" Name="VR3137_12_SKUZSigned" Nullable="true" />
+          <Property Type="String" Name="VR3137_13_GPSLat" Nullable="true" MaxLength="22" />
+          <Property Type="String" Name="VR3137_13_GPSLng" Nullable="true" MaxLength="22" />
+          <Property Type="Double" Name="VR3137_13_OneAmount" Nullable="true" />
+          <Property Type="Int16" Name="VR3137_13_CountOfPayments" Nullable="true" />
+          <Property Type="DateTime" Name="VR3137_13_DateFirstPayment" Nullable="true" Precision="16" />
+          <Property Type="Double" Name="VR3137_13_AmountFirstPayment" Nullable="true" />
+          <Property Type="Int16" Name="VR3137_13_DayNextPayment" Nullable="true" />
+          <Property Type="String" Name="VR3137_13_Currency" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="VR3137_13_Comment" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="VR3137_17_Comment" Nullable="true" MaxLength="300" />
+          <Property Type="Boolean" Name="VR3137_3_RequireDoc" Nullable="true" />
+          <Property Type="String" Name="VR3137_3_Comment" Nullable="true" MaxLength="300" />
+          <Property Type="Int16" Name="VR7_rr_CancelSK" Nullable="true" />
+          <Property Type="Boolean" Name="VR341_LetterLeaved" Nullable="true" />
+          <Property Type="String" Name="VR_History" Nullable="true" MaxLength="Max" />
+          <Property Type="Int64" Name="TStamp" Nullable="true" />
+          <Property Type="Int16" Name="rr_Journal" Nullable="true" />
+          <Property Type="Int32" Name="IDLastError" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TRACEModelStoreContainer" CdmEntityContainer="SqlEntities">
+          <EntitySetMapping Name="tblCashPayments">
+            <EntityTypeMapping TypeName="TRACEModel.tblCashPayment">
+              <MappingFragment StoreEntitySet="tblCashPayment">
+                <ScalarProperty Name="IDCashPayment" ColumnName="IDCashPayment" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDVisitReport" ColumnName="IDVisitReport" />
+                <ScalarProperty Name="IDPaymentOrder" ColumnName="IDPaymentOrder" />
+                <ScalarProperty Name="DatePaymentPickup" ColumnName="DatePaymentPickup" />
+                <ScalarProperty Name="AmountPickup" ColumnName="AmountPickup" />
+                <ScalarProperty Name="AmountSended" ColumnName="AmountSended" />
+                <ScalarProperty Name="rr_CashPaymState" ColumnName="rr_CashPaymState" />
+                <ScalarProperty Name="DatePaymentOnCentrale" ColumnName="DatePaymentOnCentrale" />
+                <ScalarProperty Name="IDSpisyPlatbyDosle" ColumnName="IDSpisyPlatbyDosle" />
+                <ScalarProperty Name="CashDocNumber" ColumnName="CashDocNumber" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="AmountOnCentrale" ColumnName="AmountOnCentrale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCreditors">
+            <EntityTypeMapping TypeName="TRACEModel.tblCreditor">
+              <MappingFragment StoreEntitySet="tblCreditor">
+                <ScalarProperty Name="IDCreditor" ColumnName="IDCreditor" />
+                <ScalarProperty Name="IDSrcCreditor" ColumnName="IDSrcCreditor" />
+                <ScalarProperty Name="CreditorName" ColumnName="CreditorName" />
+                <ScalarProperty Name="CreditorAlias" ColumnName="CreditorAlias" />
+                <ScalarProperty Name="CreditorStreet" ColumnName="CreditorStreet" />
+                <ScalarProperty Name="CreditorHouseNum" ColumnName="CreditorHouseNum" />
+                <ScalarProperty Name="CreditorCity" ColumnName="CreditorCity" />
+                <ScalarProperty Name="CreditorZipCode" ColumnName="CreditorZipCode" />
+                <ScalarProperty Name="CreditorAddrFull" ColumnName="CreditorAddrFull" />
+                <ScalarProperty Name="LimitDaysFor1OSN" ColumnName="LimitDaysFor1OSN" />
+                <ScalarProperty Name="LimitDaysForNOSN" ColumnName="LimitDaysForNOSN" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="TemplateDLSpis" ColumnName="TemplateDLSpis" />
+                <ScalarProperty Name="TemplateDLSpisValid" ColumnName="TemplateDLSpisValid" />
+                <ScalarProperty Name="TemplateFVLetter" ColumnName="TemplateFVLetter" />
+                <ScalarProperty Name="TemplateFVLetterValid" ColumnName="TemplateFVLetterValid" />
+                <ScalarProperty Name="TemplateUZSK" ColumnName="TemplateUZSK" />
+                <ScalarProperty Name="TemplateUZSKValid" ColumnName="TemplateUZSKValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblErrors">
+            <EntityTypeMapping TypeName="TRACEModel.tblError">
+              <MappingFragment StoreEntitySet="tblError">
+                <ScalarProperty Name="IDError" ColumnName="IDError" />
+                <ScalarProperty Name="ErrDate" ColumnName="ErrDate" />
+                <ScalarProperty Name="ErrSource" ColumnName="ErrSource" />
+                <ScalarProperty Name="ErrText" ColumnName="ErrText" />
+                <ScalarProperty Name="ErrSended" ColumnName="ErrSended" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogServices">
+            <EntityTypeMapping TypeName="TRACEModel.tblLogService">
+              <MappingFragment StoreEntitySet="tblLogService">
+                <ScalarProperty Name="IDLog" ColumnName="IDLog" />
+                <ScalarProperty Name="L" ColumnName="L" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOtherInfoes">
+            <EntityTypeMapping TypeName="TRACEModel.tblOtherInfo">
+              <MappingFragment StoreEntitySet="tblOtherInfo">
+                <ScalarProperty Name="IDOtherInfo" ColumnName="IDOtherInfo" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="OtherInfoXML" ColumnName="OtherInfoXML" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegisterRestrictions">
+            <EntityTypeMapping TypeName="TRACEModel.tblRegisterRestriction">
+              <MappingFragment StoreEntitySet="tblRegisterRestrictions">
+                <ScalarProperty Name="Register" ColumnName="Register" />
+                <ScalarProperty Name="IDOrder" ColumnName="IDOrder" />
+                <ScalarProperty Name="Val" ColumnName="Val" />
+                <ScalarProperty Name="Val2" ColumnName="Val2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisies">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisy">
+              <MappingFragment StoreEntitySet="tblSpisy">
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSrcSpisy" ColumnName="IDSrcSpisy" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="ACC" ColumnName="ACC" />
+                <ScalarProperty Name="ActualDebit" ColumnName="ActualDebit" />
+                <ScalarProperty Name="IDCreditor" ColumnName="IDCreditor" />
+                <ScalarProperty Name="Principal" ColumnName="Principal" />
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
+                <ScalarProperty Name="Costs" ColumnName="Costs" />
+                <ScalarProperty Name="YetPaid" ColumnName="YetPaid" />
+                <ScalarProperty Name="rr_Currency" ColumnName="rr_Currency" />
+                <ScalarProperty Name="KindOfEnforcement" ColumnName="KindOfEnforcement" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="VariableSymbol" ColumnName="VariableSymbol" />
+                <ScalarProperty Name="SpecificSymbol" ColumnName="SpecificSymbol" />
+                <ScalarProperty Name="LastPaymentDate" ColumnName="LastPaymentDate" />
+                <ScalarProperty Name="LastPaymentAmount" ColumnName="LastPaymentAmount" />
+                <ScalarProperty Name="LastCallDate" ColumnName="LastCallDate" />
+                <ScalarProperty Name="LastCallText" ColumnName="LastCallText" />
+                <ScalarProperty Name="TaskForIP" ColumnName="TaskForIP" />
+                <ScalarProperty Name="FileAction" ColumnName="FileAction" />
+                <ScalarProperty Name="VisitDateSentFromMother" ColumnName="VisitDateSentFromMother" />
+                <ScalarProperty Name="VisitDateReceiveFromMotherMax" ColumnName="VisitDateReceiveFromMotherMax" />
+                <ScalarProperty Name="VisitDateReceiveFromMother" ColumnName="VisitDateReceiveFromMother" />
+                <ScalarProperty Name="VisitDateSentToMother" ColumnName="VisitDateSentToMother" />
+                <ScalarProperty Name="IDUserWhoClosedFile" ColumnName="IDUserWhoClosedFile" />
+                <ScalarProperty Name="rr_ClosedFile" ColumnName="rr_ClosedFile" />
+                <ScalarProperty Name="VisitDateD1Max" ColumnName="VisitDateD1Max" />
+                <ScalarProperty Name="VisitDateD1OSN" ColumnName="VisitDateD1OSN" />
+                <ScalarProperty Name="FirstVisitExecuted" ColumnName="FirstVisitExecuted" />
+                <ScalarProperty Name="VisitDateDNMax" ColumnName="VisitDateDNMax" />
+                <ScalarProperty Name="VisitDateDNOSN" ColumnName="VisitDateDNOSN" />
+                <ScalarProperty Name="VisitDateDXSK" ColumnName="VisitDateDXSK" />
+                <ScalarProperty Name="DateReturnToCreditor" ColumnName="DateReturnToCreditor" />
+                <ScalarProperty Name="DateLapse" ColumnName="DateLapse" />
+                <ScalarProperty Name="DateSignSKUZ" ColumnName="DateSignSKUZ" />
+                <ScalarProperty Name="MaxCommission" ColumnName="MaxCommission" />
+                <ScalarProperty Name="FirstVisitFee" ColumnName="FirstVisitFee" />
+                <ScalarProperty Name="SumPaymentFromVisits" ColumnName="SumPaymentFromVisits" />
+                <ScalarProperty Name="ConditionSK" ColumnName="ConditionSK" />
+                <ScalarProperty Name="TypeSK" ColumnName="TypeSK" />
+                <ScalarProperty Name="TotalCountSK" ColumnName="TotalCountSK" />
+                <ScalarProperty Name="PardonCampaign" ColumnName="PardonCampaign" />
+                <ScalarProperty Name="MaxCountPayments" ColumnName="MaxCountPayments" />
+                <ScalarProperty Name="rr_State" ColumnName="rr_State" />
+                <ScalarProperty Name="LL_LastLapse" ColumnName="LL_LastLapse" />
+                <ScalarProperty Name="FirstFieldVisitUpToDay" ColumnName="FirstFieldVisitUpToDay" />
+                <ScalarProperty Name="NextFieldVisitUpToDay" ColumnName="NextFieldVisitUpToDay" />
+                <ScalarProperty Name="IDSpisyRecordHistory_For61" ColumnName="IDSpisyRecordHistory_For61" />
+                <ScalarProperty Name="DebtLastContact" ColumnName="DebtLastContact" />
+                <ScalarProperty Name="DOHL" ColumnName="DOHL" />
+                <ScalarProperty Name="ActualActions" ColumnName="ActualActions" />
+                <ScalarProperty Name="CountOfFV" ColumnName="CountOfFV" />
+                <ScalarProperty Name="FV_TerminationDate" ColumnName="FV_TerminationDate" />
+                <ScalarProperty Name="InReturnRequest" ColumnName="InReturnRequest" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyDocuments">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyDocument">
+              <MappingFragment StoreEntitySet="tblSpisyDocument">
+                <ScalarProperty Name="IDSpisyDocument" ColumnName="IDSpisyDocument" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSrcSpisyDocument" ColumnName="IDSrcSpisyDocument" />
+                <ScalarProperty Name="rr_DocumentKind" ColumnName="rr_DocumentKind" />
+                <ScalarProperty Name="DocuSentDate" ColumnName="DocuSentDate" />
+                <ScalarProperty Name="DocuSentComment" ColumnName="DocuSentComment" />
+                <ScalarProperty Name="DocuPrintPDF" ColumnName="DocuPrintPDF" />
+                <ScalarProperty Name="DocuPrintSelected" ColumnName="DocuPrintSelected" />
+                <ScalarProperty Name="DocuLink" ColumnName="DocuLink" />
+                <ScalarProperty Name="GPSLat" ColumnName="GPSLat" />
+                <ScalarProperty Name="GPSLng" ColumnName="GPSLng" />
+                <ScalarProperty Name="IDVisitReport" ColumnName="IDVisitReport" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyDohodies">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyDohody">
+              <MappingFragment StoreEntitySet="tblSpisyDohody">
+                <ScalarProperty Name="IDSpisyDohody" ColumnName="IDSpisyDohody" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSrcSpisyDohody" ColumnName="IDSrcSpisyDohody" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmountAwait" ColumnName="PaymentAmountAwait" />
+                <ScalarProperty Name="CommissionAwait" ColumnName="CommissionAwait" />
+                <ScalarProperty Name="PaymentAmountReal" ColumnName="PaymentAmountReal" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyFinanceInfoes">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyFinanceInfo">
+              <MappingFragment StoreEntitySet="tblSpisyFinanceInfo">
+                <ScalarProperty Name="IDInfo" ColumnName="IDInfo" />
+                <ScalarProperty Name="IDSrcInfo" ColumnName="IDSrcInfo" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="InfoTxt" ColumnName="InfoTxt" />
+                <ScalarProperty Name="InfoKind" ColumnName="InfoKind" />
+                <ScalarProperty Name="InfoInvoice" ColumnName="InfoInvoice" />
+                <ScalarProperty Name="InfoAmount" ColumnName="InfoAmount" />
+                <ScalarProperty Name="InfoAmountBalance" ColumnName="InfoAmountBalance" />
+                <ScalarProperty Name="InfoAmountBalanceUpdated" ColumnName="InfoAmountBalanceUpdated" />
+                <ScalarProperty Name="InfoDate" ColumnName="InfoDate" />
+                <ScalarProperty Name="InfoDueDate" ColumnName="InfoDueDate" />
+                <ScalarProperty Name="InfoCurrency" ColumnName="InfoCurrency" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyHistorieDohods">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyHistorieDohod">
+              <MappingFragment StoreEntitySet="tblSpisyHistorieDohod">
+                <ScalarProperty Name="IDSpisyHistorieDohod" ColumnName="IDSpisyHistorieDohod" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSrcSpisyHistorieDohod" ColumnName="IDSrcSpisyHistorieDohod" />
+                <ScalarProperty Name="DateSK" ColumnName="DateSK" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CountOfPaymentsSK" ColumnName="CountOfPaymentsSK" />
+                <ScalarProperty Name="rr_PAValidityType" ColumnName="rr_PAValidityType" />
+                <ScalarProperty Name="rr_PAType" ColumnName="rr_PAType" />
+                <ScalarProperty Name="PAInvalid" ColumnName="PAInvalid" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyOsobies">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyOsoby">
+              <MappingFragment StoreEntitySet="tblSpisyOsoby">
+                <ScalarProperty Name="IDSpisyOsoby" ColumnName="IDSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsoby" ColumnName="IDSrcSpisyOsoby" />
+                <ScalarProperty Name="PersSurname" ColumnName="PersSurname" />
+                <ScalarProperty Name="PersName" ColumnName="PersName" />
+                <ScalarProperty Name="PersRC" ColumnName="PersRC" />
+                <ScalarProperty Name="PersIC" ColumnName="PersIC" />
+                <ScalarProperty Name="PersBirthDate" ColumnName="PersBirthDate" />
+                <ScalarProperty Name="PersSurname2" ColumnName="PersSurname2" />
+                <ScalarProperty Name="BonitaKatastr" ColumnName="BonitaKatastr" />
+                <ScalarProperty Name="BonitaPocetExe" ColumnName="BonitaPocetExe" />
+                <ScalarProperty Name="BonitaDatLustrace" ColumnName="BonitaDatLustrace" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyOsobyAdresies">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyOsobyAdresy">
+              <MappingFragment StoreEntitySet="tblSpisyOsobyAdresy">
+                <ScalarProperty Name="IDSpisyOsobyAdresy" ColumnName="IDSpisyOsobyAdresy" />
+                <ScalarProperty Name="IDSpisyOsoby" ColumnName="IDSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyAdresy" ColumnName="IDSrcSpisyOsobyAdresy" />
+                <ScalarProperty Name="PersCity" ColumnName="PersCity" />
+                <ScalarProperty Name="PersHouseNum" ColumnName="PersHouseNum" />
+                <ScalarProperty Name="PersStreet" ColumnName="PersStreet" />
+                <ScalarProperty Name="PersZipCode" ColumnName="PersZipCode" />
+                <ScalarProperty Name="PersRegion" ColumnName="PersRegion" />
+                <ScalarProperty Name="PersAddressVisited" ColumnName="PersAddressVisited" />
+                <ScalarProperty Name="PersMainAddress" ColumnName="PersMainAddress" />
+                <ScalarProperty Name="PersAddressForItinerary" ColumnName="PersAddressForItinerary" />
+                <ScalarProperty Name="VisitDatePlan" ColumnName="VisitDatePlan" />
+                <ScalarProperty Name="VisitDatePlanNoChange" ColumnName="VisitDatePlanNoChange" />
+                <ScalarProperty Name="rr_AddressValidity" ColumnName="rr_AddressValidity" />
+                <ScalarProperty Name="rr_AddressType" ColumnName="rr_AddressType" />
+                <ScalarProperty Name="GPSLat" ColumnName="GPSLat" />
+                <ScalarProperty Name="GPSLng" ColumnName="GPSLng" />
+                <ScalarProperty Name="GPSValid" ColumnName="GPSValid" />
+                <ScalarProperty Name="PersAddrFull" ColumnName="PersAddrFull" />
+                <ScalarProperty Name="AddrFVisitComment" ColumnName="AddrFVisitComment" />
+                <ScalarProperty Name="NCName" ColumnName="NCName" />
+                <ScalarProperty Name="NCSurname" ColumnName="NCSurname" />
+                <ScalarProperty Name="NCEmail" ColumnName="NCEmail" />
+                <ScalarProperty Name="NCEmailValid" ColumnName="NCEmailValid" />
+                <ScalarProperty Name="NCPhone" ColumnName="NCPhone" />
+                <ScalarProperty Name="NCPhoneValid" ColumnName="NCPhoneValid" />
+                <ScalarProperty Name="NCrr_PersType" ColumnName="NCrr_PersType" />
+                <ScalarProperty Name="NextContact" ColumnName="NextContact" />
+                <ScalarProperty Name="New_PersMainAddress" ColumnName="New_PersMainAddress" />
+                <ScalarProperty Name="New_rr_AddressType" ColumnName="New_rr_AddressType" />
+                <ScalarProperty Name="New_rr_AddressValidity" ColumnName="New_rr_AddressValidity" />
+                <ScalarProperty Name="New_PersAddressVisited" ColumnName="New_PersAddressVisited" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="GPSValidDetail" ColumnName="GPSValidDetail" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyOsobyEmails">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyOsobyEmail">
+              <MappingFragment StoreEntitySet="tblSpisyOsobyEmail">
+                <ScalarProperty Name="IDSpisyOsobyEmail" ColumnName="IDSpisyOsobyEmail" />
+                <ScalarProperty Name="IDSpisyOsoby" ColumnName="IDSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyEmail" ColumnName="IDSrcSpisyOsobyEmail" />
+                <ScalarProperty Name="PersEmail" ColumnName="PersEmail" />
+                <ScalarProperty Name="PersEmailValid" ColumnName="PersEmailValid" />
+                <ScalarProperty Name="EmailFVisitComment" ColumnName="EmailFVisitComment" />
+                <ScalarProperty Name="New_PersEmailValid" ColumnName="New_PersEmailValid" />
+                <ScalarProperty Name="IntfcState" ColumnName="IntfcState" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+                <ScalarProperty Name="PersEmailMain" ColumnName="PersEmailMain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyOsobyPhones">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyOsobyPhone">
+              <MappingFragment StoreEntitySet="tblSpisyOsobyPhone">
+                <ScalarProperty Name="IDSpisyOsobyPhone" ColumnName="IDSpisyOsobyPhone" />
+                <ScalarProperty Name="IDSpisyOsoby" ColumnName="IDSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyPhone" ColumnName="IDSrcSpisyOsobyPhone" />
+                <ScalarProperty Name="PersPhone" ColumnName="PersPhone" />
+                <ScalarProperty Name="rr_PhoneValidity" ColumnName="rr_PhoneValidity" />
+                <ScalarProperty Name="PersPhoneMain" ColumnName="PersPhoneMain" />
+                <ScalarProperty Name="PhoneFVisitComment" ColumnName="PhoneFVisitComment" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyOsobyZams">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyOsobyZam">
+              <MappingFragment StoreEntitySet="tblSpisyOsobyZam">
+                <ScalarProperty Name="IDSpisyOsobyZam" ColumnName="IDSpisyOsobyZam" />
+                <ScalarProperty Name="IDSpisyOsoby" ColumnName="IDSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyZam" ColumnName="IDSrcSpisyOsobyZam" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="EmployerIC" ColumnName="EmployerIC" />
+                <ScalarProperty Name="EmployerCity" ColumnName="EmployerCity" />
+                <ScalarProperty Name="EmployerHouseNum" ColumnName="EmployerHouseNum" />
+                <ScalarProperty Name="EmployerStreet" ColumnName="EmployerStreet" />
+                <ScalarProperty Name="EmployerZipCode" ColumnName="EmployerZipCode" />
+                <ScalarProperty Name="EmployerType" ColumnName="EmployerType" />
+                <ScalarProperty Name="rr_AddressValidity" ColumnName="rr_AddressValidity" />
+                <ScalarProperty Name="EmployerAddrFull" ColumnName="EmployerAddrFull" />
+                <ScalarProperty Name="EmployerContactSurname" ColumnName="EmployerContactSurname" />
+                <ScalarProperty Name="EmployerContactName" ColumnName="EmployerContactName" />
+                <ScalarProperty Name="EmployerContactEmail" ColumnName="EmployerContactEmail" />
+                <ScalarProperty Name="EmployerContactPhone" ColumnName="EmployerContactPhone" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyPlatbyDosles">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyPlatbyDosle">
+              <MappingFragment StoreEntitySet="tblSpisyPlatbyDosle">
+                <ScalarProperty Name="IDSpisyPlatbyDosle" ColumnName="IDSpisyPlatbyDosle" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSrcSpisyPlatbyDosle" ColumnName="IDSrcSpisyPlatbyDosle" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CommissionForIP" ColumnName="CommissionForIP" />
+                <ScalarProperty Name="rr_PaymentLabel" ColumnName="rr_PaymentLabel" />
+                <ScalarProperty Name="OverPayment" ColumnName="OverPayment" />
+                <ScalarProperty Name="Paired" ColumnName="Paired" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Charged" ColumnName="rr_Charged" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyPrintInfoes">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyPrintInfo">
+              <MappingFragment StoreEntitySet="tblSpisyPrintInfo">
+                <ScalarProperty Name="IDSpisyPrintInfo" ColumnName="IDSpisyPrintInfo" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSrcACC" ColumnName="IDSrcACC" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerID2" ColumnName="CustomerID2" />
+                <ScalarProperty Name="RegisterInfo" ColumnName="RegisterInfo" />
+                <ScalarProperty Name="ACC_Comment9" ColumnName="ACC_Comment9" />
+                <ScalarProperty Name="ACC_comment13" ColumnName="ACC_comment13" />
+                <ScalarProperty Name="ACC_comment14" ColumnName="ACC_comment14" />
+                <ScalarProperty Name="ACC_comment17" ColumnName="ACC_comment17" />
+                <ScalarProperty Name="ACC_Comment23" ColumnName="ACC_Comment23" />
+                <ScalarProperty Name="ACC_comment27" ColumnName="ACC_comment27" />
+                <ScalarProperty Name="PF_Agreement" ColumnName="PF_Agreement" />
+                <ScalarProperty Name="AmountByWords" ColumnName="AmountByWords" />
+                <ScalarProperty Name="AmountByWordsHal" ColumnName="AmountByWordsHal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyPrintInfoCEZs">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyPrintInfoCEZ">
+              <MappingFragment StoreEntitySet="tblSpisyPrintInfoCEZ">
+                <ScalarProperty Name="IDSpisyPrintInfoCEZ" ColumnName="IDSpisyPrintInfoCEZ" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="CEZ_IDSrcACC" ColumnName="CEZ_IDSrcACC" />
+                <ScalarProperty Name="CEZ_SuplyPlace" ColumnName="CEZ_SuplyPlace" />
+                <ScalarProperty Name="CEZ_VariableSymbol" ColumnName="CEZ_VariableSymbol" />
+                <ScalarProperty Name="CEZ_DueDate" ColumnName="CEZ_DueDate" />
+                <ScalarProperty Name="CEZ_AmountTotal" ColumnName="CEZ_AmountTotal" />
+                <ScalarProperty Name="CEZ_AmountSupplement" ColumnName="CEZ_AmountSupplement" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyRecordHistories">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyRecordHistory">
+              <MappingFragment StoreEntitySet="tblSpisyRecordHistory">
+                <ScalarProperty Name="IDSpisyRecordHistory" ColumnName="IDSpisyRecordHistory" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="RecordCommentType" ColumnName="RecordCommentType" />
+                <ScalarProperty Name="RecordCommentTxt" ColumnName="RecordCommentTxt" />
+                <ScalarProperty Name="RecordDocuDate" ColumnName="RecordDocuDate" />
+                <ScalarProperty Name="RecordDocuType" ColumnName="RecordDocuType" />
+                <ScalarProperty Name="RecordSended" ColumnName="RecordSended" />
+                <ScalarProperty Name="IDSrcSpisyRecordHistory" ColumnName="IDSrcSpisyRecordHistory" />
+                <ScalarProperty Name="IDSrcSpisyRecordHistory2" ColumnName="IDSrcSpisyRecordHistory2" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSpisyTypOsobies">
+            <EntityTypeMapping TypeName="TRACEModel.tblSpisyTypOsoby">
+              <MappingFragment StoreEntitySet="tblSpisyTypOsoby">
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSpisyOsoby" ColumnName="IDSpisyOsoby" />
+                <ScalarProperty Name="rr_PersType" ColumnName="rr_PersType" />
+                <ScalarProperty Name="PersMain" ColumnName="PersMain" />
+                <ScalarProperty Name="DateSignSKUZ" ColumnName="DateSignSKUZ" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTMPSpisyRecordHistories">
+            <EntityTypeMapping TypeName="TRACEModel.tblTMPSpisyRecordHistory">
+              <MappingFragment StoreEntitySet="tblTMPSpisyRecordHistory">
+                <ScalarProperty Name="COLLENT_COMMENT_ID" ColumnName="COLLENT_COMMENT_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="COMMENT_TYPE_NAME" ColumnName="COMMENT_TYPE_NAME" />
+                <ScalarProperty Name="USER_COMMENT" ColumnName="USER_COMMENT" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSpisyRecordHistory" ColumnName="IDSpisyRecordHistory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_Cash_AddFee_SKUZ" FunctionName="TRACEModel.Store.sp_INT_Cash_AddFee_SKUZ" />
+          <FunctionImportMapping FunctionImportName="sp_INT_FindAndPairPayments" FunctionName="TRACEModel.Store.sp_INT_FindAndPairPayments" />
+          <FunctionImportMapping FunctionImportName="sp_INT_NewAddresses" FunctionName="TRACEModel.Store.sp_INT_NewAddresses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TRACEModel.sp_INT_NewAddresses_Result">
+                <ScalarProperty Name="IDSrcSpisyOsoby" ColumnName="IDSrcSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyAdresy" ColumnName="IDSrcSpisyOsobyAdresy" />
+                <ScalarProperty Name="PersCity" ColumnName="PersCity" />
+                <ScalarProperty Name="PersHouseNum" ColumnName="PersHouseNum" />
+                <ScalarProperty Name="PersStreet" ColumnName="PersStreet" />
+                <ScalarProperty Name="PersZipCode" ColumnName="PersZipCode" />
+                <ScalarProperty Name="PersRegion" ColumnName="PersRegion" />
+                <ScalarProperty Name="PersMainAddress" ColumnName="PersMainAddress" />
+                <ScalarProperty Name="rr_AddressValidity" ColumnName="rr_AddressValidity" />
+                <ScalarProperty Name="rr_AddressType" ColumnName="rr_AddressType" />
+                <ScalarProperty Name="IDSpisyOsobyAdresy" ColumnName="IDSpisyOsobyAdresy" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_NewDocuments" FunctionName="TRACEModel.Store.sp_INT_NewDocuments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TRACEModel.sp_INT_NewDocuments_Result">
+                <ScalarProperty Name="IDSrcSpisy" ColumnName="IDSrcSpisy" />
+                <ScalarProperty Name="IDSrcSpisyDocument" ColumnName="IDSrcSpisyDocument" />
+                <ScalarProperty Name="DocuSentDate" ColumnName="DocuSentDate" />
+                <ScalarProperty Name="DocuSentComment" ColumnName="DocuSentComment" />
+                <ScalarProperty Name="DocuLink" ColumnName="DocuLink" />
+                <ScalarProperty Name="IDSpisyDocument" ColumnName="IDSpisyDocument" />
+                <ScalarProperty Name="GPSLat" ColumnName="GPSLat" />
+                <ScalarProperty Name="GPSLng" ColumnName="GPSLng" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="rr_DocumentKind" ColumnName="rr_DocumentKind" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_NewEmails" FunctionName="TRACEModel.Store.sp_INT_NewEmails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TRACEModel.sp_INT_NewEmails_Result">
+                <ScalarProperty Name="IDSrcSpisyOsoby" ColumnName="IDSrcSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyEmail" ColumnName="IDSrcSpisyOsobyEmail" />
+                <ScalarProperty Name="PersEmail" ColumnName="PersEmail" />
+                <ScalarProperty Name="PersEmailValid" ColumnName="PersEmailValid" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+                <ScalarProperty Name="IDSpisyOsobyEmail" ColumnName="IDSpisyOsobyEmail" />
+                <ScalarProperty Name="EmailFVisitComment" ColumnName="EmailFVisitComment" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_NewEmployers" FunctionName="TRACEModel.Store.sp_INT_NewEmployers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TRACEModel.sp_INT_NewEmployers_Result">
+                <ScalarProperty Name="IDSrcSpisyOsoby" ColumnName="IDSrcSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyZam" ColumnName="IDSrcSpisyOsobyZam" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+                <ScalarProperty Name="EmployerCity" ColumnName="EmployerCity" />
+                <ScalarProperty Name="EmployerHouseNum" ColumnName="EmployerHouseNum" />
+                <ScalarProperty Name="EmployerStreet" ColumnName="EmployerStreet" />
+                <ScalarProperty Name="EmployerZipCode" ColumnName="EmployerZipCode" />
+                <ScalarProperty Name="EmployerContactEmail" ColumnName="EmployerContactEmail" />
+                <ScalarProperty Name="EmployerContactPhone" ColumnName="EmployerContactPhone" />
+                <ScalarProperty Name="EmployerAddrFull" ColumnName="EmployerAddrFull" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+                <ScalarProperty Name="IDSpisyOsobyZam" ColumnName="IDSpisyOsobyZam" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+                <ScalarProperty Name="rr_AddressValidity" ColumnName="rr_AddressValidity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_NewPayments" FunctionName="TRACEModel.Store.sp_INT_NewPayments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TRACEModel.sp_INT_NewPayments_Result">
+                <ScalarProperty Name="IDCashPayment" ColumnName="IDCashPayment" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="ACC" ColumnName="ACC" />
+                <ScalarProperty Name="DatePaymentPickup" ColumnName="DatePaymentPickup" />
+                <ScalarProperty Name="AmountSended" ColumnName="AmountSended" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_NewPhones" FunctionName="TRACEModel.Store.sp_INT_NewPhones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TRACEModel.sp_INT_NewPhones_Result">
+                <ScalarProperty Name="IDSrcSpisyOsoby" ColumnName="IDSrcSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsobyPhone" ColumnName="IDSrcSpisyOsobyPhone" />
+                <ScalarProperty Name="PersPhone" ColumnName="PersPhone" />
+                <ScalarProperty Name="rr_PhoneValidity" ColumnName="rr_PhoneValidity" />
+                <ScalarProperty Name="PersPhoneMain" ColumnName="PersPhoneMain" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+                <ScalarProperty Name="IDSpisyOsobyPhone" ColumnName="IDSpisyOsobyPhone" />
+                <ScalarProperty Name="PhoneFVisitComment" ColumnName="PhoneFVisitComment" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="TimeValidityUpdate" ColumnName="TimeValidityUpdate" />
+                <ScalarProperty Name="TimeCreated" ColumnName="TimeCreated" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_NewVisitReport" FunctionName="TRACEModel.Store.sp_INT_NewVisitReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TRACEModel.sp_INT_NewVisitReport_Result">
+                <ScalarProperty Name="IDVisitReport" ColumnName="IDVisitReport" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="rr_VisitType" ColumnName="rr_VisitType" />
+                <ScalarProperty Name="IDSpisu" ColumnName="IDSpisu" />
+                <ScalarProperty Name="IDSrcSpisy" ColumnName="IDSrcSpisy" />
+                <ScalarProperty Name="IDSpisyOsoby" ColumnName="IDSpisyOsoby" />
+                <ScalarProperty Name="IDSrcSpisyOsoby" ColumnName="IDSrcSpisyOsoby" />
+                <ScalarProperty Name="VR1_DateOSN" ColumnName="VR1_DateOSN" />
+                <ScalarProperty Name="VR1_Date" ColumnName="VR1_Date" />
+                <ScalarProperty Name="VR1_GPSLat" ColumnName="VR1_GPSLat" />
+                <ScalarProperty Name="VR1_GPSLng" ColumnName="VR1_GPSLng" />
+                <ScalarProperty Name="VR2_IDSpisyOsobyAdresy" ColumnName="VR2_IDSpisyOsobyAdresy" />
+                <ScalarProperty Name="VR3_rr_VisitResult" ColumnName="VR3_rr_VisitResult" />
+                <ScalarProperty Name="VR3_Comment" ColumnName="VR3_Comment" />
+                <ScalarProperty Name="VR41_CashGain" ColumnName="VR41_CashGain" />
+                <ScalarProperty Name="VR41_CashDate" ColumnName="VR41_CashDate" />
+                <ScalarProperty Name="VR41_CashDocNumber" ColumnName="VR41_CashDocNumber" />
+                <ScalarProperty Name="VR41_CashAmount" ColumnName="VR41_CashAmount" />
+                <ScalarProperty Name="VR41_CashCurrency" ColumnName="VR41_CashCurrency" />
+                <ScalarProperty Name="VR41_CashComment" ColumnName="VR41_CashComment" />
+                <ScalarProperty Name="VR41_AgreementForNextCash" ColumnName="VR41_AgreementForNextCash" />
+                <ScalarProperty Name="VR41_DateForNextCash" ColumnName="VR41_DateForNextCash" />
+                <ScalarProperty Name="VR5_rr_ProtocolPhoneDirect" ColumnName="VR5_rr_ProtocolPhoneDirect" />
+                <ScalarProperty Name="VR51_PhoneDate" ColumnName="VR51_PhoneDate" />
+                <ScalarProperty Name="VR51_IDSpisyOsobyPhone" ColumnName="VR51_IDSpisyOsobyPhone" />
+                <ScalarProperty Name="VR51_PhoneNumber" ColumnName="VR51_PhoneNumber" />
+                <ScalarProperty Name="VR51_PhoneComment" ColumnName="VR51_PhoneComment" />
+                <ScalarProperty Name="VR6_rr_ProtocolMailDirect" ColumnName="VR6_rr_ProtocolMailDirect" />
+                <ScalarProperty Name="VR61_EmailDate" ColumnName="VR61_EmailDate" />
+                <ScalarProperty Name="VR61_IDSpisyOsobyEmail" ColumnName="VR61_IDSpisyOsobyEmail" />
+                <ScalarProperty Name="VR61_Email" ColumnName="VR61_Email" />
+                <ScalarProperty Name="VR61_Comment" ColumnName="VR61_Comment" />
+                <ScalarProperty Name="VR312_rr_VisitOtherPerson" ColumnName="VR312_rr_VisitOtherPerson" />
+                <ScalarProperty Name="VR314_Comment" ColumnName="VR314_Comment" />
+                <ScalarProperty Name="VR511_rr_VisitCasePhoneResultOut" ColumnName="VR511_rr_VisitCasePhoneResultOut" />
+                <ScalarProperty Name="VR511a_rr_VisitCasePhoneResultIncom" ColumnName="VR511a_rr_VisitCasePhoneResultIncom" />
+                <ScalarProperty Name="VR54_rr_CaseAfterDeny" ColumnName="VR54_rr_CaseAfterDeny" />
+                <ScalarProperty Name="VR3132_rr_Result3132" ColumnName="VR3132_rr_Result3132" />
+                <ScalarProperty Name="VR3132_NewAddressAdded" ColumnName="VR3132_NewAddressAdded" />
+                <ScalarProperty Name="VR3132_IDSpisyOsobyAdresy" ColumnName="VR3132_IDSpisyOsobyAdresy" />
+                <ScalarProperty Name="VR3132_2_rr_HousingProperty" ColumnName="VR3132_2_rr_HousingProperty" />
+                <ScalarProperty Name="VR3132_2_rr_HousingPropertyOwner" ColumnName="VR3132_2_rr_HousingPropertyOwner" />
+                <ScalarProperty Name="VR3132_2_rr_HousingPropertyFamily" ColumnName="VR3132_2_rr_HousingPropertyFamily" />
+                <ScalarProperty Name="VR3132_2_rr_HousingPropertyRent" ColumnName="VR3132_2_rr_HousingPropertyRent" />
+                <ScalarProperty Name="VR3132_2_CarOwner" ColumnName="VR3132_2_CarOwner" />
+                <ScalarProperty Name="VR3132_2_OtherOwner" ColumnName="VR3132_2_OtherOwner" />
+                <ScalarProperty Name="VR3132_2_OtherOwnerComment" ColumnName="VR3132_2_OtherOwnerComment" />
+                <ScalarProperty Name="VR3132_2_LowStandardOfLiving" ColumnName="VR3132_2_LowStandardOfLiving" />
+                <ScalarProperty Name="VR3132_3_Deny" ColumnName="VR3132_3_Deny" />
+                <ScalarProperty Name="VR3132_3_Incomeless" ColumnName="VR3132_3_Incomeless" />
+                <ScalarProperty Name="VR3132_3_Confiscation" ColumnName="VR3132_3_Confiscation" />
+                <ScalarProperty Name="VR3132_3_rr_PersType" ColumnName="VR3132_3_rr_PersType" />
+                <ScalarProperty Name="VR3132_3_PersType_Comment" ColumnName="VR3132_3_PersType_Comment" />
+                <ScalarProperty Name="VR3132_3_Employment" ColumnName="VR3132_3_Employment" />
+                <ScalarProperty Name="VR3132_3_Brigade" ColumnName="VR3132_3_Brigade" />
+                <ScalarProperty Name="VR3132_3_MaternityLeave" ColumnName="VR3132_3_MaternityLeave" />
+                <ScalarProperty Name="VR3132_3_EmplDepartment" ColumnName="VR3132_3_EmplDepartment" />
+                <ScalarProperty Name="VR3132_3_Pension" ColumnName="VR3132_3_Pension" />
+                <ScalarProperty Name="VR3132_3_SocialBenefits" ColumnName="VR3132_3_SocialBenefits" />
+                <ScalarProperty Name="VR3132_3_OtherIncome" ColumnName="VR3132_3_OtherIncome" />
+                <ScalarProperty Name="VR3132_3_OtherInc_Comment" ColumnName="VR3132_3_OtherInc_Comment" />
+                <ScalarProperty Name="VR3132_3_Coment" ColumnName="VR3132_3_Coment" />
+                <ScalarProperty Name="VR3136_rr_NextActivity" ColumnName="VR3136_rr_NextActivity" />
+                <ScalarProperty Name="VR3136_1_NextIDSpisyOsobyAdresy" ColumnName="VR3136_1_NextIDSpisyOsobyAdresy" />
+                <ScalarProperty Name="VR3136_1_FVDatePlanned" ColumnName="VR3136_1_FVDatePlanned" />
+                <ScalarProperty Name="VR3136_2_rr_CaseNextActivity" ColumnName="VR3136_2_rr_CaseNextActivity" />
+                <ScalarProperty Name="VR3136_2_CaseNextActivityComment" ColumnName="VR3136_2_CaseNextActivityComment" />
+                <ScalarProperty Name="VR3136_2_DeadLine" ColumnName="VR3136_2_DeadLine" />
+                <ScalarProperty Name="VR3137_PaymentAgreementCancel" ColumnName="VR3137_PaymentAgreementCancel" />
+                <ScalarProperty Name="VR3137_DateAgreementCancel" ColumnName="VR3137_DateAgreementCancel" />
+                <ScalarProperty Name="VR3137_rr_AnotherPersNextActivity" ColumnName="VR3137_rr_AnotherPersNextActivity" />
+                <ScalarProperty Name="VR3137_1_rr_PaymentAgreement" ColumnName="VR3137_1_rr_PaymentAgreement" />
+                <ScalarProperty Name="VR3137_12_Comment" ColumnName="VR3137_12_Comment" />
+                <ScalarProperty Name="VR3137_12_PaymentDate" ColumnName="VR3137_12_PaymentDate" />
+                <ScalarProperty Name="VR3137_12_SKUZSigned" ColumnName="VR3137_12_SKUZSigned" />
+                <ScalarProperty Name="VR3137_13_GPSLat" ColumnName="VR3137_13_GPSLat" />
+                <ScalarProperty Name="VR3137_13_GPSLng" ColumnName="VR3137_13_GPSLng" />
+                <ScalarProperty Name="VR3137_13_OneAmount" ColumnName="VR3137_13_OneAmount" />
+                <ScalarProperty Name="VR3137_13_CountOfPayments" ColumnName="VR3137_13_CountOfPayments" />
+                <ScalarProperty Name="VR3137_13_DateFirstPayment" ColumnName="VR3137_13_DateFirstPayment" />
+                <ScalarProperty Name="VR3137_13_AmountFirstPayment" ColumnName="VR3137_13_AmountFirstPayment" />
+                <ScalarProperty Name="VR3137_13_DayNextPayment" ColumnName="VR3137_13_DayNextPayment" />
+                <ScalarProperty Name="VR3137_13_Currency" ColumnName="VR3137_13_Currency" />
+                <ScalarProperty Name="VR3137_13_Comment" ColumnName="VR3137_13_Comment" />
+                <ScalarProperty Name="VR3137_17_Comment" ColumnName="VR3137_17_Comment" />
+                <ScalarProperty Name="VR3137_3_RequireDoc" ColumnName="VR3137_3_RequireDoc" />
+                <ScalarProperty Name="VR3137_3_Comment" ColumnName="VR3137_3_Comment" />
+                <ScalarProperty Name="VR7_rr_CancelSK" ColumnName="VR7_rr_CancelSK" />
+                <ScalarProperty Name="VR341_LetterLeaved" ColumnName="VR341_LetterLeaved" />
+                <ScalarProperty Name="VR_History" ColumnName="VR_History" />
+                <ScalarProperty Name="TStamp" ColumnName="TStamp" />
+                <ScalarProperty Name="rr_Journal" ColumnName="rr_Journal" />
+                <ScalarProperty Name="IDLastError" ColumnName="IDLastError" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_INT_O2S_tblSpisyRecordHistory" FunctionName="TRACEModel.Store.sp_INT_O2S_tblSpisyRecordHistory" />
+          <FunctionImportMapping FunctionImportName="sp_INT_Truncate_tblTMPSpisyRecordHistory" FunctionName="TRACEModel.Store.sp_INT_Truncate_tblTMPSpisyRecordHistory" />
+          <FunctionImportMapping FunctionImportName="sp_Get_Region" FunctionName="TRACEModel.Store.sp_Get_Region" />
+          <FunctionImportMapping FunctionImportName="sp_Run_AfterSyncInterface" FunctionName="TRACEModel.Store.sp_Run_AfterSyncInterface" />
+          <FunctionImportMapping FunctionImportName="sp_Get_LastTimeStamp" FunctionName="TRACEModel.Store.sp_Get_LastTimeStamp" />
+          <FunctionImportMapping FunctionImportName="sp_Do_FinishSync" FunctionName="TRACEModel.Store.sp_Do_FinishSync" />
+          <FunctionImportMapping FunctionImportName="sp_Do_VisitReportUpdateJournal" FunctionName="TRACEModel.Store.sp_Do_VisitReportUpdateJournal" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

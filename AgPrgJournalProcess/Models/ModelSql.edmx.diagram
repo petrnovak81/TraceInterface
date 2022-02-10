@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d454f4d771ec4622a07ed71562e1f8f2" Name="Diagram1">
+        <EntityTypeShape EntityType="TRACEModel.tblCashPayment" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblCreditor" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblError" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblLogService" Width="1.5" PointX="2.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblOtherInfo" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblRegisterRestriction" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisy" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyDocument" Width="1.5" PointX="10.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyDohody" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyFinanceInfo" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyHistorieDohod" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyOsoby" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyOsobyAdresy" Width="1.5" PointX="10.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyOsobyEmail" Width="1.5" PointX="8.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyOsobyPhone" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyOsobyZam" Width="1.5" PointX="8.25" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyPlatbyDosle" Width="1.5" PointX="5.25" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyPrintInfo" Width="1.5" PointX="12.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyPrintInfoCEZ" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyRecordHistory" Width="1.5" PointX="5.25" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblSpisyTypOsoby" Width="1.5" PointX="8.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TRACEModel.tblTMPSpisyRecordHistory" Width="1.5" PointX="12.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="TRACEModel.FK_tblCashPayment_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisy_tblCreditor" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblOtherInfo_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyDohody_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyFinanceInfo_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyHistorieDohod_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyPlatbyDosle_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyRecordHistory_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyTypOsoby_tblSpisy" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyOsobyEmail_tblSpisyOsoby" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyOsobyPhone_tblSpisyOsoby" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyOsobyZam_tblSpisyOsoby" ManuallyRouted="false" />
+        <AssociationConnector Association="TRACEModel.FK_tblSpisyTypOsoby_tblSpisyOsoby" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

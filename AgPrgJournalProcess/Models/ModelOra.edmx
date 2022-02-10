@@ -1,0 +1,1861 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AGCZ_CE_DOCUMENTS_TBL">
+          <Key>
+            <PropertyRef Name="TRC_DOCUMENT_ID" />
+          </Key>
+          <Property Name="TRC_DOCUMENT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="TRC_GPS_LAT" Type="varchar2" MaxLength="30" />
+          <Property Name="TRC_GPS_LNG" Type="varchar2" MaxLength="30" />
+          <Property Name="TRC_TSTAMP" Type="number" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="number" Precision="3" Scale="0" />
+          <Property Name="TRC_RR_DOCUMENT_KIND" Type="number" Precision="3" Scale="0" />
+          <Property Name="CE_DOCUMENT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="DOCUMENT_DESCRIPTION" Type="varchar2" MaxLength="255" />
+          <Property Name="DOCUMENT_LINK" Type="varchar2" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="AGCZ_PAYMENTS_TBL">
+          <Key>
+            <PropertyRef Name="TRC_PAYMENT_ID" />
+          </Key>
+          <Property Name="TRC_PAYMENT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="TRC_TSTAMP" Type="number" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="number" Precision="3" Scale="0" />
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="PAYMENT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="PAYMENT_DATE" Type="date" />
+          <Property Name="AMOUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="BEFORE_FV_FLAG" Type="number" Precision="1" Scale="0" />
+          <Property Name="SOLD" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.AGCZ_REGISTER_RESTRICTIONS_TBL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AGCZ_REGISTER_RESTRICTIONS_TBL">
+          <Key>
+            <PropertyRef Name="REGISTER" />
+          </Key>
+          <Property Name="REGISTER" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="ID_ORDER" Type="number" Precision="6" Scale="0" />
+          <Property Name="VAL" Type="varchar2" MaxLength="255" />
+          <Property Name="VAL2" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_ADDRESSES_TBL">
+          <Key>
+            <PropertyRef Name="TRC_ADDRESSES_ID" />
+          </Key>
+          <Property Name="TRC_ADDRESSES_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="TRC_TSTAMP" Type="number" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="number" Precision="3" Scale="0" />
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="SUBSCRIBER_ADDRESS_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="CITY" Type="varchar2" MaxLength="80" />
+          <Property Name="STREET_NUMBER" Type="varchar2" MaxLength="10" />
+          <Property Name="STREET" Type="varchar2" MaxLength="80" />
+          <Property Name="POSTAL_CODE" Type="varchar2" MaxLength="10" />
+          <Property Name="PERS_REGION" Type="varchar2" MaxLength="100" />
+          <Property Name="MAIN_ADDRESS" Type="number" Precision="1" Scale="0" />
+          <Property Name="VALID" Type="number" Precision="6" Scale="0" />
+          <Property Name="ADDRESS_TYPE" Type="number" Precision="6" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_CONTACTS_EML_TBL">
+          <Key>
+            <PropertyRef Name="TRC_EMAIL_ID" />
+          </Key>
+          <Property Name="TRC_EMAIL_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="TRC_EMAIL_COMMENT" Type="varchar2" MaxLength="1000" />
+          <Property Name="TRC_TSTAMP" Type="number" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="number" Precision="3" Scale="0" />
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="80" />
+          <Property Name="EMAIL_FLAG" Type="number" Precision="6" Scale="0" />
+          <Property Name="FV_ORIGIN" Type="number" Precision="6" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_CONTACTS_EMP_TBL">
+          <Key>
+            <PropertyRef Name="TRC_EMPLOYER_ID" />
+          </Key>
+          <Property Name="TRC_EMPLOYER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="TRC_TSTAMP" Type="number" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="number" Precision="3" Scale="0" />
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="CITY" Type="varchar2" MaxLength="80" />
+          <Property Name="STREET_NUMBER" Type="varchar2" MaxLength="10" />
+          <Property Name="STREET" Type="varchar2" MaxLength="80" />
+          <Property Name="POSTAL_CODE" Type="varchar2" MaxLength="10" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="PHONE1" Type="varchar2" MaxLength="50" />
+          <Property Name="ADDRESS_FULL" Type="nvarchar2" MaxLength="300" />
+          <Property Name="FV_ORIGIN" Type="number" Precision="6" Scale="0" />
+          <Property Name="VALID" Type="number" Precision="6" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_PHONES_TBL">
+          <Key>
+            <PropertyRef Name="TRC_PHONE_ID" />
+          </Key>
+          <Property Name="TRC_PHONE_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="TRC_PHONE_COMMENT" Type="varchar2" MaxLength="1000" />
+          <Property Name="TRC_TSTAMP" Type="number" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="number" Precision="3" Scale="0" />
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="SUBSCRIBER_PHONE_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="PHONE_NUMBER" Type="varchar2" MaxLength="50" />
+          <Property Name="VALID" Type="number" Precision="6" Scale="0" />
+          <Property Name="MAIN_PHONE" Type="number" Precision="6" Scale="0" />
+          <Property Name="FV_ORIGIN" Type="number" Precision="13" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="AGCZ_VISIT_REPORT_TBL">
+          <Key>
+            <PropertyRef Name="ID_VISIT_REPORT" />
+          </Key>
+          <Property Name="ID_VISIT_REPORT" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="ID_USER" Type="number" Precision="13" Scale="0" />
+          <Property Name="RR_VISITTYPE" Type="number" Precision="6" Scale="0" />
+          <Property Name="ID_SPISU" Type="number" Precision="13" Scale="0" />
+          <Property Name="ID_SRC_SPISY" Type="number" Precision="13" Scale="0" />
+          <Property Name="ID_SPISY_OSOBY" Type="number" Precision="13" Scale="0" />
+          <Property Name="ID_SRC_SPISY_OSOBY" Type="number" Precision="13" Scale="0" />
+          <Property Name="VR1_DATE_OSN" Type="date" />
+          <Property Name="VR1_DATE" Type="date" />
+          <Property Name="VR1_GPS_LAT" Type="varchar2" MaxLength="30" />
+          <Property Name="VR1_GPS_LNG" Type="varchar2" MaxLength="30" />
+          <Property Name="VR2_ID_SPISY_OSOBY_ADRESY" Type="number" Precision="13" Scale="0" />
+          <Property Name="VR3_RR_VISIT_RESULT" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3_COMMENT" Type="varchar2" MaxLength="500" />
+          <Property Name="VR41_CASH_GAIN" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR41_CASH_DATE" Type="date" />
+          <Property Name="VR41_CASH_DOC_NUMBER" Type="number" Precision="38" Scale="0" />
+          <Property Name="VR41_CASH_AMOUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="VR41_CASH_CURRENCY" Type="varchar2" MaxLength="3" />
+          <Property Name="VR41_CASH_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR41_AGREEMENT_FOR_NEXT_CASH" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR41_DATE_FOR_NEXT_CASH" Type="date" />
+          <Property Name="VR5_PROTOCOL_PHONE_DIRECT" Type="number" Precision="3" Scale="0" />
+          <Property Name="VR51_PHONE_DATE" Type="date" />
+          <Property Name="VR51_ID_SPISY_OSOBY_PHONE" Type="number" Precision="13" Scale="0" />
+          <Property Name="VR51_PHONE_NUMBER" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR51_PHONE_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR6_RR_PROTOCOL_MAIL_DIRECT" Type="number" Precision="3" Scale="0" />
+          <Property Name="VR61_EMAIL_DATE" Type="date" />
+          <Property Name="VR61_ID_SPISY_OSOBY_EMAIL" Type="number" Precision="13" Scale="0" />
+          <Property Name="VR61_EMAIL" Type="varchar2" MaxLength="80" />
+          <Property Name="VR61_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR312_RR_VISIT_OTHER_PERSON" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR314_COMMENT" Type="varchar2" MaxLength="500" />
+          <Property Name="VR511_RR_V_CASE_PHONE_RES_OUT" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR511A_RR_V_CASE_PHONE_RES_IN" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR54_RR_CASE_AFTER_DENY" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3132_RR_RESULT_3132" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3132_NEW_ADDRESS_ADDED" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_ID_SPISY_OSOBY_ADRESY" Type="number" Precision="13" Scale="0" />
+          <Property Name="VR3132_2_RR_HOUSING_PROPERTY" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3132_2_RR_HOUS_PROP_OWNER" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_2_RR_HOUS_PROP_FAMILY" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_2_RR_HOUS_PROP_RENT" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_2_CAR_OWNER" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_2_OTHER_OWNER" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_2_OTHER_OWNER_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3132_2_LOW_STAND_OF_LIVING" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_DENY" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_INCOMELESS" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_CONFISCATION" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_RR_PERS_TYPE" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3132_3_PERS_TYPE_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3132_3_EMPLOYMENT" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_BRIGADE" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_MATERNITY_LEAVE" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_EMPL_DEPARTMENT" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3132_3_PENSION" Type="number" Precision="38" Scale="0" />
+          <Property Name="VR3132_3_SOCIAL_BENEFITS" Type="number" Precision="38" Scale="0" />
+          <Property Name="VR3132_3_OTHER_INCOME" Type="number" Precision="38" Scale="0" />
+          <Property Name="VR3132_3_OTHER_INC_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3132_3_COMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3136_RR_NEXT_ACTIVITY" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3136_1_NEXT_ID_SPISY_OS_ADR" Type="number" Precision="13" Scale="0" />
+          <Property Name="VR3136_1_FV_DATE_PLANNED" Type="date" />
+          <Property Name="VR3136_2_RR_CASE_NEXT_ACTIVITY" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3136_2_CASE_NEXT_ACT_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3136_2_DEADLINE" Type="date" />
+          <Property Name="VR3137_PAYMENT_AGREEMENT_CANC" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3137_DATE_AGREEMENT_CANCEL" Type="date" />
+          <Property Name="VR3137_RR_ANOTHER_PERS_NXT_ACT" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3137_1_RR_PAYMENT_AGREEMENT" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3137_12_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3137_12_PAYMENT_DATE" Type="date" />
+          <Property Name="VR3137_12_SKUZ_SIGNED" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3137_13_GPS_LAT" Type="varchar2" MaxLength="30" />
+          <Property Name="VR3137_13_GPS_LNG" Type="varchar2" MaxLength="30" />
+          <Property Name="VR3137_13_ONE_AMOUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="VR3137_13_COUNT_OF_PAYMENTS" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3137_13_DATE_FIRST_PAYMENT" Type="date" />
+          <Property Name="VR3137_13_AMOUNT_FIRST_PAYMENT" Type="number" Precision="38" Scale="0" />
+          <Property Name="VR3137_13_DAY_NEXT_PAYMENT" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR3137_13_CURRENCY" Type="varchar2" MaxLength="3" />
+          <Property Name="VR3137_13_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3137_17_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR3137_3_REQUIRE_DOC" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR3137_3_COMMENT" Type="varchar2" MaxLength="300" />
+          <Property Name="VR7_RR_CANCEL_SK" Type="number" Precision="6" Scale="0" />
+          <Property Name="VR341_LETTER_LEAVED" Type="number" Precision="1" Scale="0" />
+          <Property Name="VR_HISTORY" Type="xmltype" />
+          <Property Name="T_STAMP" Type="number" Precision="38" Scale="0" />
+          <Property Name="RR_JOURNAL" Type="number" Precision="6" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="CZ_FIELD_VISIT_OUT">
+          <Key>
+            <PropertyRef Name="FIELD_VISIT_OUT_ID" />
+          </Key>
+          <Property Name="FIELD_VISIT_OUT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_ADDRESS_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="FIELD_VISIT_POST_CODE_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="IDUSR" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="DEBT_BALANCE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PASSING_ON_DATE" Type="date" Nullable="false" />
+          <Property Name="TAKE_OVER_DATE" Type="date" />
+          <Property Name="REJECTION_DATE" Type="date" />
+          <Property Name="REJECTION_REASON" Type="varchar2" MaxLength="255" />
+          <Property Name="TERMINATION_DATE" Type="date" Nullable="false" />
+          <Property Name="TERMINATION_REASON" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_ACC_SUBS_INT_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_ACC_SUBS_INT_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_TYPE_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_TYPE_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="MAIN" Type="number" Precision="1" Scale="0" />
+          <Property Name="DEBT_ACCEPT_DATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_ACCOUNT_DEBTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_ACCOUNT_DEBTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_DEBT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_DEBT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="DEBT_SUBCLASS_NAME" Type="varchar2" MaxLength="50" />
+          <Property Name="INVOICE_NUMBER" Type="varchar2" MaxLength="50" />
+          <Property Name="DEBT_AMOUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="DEBT_BALANCE" Type="number" Precision="38" Scale="0" />
+          <Property Name="DEBT_BALANCE_UPDATE" Type="number" Precision="38" Scale="0" />
+          <Property Name="DEBT_DATE" Type="date" />
+          <Property Name="DEBT_DUE_DATE" Type="date" />
+          <Property Name="CURRENCY" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'cz_accounts_info_tbl_type' is currently not supported for the target Entity Framework version; the column 'INFO_VALUE' in the table 'CZ_FVISIT_OWNER.CZ_ACCOUNT_INFO_VW' was excluded.
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_ACCOUNT_INFO_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_ACCOUNT_INFO_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_ACCOUNT_INFO_XML_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_ACCOUNT_INFO_XML_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="INFO_VALUE_XML" Type="clob" />
+          <Property Name="INFO_VALUE_XSD" Type="clob" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_ACCOUNTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_ACCOUNTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="FIELD_VISIT_OUT_ID" />
+            <PropertyRef Name="IDUSR" />
+            <PropertyRef Name="FV_PASSING_ON_DATE" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="FIELD_VISIT_OUT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="IDUSR" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="TOTAL_BALANCE" Type="number" Precision="13" Scale="2" />
+          <Property Name="TAKE_OVER_DATE" Type="date" />
+          <Property Name="CLIENT_ID" Type="number" Precision="13" Scale="0" />
+          <Property Name="DEBT_BALANCE_SUM" Type="number" Precision="38" Scale="0" />
+          <Property Name="INTEREST_BALANCE_SUM" Type="number" Precision="38" Scale="0" />
+          <Property Name="COST_BALANCE_SUM" Type="number" Precision="38" Scale="0" />
+          <Property Name="PAYMENTS_AMOUNT_SUM" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRODUCT_NUMBER" Type="varchar2" MaxLength="50" />
+          <Property Name="BANK_ACCOUNT_NUM" Type="varchar2" MaxLength="4000" />
+          <Property Name="BANK_CODE" Type="varchar2" MaxLength="4000" />
+          <Property Name="VARIABLE_SYMBOL" Type="varchar2" MaxLength="4000" />
+          <Property Name="SPECIFIC_SYMBOL" Type="varchar2" MaxLength="4000" />
+          <Property Name="LAST_PAYMENT_DATE" Type="date" />
+          <Property Name="LAST_PAYMENT_AMOUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="LAST_CALL_DATE" Type="date" />
+          <Property Name="LAST_CALL_TEXT" Type="clob" />
+          <Property Name="LAST_INSTRUCTION_FOR_FV" Type="clob" />
+          <Property Name="CAMPAIGN" Type="varchar2" MaxLength="100" />
+          <Property Name="FV_PASSING_ON_DATE" Type="date" Nullable="false" />
+          <Property Name="FV_TERMINATION_DATE" Type="date" />
+          <Property Name="FIRST_FV_DEADLINE_DAYS" Type="number" Precision="2" Scale="0" />
+          <Property Name="NEXT_FV_DEADLINE_DAYS" Type="number" Precision="2" Scale="0" />
+          <Property Name="PA_INSTALMENT_BREAK_DATE_FV" Type="date" />
+          <Property Name="CE_RETURN_DATE" Type="date" />
+          <Property Name="LAPSE_DATE" Type="date" />
+          <Property Name="PAYMENTS_AMOUNT_FV" Type="number" Precision="38" Scale="0" />
+          <Property Name="PA_STATUS_FV" Type="varchar2" MaxLength="2" />
+          <Property Name="PA_TYPE_ID_FV" Type="number" Precision="38" Scale="0" />
+          <Property Name="PA_COUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="CE_DEBT_REMISSION_STATUS" Type="char" MaxLength="1" />
+          <Property Name="PA_MAX_PERIODS" Type="number" Precision="38" Scale="0" />
+          <Property Name="DOHL" Type="char" MaxLength="3" />
+          <Property Name="PROBIHAJICI_AKCE" Type="varchar2" MaxLength="100" />
+          <Property Name="COMMISSION" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_CE_DOCUMENTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_CE_DOCUMENTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="CE_DOCUMENT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="CE_DOCUMENT_ID" Type="number" Precision="15" Scale="0" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="DOCUMENT_DESCRIPTION" Type="varchar2" MaxLength="255" />
+          <Property Name="DOCUMENT_LINK" Type="varchar2" MaxLength="800" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_CLIENTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_CLIENTS_VW">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="100" />
+          <Property Name="NAME_ALIAS" Type="varchar2" MaxLength="40" />
+          <Property Name="ADDRESS" Type="varchar2" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_COLLENT_COMMENTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_COLLENT_COMMENTS_VW">
+          <Key>
+            <PropertyRef Name="COLLENT_COMMENT_ID" />
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="COLLENT_COMMENT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="COMMENT_TYPE_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="USER_COMMENT" Type="clob" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_KOLLECTO_PARAMETERS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_KOLLECTO_PARAMETERS_VW">
+          <Key>
+            <PropertyRef Name="CODE_PARAM" />
+            <PropertyRef Name="VALUE_PARAM" />
+          </Key>
+          <Property Name="CODE_PARAM" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="VALUE_PARAM" Type="varchar2" MaxLength="4000" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_PA_INSTALLMENT_HISTORY_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_PA_INSTALLMENT_HISTORY_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="PA_INSTANCE_ID" />
+            <PropertyRef Name="STAUS" />
+            <PropertyRef Name="PA_TYPE_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="PA_INSTANCE_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="AMOUNT_PA" Type="number" Precision="38" Scale="0" />
+          <Property Name="PA_INSTALLMENTS_COUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="STAUS" Type="varchar2" MaxLength="2" Nullable="false" />
+          <Property Name="PA_TYPE_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_PA_INSTALLMENTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_PA_INSTALLMENTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="PA_INSTALLMENT_ID" />
+            <PropertyRef Name="DUE_DATE" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="PA_INSTALLMENT_ID" Type="number" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="DUE_DATE" Type="date" Nullable="false" />
+          <Property Name="AMOUNT_INSTALLMENT" Type="number" Precision="38" Scale="0" />
+          <Property Name="UNPAID_AMOUNT_INSTALLMENT" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_PAYMENTS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_PAYMENTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="PAYMENT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="date" />
+          <Property Name="AMOUNT" Type="number" Precision="38" Scale="0" />
+          <Property Name="BEFORE_FV_FLAG" Type="number" Precision="38" Scale="0" />
+          <Property Name="SOLD" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_PRINT_ADD_INFO_CEZ_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_PRINT_ADD_INFO_CEZ_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="ODBERNE_MISTO" Type="varchar2" MaxLength="500" />
+          <Property Name="VARIABILNI_SYMBOL" Type="varchar2" MaxLength="50" />
+          <Property Name="DATUM_SPLATNOSTI" Type="date" />
+          <Property Name="FAKTUROVANA_CASTKA" Type="number" Precision="38" Scale="0" />
+          <Property Name="VYSE_DOPLATKU" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_PRINT_ADD_INFO_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_PRINT_ADD_INFO_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="varchar2" MaxLength="50" />
+          <Property Name="CUSTOMER_ID_SECOND" Type="varchar2" MaxLength="50" />
+          <Property Name="REGISTER_INFO" Type="varchar2" MaxLength="500" />
+          <Property Name="ACC_COMMENT9" Type="varchar2" MaxLength="500" />
+          <Property Name="ACC_COMMENT13" Type="varchar2" MaxLength="500" />
+          <Property Name="ACC_COMMENT14" Type="varchar2" MaxLength="4000" />
+          <Property Name="ACC_COMMENT17" Type="varchar2" MaxLength="500" />
+          <Property Name="ACC_COMMENT23" Type="varchar2" MaxLength="500" />
+          <Property Name="ACC_COMMENT27" Type="varchar2" MaxLength="500" />
+          <Property Name="PF_SMLOUVY" Type="varchar2" MaxLength="4000" />
+          <Property Name="SLOVY_TO" Type="varchar2" MaxLength="4000" />
+          <Property Name="SLOVY_TO_HAL" Type="varchar2" MaxLength="4000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_SUBSCRIBER_ADDRESSES_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_SUBSCRIBER_ADDRESSES_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_ADDRESS_ID" />
+            <PropertyRef Name="ADDRESS_TYPE" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_ADDRESS_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="CITY" Type="varchar2" MaxLength="200" />
+          <Property Name="STREET_NUMBER" Type="varchar2" MaxLength="50" />
+          <Property Name="STREET" Type="varchar2" MaxLength="500" />
+          <Property Name="POSTAL_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="PERS_REGION" Type="varchar2" MaxLength="100" />
+          <Property Name="MAIN_ADDRESS" Type="number" Precision="1" Scale="0" />
+          <Property Name="VALID" Type="number" Precision="1" Scale="0" />
+          <Property Name="ADDRESS_TYPE" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="FV_ORIGIN" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_SUBSCRIBER_CONTACTS_EML_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_SUBSCRIBER_CONTACTS_EML_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_CONTACT_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="EMAIL_FLAG" Type="number" Precision="38" Scale="0" />
+          <Property Name="FV_ORIGIN" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_SUBSCRIBER_CONTACTS_EMP_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_SUBSCRIBER_CONTACTS_EMP_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_CONTACT_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="CITY" Type="varchar2" MaxLength="50" />
+          <Property Name="STREET" Type="varchar2" MaxLength="500" />
+          <Property Name="POSTAL_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+          <Property Name="PHONE1" Type="varchar2" MaxLength="50" />
+          <Property Name="ADDRESS_FULL" Type="varchar2" MaxLength="604" />
+          <Property Name="FV_ORIGIN" Type="number" Precision="38" Scale="0" />
+          <Property Name="VALID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_SUBSCRIBER_PHONES_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_SUBSCRIBER_PHONES_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_PHONE_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="SUBSCRIBER_PHONE_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="PHONE_NUMBER" Type="varchar2" MaxLength="50" />
+          <Property Name="VALID" Type="number" Precision="3" Scale="0" />
+          <Property Name="MAIN_PHONE" Type="number" Precision="1" Scale="0" />
+          <Property Name="FV_ORIGIN" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CZ_FVISIT_OWNER.CZ_SUBSCRIBERS_VW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CZ_SUBSCRIBERS_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="number" Precision="13" Scale="0" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="200" />
+          <Property Name="FIRST_NAME" Type="varchar2" MaxLength="300" />
+          <Property Name="SSN" Type="varchar2" MaxLength="50" />
+          <Property Name="J_ATTRIBUTE" Type="varchar2" MaxLength="50" />
+          <Property Name="BIRTH_DATE" Type="date" />
+          <Property Name="LAST_NAME2" Type="varchar2" MaxLength="200" />
+          <Property Name="BONITA_KATASTR" Type="varchar2" MaxLength="100" />
+          <Property Name="BONITA_POCET_EXE" Type="number" Precision="3" Scale="0" />
+          <Property Name="BONITA_DATUM_LUSTRACE" Type="date" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AGCZ_CE_DOCUMENTS_TBL" EntityType="Self.AGCZ_CE_DOCUMENTS_TBL" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="AGCZ_PAYMENTS_TBL" EntityType="Self.AGCZ_PAYMENTS_TBL" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="AGCZ_SUBS_ADDRESSES_TBL" EntityType="Self.AGCZ_SUBS_ADDRESSES_TBL" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="AGCZ_SUBS_CONTACTS_EML_TBL" EntityType="Self.AGCZ_SUBS_CONTACTS_EML_TBL" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="AGCZ_SUBS_CONTACTS_EMP_TBL" EntityType="Self.AGCZ_SUBS_CONTACTS_EMP_TBL" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="AGCZ_SUBS_PHONES_TBL" EntityType="Self.AGCZ_SUBS_PHONES_TBL" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="AGCZ_VISIT_REPORT_TBL" EntityType="Self.AGCZ_VISIT_REPORT_TBL" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="CZ_FIELD_VISIT_OUT" EntityType="Self.CZ_FIELD_VISIT_OUT" Schema="CZ_FVISIT_OWNER" store:Type="Tables" />
+          <EntitySet Name="AGCZ_REGISTER_RESTRICTIONS_TBL" EntityType="Self.AGCZ_REGISTER_RESTRICTIONS_TBL" store:Type="Tables" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"AGCZ_REGISTER_RESTRICTIONS_TBL"."REGISTER" AS "REGISTER", 
+"AGCZ_REGISTER_RESTRICTIONS_TBL"."ID_ORDER" AS "ID_ORDER", 
+"AGCZ_REGISTER_RESTRICTIONS_TBL"."VAL" AS "VAL", 
+"AGCZ_REGISTER_RESTRICTIONS_TBL"."VAL2" AS "VAL2"
+FROM "CZ_FVISIT_OWNER"."AGCZ_REGISTER_RESTRICTIONS_TBL" "AGCZ_REGISTER_RESTRICTIONS_TBL"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_ACC_SUBS_INT_VW" EntityType="Self.CZ_ACC_SUBS_INT_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_ACC_SUBS_INT_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_ACC_SUBS_INT_VW"."SUBSCRIBER_ID" AS "SUBSCRIBER_ID", 
+"CZ_ACC_SUBS_INT_VW"."SUBSCRIBER_TYPE_ID" AS "SUBSCRIBER_TYPE_ID", 
+"CZ_ACC_SUBS_INT_VW"."MAIN" AS "MAIN", 
+"CZ_ACC_SUBS_INT_VW"."DEBT_ACCEPT_DATE" AS "DEBT_ACCEPT_DATE"
+FROM "CZ_FVISIT_OWNER"."CZ_ACC_SUBS_INT_VW" "CZ_ACC_SUBS_INT_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_ACCOUNT_DEBTS_VW" EntityType="Self.CZ_ACCOUNT_DEBTS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_ACCOUNT_DEBTS_VW"."ACCOUNT_DEBT_ID" AS "ACCOUNT_DEBT_ID", 
+"CZ_ACCOUNT_DEBTS_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_ACCOUNT_DEBTS_VW"."DEBT_SUBCLASS_NAME" AS "DEBT_SUBCLASS_NAME", 
+"CZ_ACCOUNT_DEBTS_VW"."INVOICE_NUMBER" AS "INVOICE_NUMBER", 
+"CZ_ACCOUNT_DEBTS_VW"."DEBT_AMOUNT" AS "DEBT_AMOUNT", 
+"CZ_ACCOUNT_DEBTS_VW"."DEBT_BALANCE" AS "DEBT_BALANCE", 
+"CZ_ACCOUNT_DEBTS_VW"."DEBT_BALANCE_UPDATE" AS "DEBT_BALANCE_UPDATE", 
+"CZ_ACCOUNT_DEBTS_VW"."DEBT_DATE" AS "DEBT_DATE", 
+"CZ_ACCOUNT_DEBTS_VW"."DEBT_DUE_DATE" AS "DEBT_DUE_DATE", 
+"CZ_ACCOUNT_DEBTS_VW"."CURRENCY" AS "CURRENCY"
+FROM "CZ_FVISIT_OWNER"."CZ_ACCOUNT_DEBTS_VW" "CZ_ACCOUNT_DEBTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_ACCOUNT_INFO_VW" EntityType="Self.CZ_ACCOUNT_INFO_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_ACCOUNT_INFO_VW"."ACCOUNT_ID" AS "ACCOUNT_ID"
+FROM "CZ_FVISIT_OWNER"."CZ_ACCOUNT_INFO_VW" "CZ_ACCOUNT_INFO_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_ACCOUNT_INFO_XML_VW" EntityType="Self.CZ_ACCOUNT_INFO_XML_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_ACCOUNT_INFO_XML_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_ACCOUNT_INFO_XML_VW"."INFO_VALUE_XML" AS "INFO_VALUE_XML", 
+"CZ_ACCOUNT_INFO_XML_VW"."INFO_VALUE_XSD" AS "INFO_VALUE_XSD"
+FROM "CZ_FVISIT_OWNER"."CZ_ACCOUNT_INFO_XML_VW" "CZ_ACCOUNT_INFO_XML_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_ACCOUNTS_VW" EntityType="Self.CZ_ACCOUNTS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_ACCOUNTS_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_ACCOUNTS_VW"."FIELD_VISIT_OUT_ID" AS "FIELD_VISIT_OUT_ID", 
+"CZ_ACCOUNTS_VW"."IDUSR" AS "IDUSR", 
+"CZ_ACCOUNTS_VW"."TOTAL_BALANCE" AS "TOTAL_BALANCE", 
+"CZ_ACCOUNTS_VW"."TAKE_OVER_DATE" AS "TAKE_OVER_DATE", 
+"CZ_ACCOUNTS_VW"."CLIENT_ID" AS "CLIENT_ID", 
+"CZ_ACCOUNTS_VW"."DEBT_BALANCE_SUM" AS "DEBT_BALANCE_SUM", 
+"CZ_ACCOUNTS_VW"."INTEREST_BALANCE_SUM" AS "INTEREST_BALANCE_SUM", 
+"CZ_ACCOUNTS_VW"."COST_BALANCE_SUM" AS "COST_BALANCE_SUM", 
+"CZ_ACCOUNTS_VW"."PAYMENTS_AMOUNT_SUM" AS "PAYMENTS_AMOUNT_SUM", 
+"CZ_ACCOUNTS_VW"."PRODUCT_NUMBER" AS "PRODUCT_NUMBER", 
+"CZ_ACCOUNTS_VW"."BANK_ACCOUNT_NUM" AS "BANK_ACCOUNT_NUM", 
+"CZ_ACCOUNTS_VW"."BANK_CODE" AS "BANK_CODE", 
+"CZ_ACCOUNTS_VW"."VARIABLE_SYMBOL" AS "VARIABLE_SYMBOL", 
+"CZ_ACCOUNTS_VW"."SPECIFIC_SYMBOL" AS "SPECIFIC_SYMBOL", 
+"CZ_ACCOUNTS_VW"."LAST_PAYMENT_DATE" AS "LAST_PAYMENT_DATE", 
+"CZ_ACCOUNTS_VW"."LAST_PAYMENT_AMOUNT" AS "LAST_PAYMENT_AMOUNT", 
+"CZ_ACCOUNTS_VW"."LAST_CALL_DATE" AS "LAST_CALL_DATE", 
+"CZ_ACCOUNTS_VW"."LAST_CALL_TEXT" AS "LAST_CALL_TEXT", 
+"CZ_ACCOUNTS_VW"."LAST_INSTRUCTION_FOR_FV" AS "LAST_INSTRUCTION_FOR_FV", 
+"CZ_ACCOUNTS_VW"."CAMPAIGN" AS "CAMPAIGN", 
+"CZ_ACCOUNTS_VW"."FV_PASSING_ON_DATE" AS "FV_PASSING_ON_DATE", 
+"CZ_ACCOUNTS_VW"."FV_TERMINATION_DATE" AS "FV_TERMINATION_DATE", 
+"CZ_ACCOUNTS_VW"."FIRST_FV_DEADLINE_DAYS" AS "FIRST_FV_DEADLINE_DAYS", 
+"CZ_ACCOUNTS_VW"."NEXT_FV_DEADLINE_DAYS" AS "NEXT_FV_DEADLINE_DAYS", 
+"CZ_ACCOUNTS_VW"."PA_INSTALMENT_BREAK_DATE_FV" AS "PA_INSTALMENT_BREAK_DATE_FV", 
+"CZ_ACCOUNTS_VW"."CE_RETURN_DATE" AS "CE_RETURN_DATE", 
+"CZ_ACCOUNTS_VW"."LAPSE_DATE" AS "LAPSE_DATE", 
+"CZ_ACCOUNTS_VW"."PAYMENTS_AMOUNT_FV" AS "PAYMENTS_AMOUNT_FV", 
+"CZ_ACCOUNTS_VW"."PA_STATUS_FV" AS "PA_STATUS_FV", 
+"CZ_ACCOUNTS_VW"."PA_TYPE_ID_FV" AS "PA_TYPE_ID_FV", 
+"CZ_ACCOUNTS_VW"."PA_COUNT" AS "PA_COUNT", 
+"CZ_ACCOUNTS_VW"."CE_DEBT_REMISSION_STATUS" AS "CE_DEBT_REMISSION_STATUS", 
+"CZ_ACCOUNTS_VW"."PA_MAX_PERIODS" AS "PA_MAX_PERIODS", 
+"CZ_ACCOUNTS_VW"."DOHL" AS "DOHL", 
+"CZ_ACCOUNTS_VW"."PROBIHAJICI_AKCE" AS "PROBIHAJICI_AKCE", 
+"CZ_ACCOUNTS_VW"."COMMISSION" AS "COMMISSION"
+FROM "CZ_FVISIT_OWNER"."CZ_ACCOUNTS_VW" "CZ_ACCOUNTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_CE_DOCUMENTS_VW" EntityType="Self.CZ_CE_DOCUMENTS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_CE_DOCUMENTS_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_CE_DOCUMENTS_VW"."CE_DOCUMENT_ID" AS "CE_DOCUMENT_ID", 
+"CZ_CE_DOCUMENTS_VW"."CREATION_DATE" AS "CREATION_DATE", 
+"CZ_CE_DOCUMENTS_VW"."DOCUMENT_DESCRIPTION" AS "DOCUMENT_DESCRIPTION", 
+"CZ_CE_DOCUMENTS_VW"."DOCUMENT_LINK" AS "DOCUMENT_LINK"
+FROM "CZ_FVISIT_OWNER"."CZ_CE_DOCUMENTS_VW" "CZ_CE_DOCUMENTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_CLIENTS_VW" EntityType="Self.CZ_CLIENTS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_CLIENTS_VW"."CLIENT_ID" AS "CLIENT_ID", 
+"CZ_CLIENTS_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_CLIENTS_VW"."NAME" AS "NAME", 
+"CZ_CLIENTS_VW"."NAME_ALIAS" AS "NAME_ALIAS", 
+"CZ_CLIENTS_VW"."ADDRESS" AS "ADDRESS"
+FROM "CZ_FVISIT_OWNER"."CZ_CLIENTS_VW" "CZ_CLIENTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_COLLENT_COMMENTS_VW" EntityType="Self.CZ_COLLENT_COMMENTS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_COLLENT_COMMENTS_VW"."COLLENT_COMMENT_ID" AS "COLLENT_COMMENT_ID", 
+"CZ_COLLENT_COMMENTS_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_COLLENT_COMMENTS_VW"."CREATION_DATE" AS "CREATION_DATE", 
+"CZ_COLLENT_COMMENTS_VW"."COMMENT_TYPE_NAME" AS "COMMENT_TYPE_NAME", 
+"CZ_COLLENT_COMMENTS_VW"."USER_COMMENT" AS "USER_COMMENT"
+FROM "CZ_FVISIT_OWNER"."CZ_COLLENT_COMMENTS_VW" "CZ_COLLENT_COMMENTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_KOLLECTO_PARAMETERS_VW" EntityType="Self.CZ_KOLLECTO_PARAMETERS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_KOLLECTO_PARAMETERS_VW"."CODE_PARAM" AS "CODE_PARAM", 
+"CZ_KOLLECTO_PARAMETERS_VW"."VALUE_PARAM" AS "VALUE_PARAM"
+FROM "CZ_FVISIT_OWNER"."CZ_KOLLECTO_PARAMETERS_VW" "CZ_KOLLECTO_PARAMETERS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_PA_INSTALLMENT_HISTORY_VW" EntityType="Self.CZ_PA_INSTALLMENT_HISTORY_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_PA_INSTALLMENT_HISTORY_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_PA_INSTALLMENT_HISTORY_VW"."PA_INSTANCE_ID" AS "PA_INSTANCE_ID", 
+"CZ_PA_INSTALLMENT_HISTORY_VW"."CREATION_DATE" AS "CREATION_DATE", 
+"CZ_PA_INSTALLMENT_HISTORY_VW"."AMOUNT_PA" AS "AMOUNT_PA", 
+"CZ_PA_INSTALLMENT_HISTORY_VW"."PA_INSTALLMENTS_COUNT" AS "PA_INSTALLMENTS_COUNT", 
+"CZ_PA_INSTALLMENT_HISTORY_VW"."STAUS" AS "STAUS", 
+"CZ_PA_INSTALLMENT_HISTORY_VW"."PA_TYPE_ID" AS "PA_TYPE_ID"
+FROM "CZ_FVISIT_OWNER"."CZ_PA_INSTALLMENT_HISTORY_VW" "CZ_PA_INSTALLMENT_HISTORY_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_PA_INSTALLMENTS_VW" EntityType="Self.CZ_PA_INSTALLMENTS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_PA_INSTALLMENTS_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_PA_INSTALLMENTS_VW"."PA_INSTALLMENT_ID" AS "PA_INSTALLMENT_ID", 
+"CZ_PA_INSTALLMENTS_VW"."DUE_DATE" AS "DUE_DATE", 
+"CZ_PA_INSTALLMENTS_VW"."AMOUNT_INSTALLMENT" AS "AMOUNT_INSTALLMENT", 
+"CZ_PA_INSTALLMENTS_VW"."UNPAID_AMOUNT_INSTALLMENT" AS "UNPAID_AMOUNT_INSTALLMENT"
+FROM "CZ_FVISIT_OWNER"."CZ_PA_INSTALLMENTS_VW" "CZ_PA_INSTALLMENTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_PAYMENTS_VW" EntityType="Self.CZ_PAYMENTS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_PAYMENTS_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_PAYMENTS_VW"."PAYMENT_ID" AS "PAYMENT_ID", 
+"CZ_PAYMENTS_VW"."PAYMENT_DATE" AS "PAYMENT_DATE", 
+"CZ_PAYMENTS_VW"."AMOUNT" AS "AMOUNT", 
+"CZ_PAYMENTS_VW"."BEFORE_FV_FLAG" AS "BEFORE_FV_FLAG", 
+"CZ_PAYMENTS_VW"."SOLD" AS "SOLD"
+FROM "CZ_FVISIT_OWNER"."CZ_PAYMENTS_VW" "CZ_PAYMENTS_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_PRINT_ADD_INFO_CEZ_VW" EntityType="Self.CZ_PRINT_ADD_INFO_CEZ_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_PRINT_ADD_INFO_CEZ_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_PRINT_ADD_INFO_CEZ_VW"."ODBERNE_MISTO" AS "ODBERNE_MISTO", 
+"CZ_PRINT_ADD_INFO_CEZ_VW"."VARIABILNI_SYMBOL" AS "VARIABILNI_SYMBOL", 
+"CZ_PRINT_ADD_INFO_CEZ_VW"."DATUM_SPLATNOSTI" AS "DATUM_SPLATNOSTI", 
+"CZ_PRINT_ADD_INFO_CEZ_VW"."FAKTUROVANA_CASTKA" AS "FAKTUROVANA_CASTKA", 
+"CZ_PRINT_ADD_INFO_CEZ_VW"."VYSE_DOPLATKU" AS "VYSE_DOPLATKU"
+FROM "CZ_FVISIT_OWNER"."CZ_PRINT_ADD_INFO_CEZ_VW" "CZ_PRINT_ADD_INFO_CEZ_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_PRINT_ADD_INFO_VW" EntityType="Self.CZ_PRINT_ADD_INFO_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_PRINT_ADD_INFO_VW"."ACCOUNT_ID" AS "ACCOUNT_ID", 
+"CZ_PRINT_ADD_INFO_VW"."CUSTOMER_ID" AS "CUSTOMER_ID", 
+"CZ_PRINT_ADD_INFO_VW"."CUSTOMER_ID_SECOND" AS "CUSTOMER_ID_SECOND", 
+"CZ_PRINT_ADD_INFO_VW"."REGISTER_INFO" AS "REGISTER_INFO", 
+"CZ_PRINT_ADD_INFO_VW"."ACC_COMMENT9" AS "ACC_COMMENT9", 
+"CZ_PRINT_ADD_INFO_VW"."ACC_COMMENT13" AS "ACC_COMMENT13", 
+"CZ_PRINT_ADD_INFO_VW"."ACC_COMMENT14" AS "ACC_COMMENT14", 
+"CZ_PRINT_ADD_INFO_VW"."ACC_COMMENT17" AS "ACC_COMMENT17", 
+"CZ_PRINT_ADD_INFO_VW"."ACC_COMMENT23" AS "ACC_COMMENT23", 
+"CZ_PRINT_ADD_INFO_VW"."ACC_COMMENT27" AS "ACC_COMMENT27", 
+"CZ_PRINT_ADD_INFO_VW"."PF_SMLOUVY" AS "PF_SMLOUVY", 
+"CZ_PRINT_ADD_INFO_VW"."SLOVY_TO" AS "SLOVY_TO", 
+"CZ_PRINT_ADD_INFO_VW"."SLOVY_TO_HAL" AS "SLOVY_TO_HAL"
+FROM "CZ_FVISIT_OWNER"."CZ_PRINT_ADD_INFO_VW" "CZ_PRINT_ADD_INFO_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_SUBSCRIBER_ADDRESSES_VW" EntityType="Self.CZ_SUBSCRIBER_ADDRESSES_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."SUBSCRIBER_ID" AS "SUBSCRIBER_ID", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."SUBSCRIBER_ADDRESS_ID" AS "SUBSCRIBER_ADDRESS_ID", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."CITY" AS "CITY", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."STREET_NUMBER" AS "STREET_NUMBER", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."STREET" AS "STREET", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."POSTAL_CODE" AS "POSTAL_CODE", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."PERS_REGION" AS "PERS_REGION", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."MAIN_ADDRESS" AS "MAIN_ADDRESS", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."VALID" AS "VALID", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."ADDRESS_TYPE" AS "ADDRESS_TYPE", 
+"CZ_SUBSCRIBER_ADDRESSES_VW"."FV_ORIGIN" AS "FV_ORIGIN"
+FROM "CZ_FVISIT_OWNER"."CZ_SUBSCRIBER_ADDRESSES_VW" "CZ_SUBSCRIBER_ADDRESSES_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_SUBSCRIBER_CONTACTS_EML_VW" EntityType="Self.CZ_SUBSCRIBER_CONTACTS_EML_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_SUBSCRIBER_CONTACTS_EML_VW"."SUBSCRIBER_ID" AS "SUBSCRIBER_ID", 
+"CZ_SUBSCRIBER_CONTACTS_EML_VW"."SUBSCRIBER_CONTACT_ID" AS "SUBSCRIBER_CONTACT_ID", 
+"CZ_SUBSCRIBER_CONTACTS_EML_VW"."EMAIL" AS "EMAIL", 
+"CZ_SUBSCRIBER_CONTACTS_EML_VW"."EMAIL_FLAG" AS "EMAIL_FLAG", 
+"CZ_SUBSCRIBER_CONTACTS_EML_VW"."FV_ORIGIN" AS "FV_ORIGIN"
+FROM "CZ_FVISIT_OWNER"."CZ_SUBSCRIBER_CONTACTS_EML_VW" "CZ_SUBSCRIBER_CONTACTS_EML_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_SUBSCRIBER_CONTACTS_EMP_VW" EntityType="Self.CZ_SUBSCRIBER_CONTACTS_EMP_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."SUBSCRIBER_ID" AS "SUBSCRIBER_ID", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."SUBSCRIBER_CONTACT_ID" AS "SUBSCRIBER_CONTACT_ID", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."LAST_NAME" AS "LAST_NAME", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."CITY" AS "CITY", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."STREET" AS "STREET", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."POSTAL_CODE" AS "POSTAL_CODE", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."EMAIL" AS "EMAIL", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."PHONE1" AS "PHONE1", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."ADDRESS_FULL" AS "ADDRESS_FULL", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."FV_ORIGIN" AS "FV_ORIGIN", 
+"CZ_SUBSCRIBER_CONTACTS_EMP_VW"."VALID" AS "VALID"
+FROM "CZ_FVISIT_OWNER"."CZ_SUBSCRIBER_CONTACTS_EMP_VW" "CZ_SUBSCRIBER_CONTACTS_EMP_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_SUBSCRIBER_PHONES_VW" EntityType="Self.CZ_SUBSCRIBER_PHONES_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_SUBSCRIBER_PHONES_VW"."SUBSCRIBER_ID" AS "SUBSCRIBER_ID", 
+"CZ_SUBSCRIBER_PHONES_VW"."SUBSCRIBER_PHONE_ID" AS "SUBSCRIBER_PHONE_ID", 
+"CZ_SUBSCRIBER_PHONES_VW"."PHONE_NUMBER" AS "PHONE_NUMBER", 
+"CZ_SUBSCRIBER_PHONES_VW"."VALID" AS "VALID", 
+"CZ_SUBSCRIBER_PHONES_VW"."MAIN_PHONE" AS "MAIN_PHONE", 
+"CZ_SUBSCRIBER_PHONES_VW"."FV_ORIGIN" AS "FV_ORIGIN"
+FROM "CZ_FVISIT_OWNER"."CZ_SUBSCRIBER_PHONES_VW" "CZ_SUBSCRIBER_PHONES_VW"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CZ_SUBSCRIBERS_VW" EntityType="Self.CZ_SUBSCRIBERS_VW" store:Type="Views" store:Schema="CZ_FVISIT_OWNER">
+            <DefiningQuery>SELECT 
+"CZ_SUBSCRIBERS_VW"."SUBSCRIBER_ID" AS "SUBSCRIBER_ID", 
+"CZ_SUBSCRIBERS_VW"."LAST_NAME" AS "LAST_NAME", 
+"CZ_SUBSCRIBERS_VW"."FIRST_NAME" AS "FIRST_NAME", 
+"CZ_SUBSCRIBERS_VW"."SSN" AS "SSN", 
+"CZ_SUBSCRIBERS_VW"."J_ATTRIBUTE" AS "J_ATTRIBUTE", 
+"CZ_SUBSCRIBERS_VW"."BIRTH_DATE" AS "BIRTH_DATE", 
+"CZ_SUBSCRIBERS_VW"."LAST_NAME2" AS "LAST_NAME2", 
+"CZ_SUBSCRIBERS_VW"."BONITA_KATASTR" AS "BONITA_KATASTR", 
+"CZ_SUBSCRIBERS_VW"."BONITA_POCET_EXE" AS "BONITA_POCET_EXE", 
+"CZ_SUBSCRIBERS_VW"."BONITA_DATUM_LUSTRACE" AS "BONITA_DATUM_LUSTRACE"
+FROM "CZ_FVISIT_OWNER"."CZ_SUBSCRIBERS_VW" "CZ_SUBSCRIBERS_VW"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGCZ_CE_DOCUMENTS_TBL">
+          <Key>
+            <PropertyRef Name="TRC_DOCUMENT_ID" />
+          </Key>
+          <Property Name="TRC_DOCUMENT_ID" Type="Int64" Nullable="false" />
+          <Property Name="TRC_GPS_LAT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TRC_GPS_LNG" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TRC_TSTAMP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="Byte" />
+          <Property Name="TRC_RR_DOCUMENT_KIND" Type="Byte" />
+          <Property Name="CE_DOCUMENT_ID" Type="Int64" />
+          <Property Name="ACCOUNT_ID" Type="Int64" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="DOCUMENT_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DOCUMENT_LINK" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AGCZ_PAYMENTS_TBL">
+          <Key>
+            <PropertyRef Name="TRC_PAYMENT_ID" />
+          </Key>
+          <Property Name="TRC_PAYMENT_ID" Type="Int64" Nullable="false" />
+          <Property Name="TRC_TSTAMP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="Byte" />
+          <Property Name="ACCOUNT_ID" Type="Int64" />
+          <Property Name="PAYMENT_ID" Type="Int64" />
+          <Property Name="PAYMENT_DATE" Type="DateTime" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="BEFORE_FV_FLAG" Type="Boolean" />
+          <Property Name="SOLD" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_ADDRESSES_TBL">
+          <Key>
+            <PropertyRef Name="TRC_ADDRESSES_ID" />
+          </Key>
+          <Property Name="TRC_ADDRESSES_ID" Type="Int64" Nullable="false" />
+          <Property Name="TRC_TSTAMP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="Byte" />
+          <Property Name="SUBSCRIBER_ID" Type="Int64" />
+          <Property Name="SUBSCRIBER_ADDRESS_ID" Type="Int64" />
+          <Property Name="CITY" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="STREET_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PERS_REGION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAIN_ADDRESS" Type="Boolean" />
+          <Property Name="VALID" Type="Int32" />
+          <Property Name="ADDRESS_TYPE" Type="Int32" />
+          <Property Name="CREATION_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_CONTACTS_EML_TBL">
+          <Key>
+            <PropertyRef Name="TRC_EMAIL_ID" />
+          </Key>
+          <Property Name="TRC_EMAIL_ID" Type="Int64" Nullable="false" />
+          <Property Name="TRC_EMAIL_COMMENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="TRC_TSTAMP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="Byte" />
+          <Property Name="SUBSCRIBER_ID" Type="Int64" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="Int64" />
+          <Property Name="EMAIL" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL_FLAG" Type="Int32" />
+          <Property Name="FV_ORIGIN" Type="Int32" />
+          <Property Name="CREATION_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_CONTACTS_EMP_TBL">
+          <Key>
+            <PropertyRef Name="TRC_EMPLOYER_ID" />
+          </Key>
+          <Property Name="TRC_EMPLOYER_ID" Type="Int64" Nullable="false" />
+          <Property Name="TRC_TSTAMP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="Byte" />
+          <Property Name="SUBSCRIBER_ID" Type="Int64" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="Int64" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="STREET_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_FULL" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FV_ORIGIN" Type="Int32" />
+          <Property Name="VALID" Type="Int32" />
+          <Property Name="CREATION_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="AGCZ_SUBS_PHONES_TBL">
+          <Key>
+            <PropertyRef Name="TRC_PHONE_ID" />
+          </Key>
+          <Property Name="TRC_PHONE_ID" Type="Int64" Nullable="false" />
+          <Property Name="TRC_PHONE_COMMENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="TRC_TSTAMP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="TRC_RR_JOURNAL" Type="Byte" />
+          <Property Name="SUBSCRIBER_ID" Type="Int64" />
+          <Property Name="SUBSCRIBER_PHONE_ID" Type="Int64" />
+          <Property Name="PHONE_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALID" Type="Int32" />
+          <Property Name="MAIN_PHONE" Type="Int32" />
+          <Property Name="FV_ORIGIN" Type="Int64" />
+          <Property Name="CREATION_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="AGCZ_VISIT_REPORT_TBL">
+          <Key>
+            <PropertyRef Name="ID_VISIT_REPORT" />
+          </Key>
+          <Property Name="ID_VISIT_REPORT" Type="Int64" Nullable="false" />
+          <Property Name="ID_USER" Type="Int64" />
+          <Property Name="RR_VISITTYPE" Type="Int32" />
+          <Property Name="ID_SPISU" Type="Int64" />
+          <Property Name="ID_SRC_SPISY" Type="Int64" />
+          <Property Name="ID_SPISY_OSOBY" Type="Int64" />
+          <Property Name="ID_SRC_SPISY_OSOBY" Type="Int64" />
+          <Property Name="VR1_DATE_OSN" Type="DateTime" />
+          <Property Name="VR1_DATE" Type="DateTime" />
+          <Property Name="VR1_GPS_LAT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VR1_GPS_LNG" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VR2_ID_SPISY_OSOBY_ADRESY" Type="Int64" />
+          <Property Name="VR3_RR_VISIT_RESULT" Type="Boolean" />
+          <Property Name="VR3_COMMENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VR41_CASH_GAIN" Type="Boolean" />
+          <Property Name="VR41_CASH_DATE" Type="DateTime" />
+          <Property Name="VR41_CASH_DOC_NUMBER" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VR41_CASH_AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VR41_CASH_CURRENCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="VR41_CASH_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR41_AGREEMENT_FOR_NEXT_CASH" Type="Boolean" />
+          <Property Name="VR41_DATE_FOR_NEXT_CASH" Type="DateTime" />
+          <Property Name="VR5_PROTOCOL_PHONE_DIRECT" Type="Byte" />
+          <Property Name="VR51_PHONE_DATE" Type="DateTime" />
+          <Property Name="VR51_ID_SPISY_OSOBY_PHONE" Type="Int64" />
+          <Property Name="VR51_PHONE_NUMBER" Type="Boolean" />
+          <Property Name="VR51_PHONE_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR6_RR_PROTOCOL_MAIL_DIRECT" Type="Byte" />
+          <Property Name="VR61_EMAIL_DATE" Type="DateTime" />
+          <Property Name="VR61_ID_SPISY_OSOBY_EMAIL" Type="Int64" />
+          <Property Name="VR61_EMAIL" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="VR61_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR312_RR_VISIT_OTHER_PERSON" Type="Int32" />
+          <Property Name="VR314_COMMENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VR511_RR_V_CASE_PHONE_RES_OUT" Type="Int32" />
+          <Property Name="VR511A_RR_V_CASE_PHONE_RES_IN" Type="Int32" />
+          <Property Name="VR54_RR_CASE_AFTER_DENY" Type="Int32" />
+          <Property Name="VR3132_RR_RESULT_3132" Type="Int32" />
+          <Property Name="VR3132_NEW_ADDRESS_ADDED" Type="Boolean" />
+          <Property Name="VR3132_ID_SPISY_OSOBY_ADRESY" Type="Int64" />
+          <Property Name="VR3132_2_RR_HOUSING_PROPERTY" Type="Int32" />
+          <Property Name="VR3132_2_RR_HOUS_PROP_OWNER" Type="Boolean" />
+          <Property Name="VR3132_2_RR_HOUS_PROP_FAMILY" Type="Boolean" />
+          <Property Name="VR3132_2_RR_HOUS_PROP_RENT" Type="Boolean" />
+          <Property Name="VR3132_2_CAR_OWNER" Type="Boolean" />
+          <Property Name="VR3132_2_OTHER_OWNER" Type="Boolean" />
+          <Property Name="VR3132_2_OTHER_OWNER_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3132_2_LOW_STAND_OF_LIVING" Type="Boolean" />
+          <Property Name="VR3132_3_DENY" Type="Boolean" />
+          <Property Name="VR3132_3_INCOMELESS" Type="Boolean" />
+          <Property Name="VR3132_3_CONFISCATION" Type="Boolean" />
+          <Property Name="VR3132_3_RR_PERS_TYPE" Type="Int32" />
+          <Property Name="VR3132_3_PERS_TYPE_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3132_3_EMPLOYMENT" Type="Boolean" />
+          <Property Name="VR3132_3_BRIGADE" Type="Boolean" />
+          <Property Name="VR3132_3_MATERNITY_LEAVE" Type="Boolean" />
+          <Property Name="VR3132_3_EMPL_DEPARTMENT" Type="Boolean" />
+          <Property Name="VR3132_3_PENSION" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VR3132_3_SOCIAL_BENEFITS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VR3132_3_OTHER_INCOME" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VR3132_3_OTHER_INC_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3132_3_COMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3136_RR_NEXT_ACTIVITY" Type="Int32" />
+          <Property Name="VR3136_1_NEXT_ID_SPISY_OS_ADR" Type="Int64" />
+          <Property Name="VR3136_1_FV_DATE_PLANNED" Type="DateTime" />
+          <Property Name="VR3136_2_RR_CASE_NEXT_ACTIVITY" Type="Int32" />
+          <Property Name="VR3136_2_CASE_NEXT_ACT_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3136_2_DEADLINE" Type="DateTime" />
+          <Property Name="VR3137_PAYMENT_AGREEMENT_CANC" Type="Boolean" />
+          <Property Name="VR3137_DATE_AGREEMENT_CANCEL" Type="DateTime" />
+          <Property Name="VR3137_RR_ANOTHER_PERS_NXT_ACT" Type="Int32" />
+          <Property Name="VR3137_1_RR_PAYMENT_AGREEMENT" Type="Int32" />
+          <Property Name="VR3137_12_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3137_12_PAYMENT_DATE" Type="DateTime" />
+          <Property Name="VR3137_12_SKUZ_SIGNED" Type="Boolean" />
+          <Property Name="VR3137_13_GPS_LAT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VR3137_13_GPS_LNG" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="VR3137_13_ONE_AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VR3137_13_COUNT_OF_PAYMENTS" Type="Int32" />
+          <Property Name="VR3137_13_DATE_FIRST_PAYMENT" Type="DateTime" />
+          <Property Name="VR3137_13_AMOUNT_FIRST_PAYMENT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VR3137_13_DAY_NEXT_PAYMENT" Type="Int32" />
+          <Property Name="VR3137_13_CURRENCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="VR3137_13_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3137_17_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR3137_3_REQUIRE_DOC" Type="Boolean" />
+          <Property Name="VR3137_3_COMMENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="VR7_RR_CANCEL_SK" Type="Int32" />
+          <Property Name="VR341_LETTER_LEAVED" Type="Boolean" />
+          <Property Name="VR_HISTORY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="T_STAMP" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="RR_JOURNAL" Type="Int32" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="CZ_FIELD_VISIT_OUT">
+          <Key>
+            <PropertyRef Name="FIELD_VISIT_OUT_ID" />
+          </Key>
+          <Property Name="FIELD_VISIT_OUT_ID" Type="Int64" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_ADDRESS_ID" Type="Int64" Nullable="false" />
+          <Property Name="FIELD_VISIT_POST_CODE_ID" Type="Int64" Nullable="false" />
+          <Property Name="IDUSR" Type="Int64" Nullable="false" />
+          <Property Name="DEBT_BALANCE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PASSING_ON_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="TAKE_OVER_DATE" Type="DateTime" />
+          <Property Name="REJECTION_DATE" Type="DateTime" />
+          <Property Name="REJECTION_REASON" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TERMINATION_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="TERMINATION_REASON" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AGCZ_REGISTER_RESTRICTIONS_TBL">
+          <Key>
+            <PropertyRef Name="REGISTER" />
+          </Key>
+          <Property Name="REGISTER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_ORDER" Type="Int32" />
+          <Property Name="VAL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="VAL2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CZ_ACC_SUBS_INT_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_TYPE_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_TYPE_ID" Type="Int64" Nullable="false" />
+          <Property Name="MAIN" Type="Boolean" />
+          <Property Name="DEBT_ACCEPT_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="CZ_ACCOUNT_DEBTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_DEBT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_DEBT_ID" Type="Int64" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="Int64" />
+          <Property Name="DEBT_SUBCLASS_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="INVOICE_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DEBT_AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DEBT_BALANCE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DEBT_BALANCE_UPDATE" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DEBT_DATE" Type="DateTime" />
+          <Property Name="DEBT_DUE_DATE" Type="DateTime" />
+          <Property Name="CURRENCY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CZ_ACCOUNT_INFO_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CZ_ACCOUNT_INFO_XML_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="INFO_VALUE_XML" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="INFO_VALUE_XSD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CZ_ACCOUNTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="FIELD_VISIT_OUT_ID" />
+            <PropertyRef Name="IDUSR" />
+            <PropertyRef Name="FV_PASSING_ON_DATE" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="FIELD_VISIT_OUT_ID" Type="Int64" Nullable="false" />
+          <Property Name="IDUSR" Type="Int64" Nullable="false" />
+          <Property Name="TOTAL_BALANCE" Type="Decimal" Precision="13" Scale="2" />
+          <Property Name="TAKE_OVER_DATE" Type="DateTime" />
+          <Property Name="CLIENT_ID" Type="Int64" />
+          <Property Name="DEBT_BALANCE_SUM" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="INTEREST_BALANCE_SUM" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="COST_BALANCE_SUM" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PAYMENTS_AMOUNT_SUM" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRODUCT_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BANK_ACCOUNT_NUM" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="BANK_CODE" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="VARIABLE_SYMBOL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="SPECIFIC_SYMBOL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_PAYMENT_DATE" Type="DateTime" />
+          <Property Name="LAST_PAYMENT_AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="LAST_CALL_DATE" Type="DateTime" />
+          <Property Name="LAST_CALL_TEXT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_INSTRUCTION_FOR_FV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CAMPAIGN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FV_PASSING_ON_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="FV_TERMINATION_DATE" Type="DateTime" />
+          <Property Name="FIRST_FV_DEADLINE_DAYS" Type="Byte" />
+          <Property Name="NEXT_FV_DEADLINE_DAYS" Type="Byte" />
+          <Property Name="PA_INSTALMENT_BREAK_DATE_FV" Type="DateTime" />
+          <Property Name="CE_RETURN_DATE" Type="DateTime" />
+          <Property Name="LAPSE_DATE" Type="DateTime" />
+          <Property Name="PAYMENTS_AMOUNT_FV" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PA_STATUS_FV" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="PA_TYPE_ID_FV" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PA_COUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CE_DEBT_REMISSION_STATUS" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PA_MAX_PERIODS" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="DOHL" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="PROBIHAJICI_AKCE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COMMISSION" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_CE_DOCUMENTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="CE_DOCUMENT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="CE_DOCUMENT_ID" Type="Int64" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="DOCUMENT_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DOCUMENT_LINK" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CZ_CLIENTS_VW">
+          <Key>
+            <PropertyRef Name="CLIENT_ID" />
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="CLIENT_ID" Type="Int64" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NAME_ALIAS" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CZ_COLLENT_COMMENTS_VW">
+          <Key>
+            <PropertyRef Name="COLLENT_COMMENT_ID" />
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="COLLENT_COMMENT_ID" Type="Int64" Nullable="false" />
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="COMMENT_TYPE_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="USER_COMMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CZ_KOLLECTO_PARAMETERS_VW">
+          <Key>
+            <PropertyRef Name="CODE_PARAM" />
+            <PropertyRef Name="VALUE_PARAM" />
+          </Key>
+          <Property Name="CODE_PARAM" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VALUE_PARAM" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CZ_PA_INSTALLMENT_HISTORY_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="PA_INSTANCE_ID" />
+            <PropertyRef Name="STAUS" />
+            <PropertyRef Name="PA_TYPE_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="PA_INSTANCE_ID" Type="Int32" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="AMOUNT_PA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PA_INSTALLMENTS_COUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="STAUS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PA_TYPE_ID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CZ_PA_INSTALLMENTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="PA_INSTALLMENT_ID" />
+            <PropertyRef Name="DUE_DATE" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="PA_INSTALLMENT_ID" Type="Int32" Nullable="false" />
+          <Property Name="DUE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="AMOUNT_INSTALLMENT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="UNPAID_AMOUNT_INSTALLMENT" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_PAYMENTS_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="PAYMENT_ID" Type="Int64" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="DateTime" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="BEFORE_FV_FLAG" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="SOLD" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_PRINT_ADD_INFO_CEZ_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="ODBERNE_MISTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VARIABILNI_SYMBOL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATUM_SPLATNOSTI" Type="DateTime" />
+          <Property Name="FAKTUROVANA_CASTKA" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VYSE_DOPLATKU" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_PRINT_ADD_INFO_VW">
+          <Key>
+            <PropertyRef Name="ACCOUNT_ID" />
+          </Key>
+          <Property Name="ACCOUNT_ID" Type="Int64" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_ID_SECOND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="REGISTER_INFO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_COMMENT9" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_COMMENT13" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_COMMENT14" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_COMMENT17" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_COMMENT23" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ACC_COMMENT27" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PF_SMLOUVY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="SLOVY_TO" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="SLOVY_TO_HAL" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CZ_SUBSCRIBER_ADDRESSES_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_ADDRESS_ID" />
+            <PropertyRef Name="ADDRESS_TYPE" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_ADDRESS_ID" Type="Int64" Nullable="false" />
+          <Property Name="CITY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="STREET_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PERS_REGION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MAIN_ADDRESS" Type="Boolean" />
+          <Property Name="VALID" Type="Boolean" />
+          <Property Name="ADDRESS_TYPE" Type="Int64" Nullable="false" />
+          <Property Name="FV_ORIGIN" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_SUBSCRIBER_CONTACTS_EML_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_CONTACT_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="Int64" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL_FLAG" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="FV_ORIGIN" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_SUBSCRIBER_CONTACTS_EMP_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_CONTACT_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_CONTACT_ID" Type="Int64" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STREET" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_FULL" Type="String" MaxLength="604" FixedLength="false" Unicode="false" />
+          <Property Name="FV_ORIGIN" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="VALID" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_SUBSCRIBER_PHONES_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+            <PropertyRef Name="SUBSCRIBER_PHONE_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="Int64" Nullable="false" />
+          <Property Name="SUBSCRIBER_PHONE_ID" Type="Int64" Nullable="false" />
+          <Property Name="PHONE_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VALID" Type="Byte" />
+          <Property Name="MAIN_PHONE" Type="Boolean" />
+          <Property Name="FV_ORIGIN" Type="Decimal" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="CZ_SUBSCRIBERS_VW">
+          <Key>
+            <PropertyRef Name="SUBSCRIBER_ID" />
+          </Key>
+          <Property Name="SUBSCRIBER_ID" Type="Int64" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="SSN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="J_ATTRIBUTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BIRTH_DATE" Type="DateTime" />
+          <Property Name="LAST_NAME2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BONITA_KATASTR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BONITA_POCET_EXE" Type="Byte" />
+          <Property Name="BONITA_DATUM_LUSTRACE" Type="DateTime" />
+        </EntityType>
+        <EntityContainer Name="OracleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGCZ_CE_DOCUMENTS_TBL" EntityType="Self.AGCZ_CE_DOCUMENTS_TBL" />
+          <EntitySet Name="AGCZ_PAYMENTS_TBL" EntityType="Self.AGCZ_PAYMENTS_TBL" />
+          <EntitySet Name="AGCZ_SUBS_ADDRESSES_TBL" EntityType="Self.AGCZ_SUBS_ADDRESSES_TBL" />
+          <EntitySet Name="AGCZ_SUBS_CONTACTS_EML_TBL" EntityType="Self.AGCZ_SUBS_CONTACTS_EML_TBL" />
+          <EntitySet Name="AGCZ_SUBS_CONTACTS_EMP_TBL" EntityType="Self.AGCZ_SUBS_CONTACTS_EMP_TBL" />
+          <EntitySet Name="AGCZ_SUBS_PHONES_TBL" EntityType="Self.AGCZ_SUBS_PHONES_TBL" />
+          <EntitySet Name="AGCZ_VISIT_REPORT_TBL" EntityType="Self.AGCZ_VISIT_REPORT_TBL" />
+          <EntitySet Name="CZ_FIELD_VISIT_OUT" EntityType="Self.CZ_FIELD_VISIT_OUT" />
+          <EntitySet Name="AGCZ_REGISTER_RESTRICTIONS_TBL" EntityType="Self.AGCZ_REGISTER_RESTRICTIONS_TBL" />
+          <EntitySet Name="CZ_ACC_SUBS_INT_VW" EntityType="Self.CZ_ACC_SUBS_INT_VW" />
+          <EntitySet Name="CZ_ACCOUNT_DEBTS_VW" EntityType="Self.CZ_ACCOUNT_DEBTS_VW" />
+          <EntitySet Name="CZ_ACCOUNT_INFO_VW" EntityType="Self.CZ_ACCOUNT_INFO_VW" />
+          <EntitySet Name="CZ_ACCOUNT_INFO_XML_VW" EntityType="Self.CZ_ACCOUNT_INFO_XML_VW" />
+          <EntitySet Name="CZ_ACCOUNTS_VW" EntityType="Self.CZ_ACCOUNTS_VW" />
+          <EntitySet Name="CZ_CE_DOCUMENTS_VW" EntityType="Self.CZ_CE_DOCUMENTS_VW" />
+          <EntitySet Name="CZ_CLIENTS_VW" EntityType="Self.CZ_CLIENTS_VW" />
+          <EntitySet Name="CZ_COLLENT_COMMENTS_VW" EntityType="Self.CZ_COLLENT_COMMENTS_VW" />
+          <EntitySet Name="CZ_KOLLECTO_PARAMETERS_VW" EntityType="Self.CZ_KOLLECTO_PARAMETERS_VW" />
+          <EntitySet Name="CZ_PA_INSTALLMENT_HISTORY_VW" EntityType="Self.CZ_PA_INSTALLMENT_HISTORY_VW" />
+          <EntitySet Name="CZ_PA_INSTALLMENTS_VW" EntityType="Self.CZ_PA_INSTALLMENTS_VW" />
+          <EntitySet Name="CZ_PAYMENTS_VW" EntityType="Self.CZ_PAYMENTS_VW" />
+          <EntitySet Name="CZ_PRINT_ADD_INFO_CEZ_VW" EntityType="Self.CZ_PRINT_ADD_INFO_CEZ_VW" />
+          <EntitySet Name="CZ_PRINT_ADD_INFO_VW" EntityType="Self.CZ_PRINT_ADD_INFO_VW" />
+          <EntitySet Name="CZ_SUBSCRIBER_ADDRESSES_VW" EntityType="Self.CZ_SUBSCRIBER_ADDRESSES_VW" />
+          <EntitySet Name="CZ_SUBSCRIBER_CONTACTS_EML_VW" EntityType="Self.CZ_SUBSCRIBER_CONTACTS_EML_VW" />
+          <EntitySet Name="CZ_SUBSCRIBER_CONTACTS_EMP_VW" EntityType="Self.CZ_SUBSCRIBER_CONTACTS_EMP_VW" />
+          <EntitySet Name="CZ_SUBSCRIBER_PHONES_VW" EntityType="Self.CZ_SUBSCRIBER_PHONES_VW" />
+          <EntitySet Name="CZ_SUBSCRIBERS_VW" EntityType="Self.CZ_SUBSCRIBERS_VW" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="OracleEntities">
+          <EntitySetMapping Name="AGCZ_CE_DOCUMENTS_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_CE_DOCUMENTS_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_CE_DOCUMENTS_TBL">
+                <ScalarProperty Name="TRC_DOCUMENT_ID" ColumnName="TRC_DOCUMENT_ID" />
+                <ScalarProperty Name="TRC_GPS_LAT" ColumnName="TRC_GPS_LAT" />
+                <ScalarProperty Name="TRC_GPS_LNG" ColumnName="TRC_GPS_LNG" />
+                <ScalarProperty Name="TRC_TSTAMP" ColumnName="TRC_TSTAMP" />
+                <ScalarProperty Name="TRC_RR_JOURNAL" ColumnName="TRC_RR_JOURNAL" />
+                <ScalarProperty Name="TRC_RR_DOCUMENT_KIND" ColumnName="TRC_RR_DOCUMENT_KIND" />
+                <ScalarProperty Name="CE_DOCUMENT_ID" ColumnName="CE_DOCUMENT_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="DOCUMENT_DESCRIPTION" ColumnName="DOCUMENT_DESCRIPTION" />
+                <ScalarProperty Name="DOCUMENT_LINK" ColumnName="DOCUMENT_LINK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGCZ_PAYMENTS_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_PAYMENTS_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_PAYMENTS_TBL">
+                <ScalarProperty Name="TRC_PAYMENT_ID" ColumnName="TRC_PAYMENT_ID" />
+                <ScalarProperty Name="TRC_TSTAMP" ColumnName="TRC_TSTAMP" />
+                <ScalarProperty Name="TRC_RR_JOURNAL" ColumnName="TRC_RR_JOURNAL" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="BEFORE_FV_FLAG" ColumnName="BEFORE_FV_FLAG" />
+                <ScalarProperty Name="SOLD" ColumnName="SOLD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGCZ_SUBS_ADDRESSES_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_SUBS_ADDRESSES_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_SUBS_ADDRESSES_TBL">
+                <ScalarProperty Name="TRC_ADDRESSES_ID" ColumnName="TRC_ADDRESSES_ID" />
+                <ScalarProperty Name="TRC_TSTAMP" ColumnName="TRC_TSTAMP" />
+                <ScalarProperty Name="TRC_RR_JOURNAL" ColumnName="TRC_RR_JOURNAL" />
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_ADDRESS_ID" ColumnName="SUBSCRIBER_ADDRESS_ID" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STREET_NUMBER" ColumnName="STREET_NUMBER" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="PERS_REGION" ColumnName="PERS_REGION" />
+                <ScalarProperty Name="MAIN_ADDRESS" ColumnName="MAIN_ADDRESS" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="ADDRESS_TYPE" ColumnName="ADDRESS_TYPE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGCZ_SUBS_CONTACTS_EML_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_SUBS_CONTACTS_EML_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_SUBS_CONTACTS_EML_TBL">
+                <ScalarProperty Name="TRC_EMAIL_ID" ColumnName="TRC_EMAIL_ID" />
+                <ScalarProperty Name="TRC_EMAIL_COMMENT" ColumnName="TRC_EMAIL_COMMENT" />
+                <ScalarProperty Name="TRC_TSTAMP" ColumnName="TRC_TSTAMP" />
+                <ScalarProperty Name="TRC_RR_JOURNAL" ColumnName="TRC_RR_JOURNAL" />
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_CONTACT_ID" ColumnName="SUBSCRIBER_CONTACT_ID" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="EMAIL_FLAG" ColumnName="EMAIL_FLAG" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGCZ_SUBS_CONTACTS_EMP_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_SUBS_CONTACTS_EMP_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_SUBS_CONTACTS_EMP_TBL">
+                <ScalarProperty Name="TRC_EMPLOYER_ID" ColumnName="TRC_EMPLOYER_ID" />
+                <ScalarProperty Name="TRC_TSTAMP" ColumnName="TRC_TSTAMP" />
+                <ScalarProperty Name="TRC_RR_JOURNAL" ColumnName="TRC_RR_JOURNAL" />
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_CONTACT_ID" ColumnName="SUBSCRIBER_CONTACT_ID" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STREET_NUMBER" ColumnName="STREET_NUMBER" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE1" ColumnName="PHONE1" />
+                <ScalarProperty Name="ADDRESS_FULL" ColumnName="ADDRESS_FULL" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGCZ_SUBS_PHONES_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_SUBS_PHONES_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_SUBS_PHONES_TBL">
+                <ScalarProperty Name="TRC_PHONE_ID" ColumnName="TRC_PHONE_ID" />
+                <ScalarProperty Name="TRC_PHONE_COMMENT" ColumnName="TRC_PHONE_COMMENT" />
+                <ScalarProperty Name="TRC_TSTAMP" ColumnName="TRC_TSTAMP" />
+                <ScalarProperty Name="TRC_RR_JOURNAL" ColumnName="TRC_RR_JOURNAL" />
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_PHONE_ID" ColumnName="SUBSCRIBER_PHONE_ID" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="MAIN_PHONE" ColumnName="MAIN_PHONE" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGCZ_VISIT_REPORT_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_VISIT_REPORT_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_VISIT_REPORT_TBL">
+                <ScalarProperty Name="ID_VISIT_REPORT" ColumnName="ID_VISIT_REPORT" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="RR_VISITTYPE" ColumnName="RR_VISITTYPE" />
+                <ScalarProperty Name="ID_SPISU" ColumnName="ID_SPISU" />
+                <ScalarProperty Name="ID_SRC_SPISY" ColumnName="ID_SRC_SPISY" />
+                <ScalarProperty Name="ID_SPISY_OSOBY" ColumnName="ID_SPISY_OSOBY" />
+                <ScalarProperty Name="ID_SRC_SPISY_OSOBY" ColumnName="ID_SRC_SPISY_OSOBY" />
+                <ScalarProperty Name="VR1_DATE_OSN" ColumnName="VR1_DATE_OSN" />
+                <ScalarProperty Name="VR1_DATE" ColumnName="VR1_DATE" />
+                <ScalarProperty Name="VR1_GPS_LAT" ColumnName="VR1_GPS_LAT" />
+                <ScalarProperty Name="VR1_GPS_LNG" ColumnName="VR1_GPS_LNG" />
+                <ScalarProperty Name="VR2_ID_SPISY_OSOBY_ADRESY" ColumnName="VR2_ID_SPISY_OSOBY_ADRESY" />
+                <ScalarProperty Name="VR3_RR_VISIT_RESULT" ColumnName="VR3_RR_VISIT_RESULT" />
+                <ScalarProperty Name="VR3_COMMENT" ColumnName="VR3_COMMENT" />
+                <ScalarProperty Name="VR41_CASH_GAIN" ColumnName="VR41_CASH_GAIN" />
+                <ScalarProperty Name="VR41_CASH_DATE" ColumnName="VR41_CASH_DATE" />
+                <ScalarProperty Name="VR41_CASH_DOC_NUMBER" ColumnName="VR41_CASH_DOC_NUMBER" />
+                <ScalarProperty Name="VR41_CASH_AMOUNT" ColumnName="VR41_CASH_AMOUNT" />
+                <ScalarProperty Name="VR41_CASH_CURRENCY" ColumnName="VR41_CASH_CURRENCY" />
+                <ScalarProperty Name="VR41_CASH_COMMENT" ColumnName="VR41_CASH_COMMENT" />
+                <ScalarProperty Name="VR41_AGREEMENT_FOR_NEXT_CASH" ColumnName="VR41_AGREEMENT_FOR_NEXT_CASH" />
+                <ScalarProperty Name="VR41_DATE_FOR_NEXT_CASH" ColumnName="VR41_DATE_FOR_NEXT_CASH" />
+                <ScalarProperty Name="VR5_PROTOCOL_PHONE_DIRECT" ColumnName="VR5_PROTOCOL_PHONE_DIRECT" />
+                <ScalarProperty Name="VR51_PHONE_DATE" ColumnName="VR51_PHONE_DATE" />
+                <ScalarProperty Name="VR51_ID_SPISY_OSOBY_PHONE" ColumnName="VR51_ID_SPISY_OSOBY_PHONE" />
+                <ScalarProperty Name="VR51_PHONE_NUMBER" ColumnName="VR51_PHONE_NUMBER" />
+                <ScalarProperty Name="VR51_PHONE_COMMENT" ColumnName="VR51_PHONE_COMMENT" />
+                <ScalarProperty Name="VR6_RR_PROTOCOL_MAIL_DIRECT" ColumnName="VR6_RR_PROTOCOL_MAIL_DIRECT" />
+                <ScalarProperty Name="VR61_EMAIL_DATE" ColumnName="VR61_EMAIL_DATE" />
+                <ScalarProperty Name="VR61_ID_SPISY_OSOBY_EMAIL" ColumnName="VR61_ID_SPISY_OSOBY_EMAIL" />
+                <ScalarProperty Name="VR61_EMAIL" ColumnName="VR61_EMAIL" />
+                <ScalarProperty Name="VR61_COMMENT" ColumnName="VR61_COMMENT" />
+                <ScalarProperty Name="VR312_RR_VISIT_OTHER_PERSON" ColumnName="VR312_RR_VISIT_OTHER_PERSON" />
+                <ScalarProperty Name="VR314_COMMENT" ColumnName="VR314_COMMENT" />
+                <ScalarProperty Name="VR511_RR_V_CASE_PHONE_RES_OUT" ColumnName="VR511_RR_V_CASE_PHONE_RES_OUT" />
+                <ScalarProperty Name="VR511A_RR_V_CASE_PHONE_RES_IN" ColumnName="VR511A_RR_V_CASE_PHONE_RES_IN" />
+                <ScalarProperty Name="VR54_RR_CASE_AFTER_DENY" ColumnName="VR54_RR_CASE_AFTER_DENY" />
+                <ScalarProperty Name="VR3132_RR_RESULT_3132" ColumnName="VR3132_RR_RESULT_3132" />
+                <ScalarProperty Name="VR3132_NEW_ADDRESS_ADDED" ColumnName="VR3132_NEW_ADDRESS_ADDED" />
+                <ScalarProperty Name="VR3132_ID_SPISY_OSOBY_ADRESY" ColumnName="VR3132_ID_SPISY_OSOBY_ADRESY" />
+                <ScalarProperty Name="VR3132_2_RR_HOUSING_PROPERTY" ColumnName="VR3132_2_RR_HOUSING_PROPERTY" />
+                <ScalarProperty Name="VR3132_2_RR_HOUS_PROP_OWNER" ColumnName="VR3132_2_RR_HOUS_PROP_OWNER" />
+                <ScalarProperty Name="VR3132_2_RR_HOUS_PROP_FAMILY" ColumnName="VR3132_2_RR_HOUS_PROP_FAMILY" />
+                <ScalarProperty Name="VR3132_2_RR_HOUS_PROP_RENT" ColumnName="VR3132_2_RR_HOUS_PROP_RENT" />
+                <ScalarProperty Name="VR3132_2_CAR_OWNER" ColumnName="VR3132_2_CAR_OWNER" />
+                <ScalarProperty Name="VR3132_2_OTHER_OWNER" ColumnName="VR3132_2_OTHER_OWNER" />
+                <ScalarProperty Name="VR3132_2_OTHER_OWNER_COMMENT" ColumnName="VR3132_2_OTHER_OWNER_COMMENT" />
+                <ScalarProperty Name="VR3132_2_LOW_STAND_OF_LIVING" ColumnName="VR3132_2_LOW_STAND_OF_LIVING" />
+                <ScalarProperty Name="VR3132_3_DENY" ColumnName="VR3132_3_DENY" />
+                <ScalarProperty Name="VR3132_3_INCOMELESS" ColumnName="VR3132_3_INCOMELESS" />
+                <ScalarProperty Name="VR3132_3_CONFISCATION" ColumnName="VR3132_3_CONFISCATION" />
+                <ScalarProperty Name="VR3132_3_RR_PERS_TYPE" ColumnName="VR3132_3_RR_PERS_TYPE" />
+                <ScalarProperty Name="VR3132_3_PERS_TYPE_COMMENT" ColumnName="VR3132_3_PERS_TYPE_COMMENT" />
+                <ScalarProperty Name="VR3132_3_EMPLOYMENT" ColumnName="VR3132_3_EMPLOYMENT" />
+                <ScalarProperty Name="VR3132_3_BRIGADE" ColumnName="VR3132_3_BRIGADE" />
+                <ScalarProperty Name="VR3132_3_MATERNITY_LEAVE" ColumnName="VR3132_3_MATERNITY_LEAVE" />
+                <ScalarProperty Name="VR3132_3_EMPL_DEPARTMENT" ColumnName="VR3132_3_EMPL_DEPARTMENT" />
+                <ScalarProperty Name="VR3132_3_PENSION" ColumnName="VR3132_3_PENSION" />
+                <ScalarProperty Name="VR3132_3_SOCIAL_BENEFITS" ColumnName="VR3132_3_SOCIAL_BENEFITS" />
+                <ScalarProperty Name="VR3132_3_OTHER_INCOME" ColumnName="VR3132_3_OTHER_INCOME" />
+                <ScalarProperty Name="VR3132_3_OTHER_INC_COMMENT" ColumnName="VR3132_3_OTHER_INC_COMMENT" />
+                <ScalarProperty Name="VR3132_3_COMENT" ColumnName="VR3132_3_COMENT" />
+                <ScalarProperty Name="VR3136_RR_NEXT_ACTIVITY" ColumnName="VR3136_RR_NEXT_ACTIVITY" />
+                <ScalarProperty Name="VR3136_1_NEXT_ID_SPISY_OS_ADR" ColumnName="VR3136_1_NEXT_ID_SPISY_OS_ADR" />
+                <ScalarProperty Name="VR3136_1_FV_DATE_PLANNED" ColumnName="VR3136_1_FV_DATE_PLANNED" />
+                <ScalarProperty Name="VR3136_2_RR_CASE_NEXT_ACTIVITY" ColumnName="VR3136_2_RR_CASE_NEXT_ACTIVITY" />
+                <ScalarProperty Name="VR3136_2_CASE_NEXT_ACT_COMMENT" ColumnName="VR3136_2_CASE_NEXT_ACT_COMMENT" />
+                <ScalarProperty Name="VR3136_2_DEADLINE" ColumnName="VR3136_2_DEADLINE" />
+                <ScalarProperty Name="VR3137_PAYMENT_AGREEMENT_CANC" ColumnName="VR3137_PAYMENT_AGREEMENT_CANC" />
+                <ScalarProperty Name="VR3137_DATE_AGREEMENT_CANCEL" ColumnName="VR3137_DATE_AGREEMENT_CANCEL" />
+                <ScalarProperty Name="VR3137_RR_ANOTHER_PERS_NXT_ACT" ColumnName="VR3137_RR_ANOTHER_PERS_NXT_ACT" />
+                <ScalarProperty Name="VR3137_1_RR_PAYMENT_AGREEMENT" ColumnName="VR3137_1_RR_PAYMENT_AGREEMENT" />
+                <ScalarProperty Name="VR3137_12_COMMENT" ColumnName="VR3137_12_COMMENT" />
+                <ScalarProperty Name="VR3137_12_PAYMENT_DATE" ColumnName="VR3137_12_PAYMENT_DATE" />
+                <ScalarProperty Name="VR3137_12_SKUZ_SIGNED" ColumnName="VR3137_12_SKUZ_SIGNED" />
+                <ScalarProperty Name="VR3137_13_GPS_LAT" ColumnName="VR3137_13_GPS_LAT" />
+                <ScalarProperty Name="VR3137_13_GPS_LNG" ColumnName="VR3137_13_GPS_LNG" />
+                <ScalarProperty Name="VR3137_13_ONE_AMOUNT" ColumnName="VR3137_13_ONE_AMOUNT" />
+                <ScalarProperty Name="VR3137_13_COUNT_OF_PAYMENTS" ColumnName="VR3137_13_COUNT_OF_PAYMENTS" />
+                <ScalarProperty Name="VR3137_13_DATE_FIRST_PAYMENT" ColumnName="VR3137_13_DATE_FIRST_PAYMENT" />
+                <ScalarProperty Name="VR3137_13_AMOUNT_FIRST_PAYMENT" ColumnName="VR3137_13_AMOUNT_FIRST_PAYMENT" />
+                <ScalarProperty Name="VR3137_13_DAY_NEXT_PAYMENT" ColumnName="VR3137_13_DAY_NEXT_PAYMENT" />
+                <ScalarProperty Name="VR3137_13_CURRENCY" ColumnName="VR3137_13_CURRENCY" />
+                <ScalarProperty Name="VR3137_13_COMMENT" ColumnName="VR3137_13_COMMENT" />
+                <ScalarProperty Name="VR3137_17_COMMENT" ColumnName="VR3137_17_COMMENT" />
+                <ScalarProperty Name="VR3137_3_REQUIRE_DOC" ColumnName="VR3137_3_REQUIRE_DOC" />
+                <ScalarProperty Name="VR3137_3_COMMENT" ColumnName="VR3137_3_COMMENT" />
+                <ScalarProperty Name="VR7_RR_CANCEL_SK" ColumnName="VR7_RR_CANCEL_SK" />
+                <ScalarProperty Name="VR341_LETTER_LEAVED" ColumnName="VR341_LETTER_LEAVED" />
+                <ScalarProperty Name="VR_HISTORY" ColumnName="VR_HISTORY" />
+                <ScalarProperty Name="T_STAMP" ColumnName="T_STAMP" />
+                <ScalarProperty Name="RR_JOURNAL" ColumnName="RR_JOURNAL" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_FIELD_VISIT_OUT">
+            <EntityTypeMapping TypeName="Model.CZ_FIELD_VISIT_OUT">
+              <MappingFragment StoreEntitySet="CZ_FIELD_VISIT_OUT">
+                <ScalarProperty Name="FIELD_VISIT_OUT_ID" ColumnName="FIELD_VISIT_OUT_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_ADDRESS_ID" ColumnName="SUBSCRIBER_ADDRESS_ID" />
+                <ScalarProperty Name="FIELD_VISIT_POST_CODE_ID" ColumnName="FIELD_VISIT_POST_CODE_ID" />
+                <ScalarProperty Name="IDUSR" ColumnName="IDUSR" />
+                <ScalarProperty Name="DEBT_BALANCE" ColumnName="DEBT_BALANCE" />
+                <ScalarProperty Name="PASSING_ON_DATE" ColumnName="PASSING_ON_DATE" />
+                <ScalarProperty Name="TAKE_OVER_DATE" ColumnName="TAKE_OVER_DATE" />
+                <ScalarProperty Name="REJECTION_DATE" ColumnName="REJECTION_DATE" />
+                <ScalarProperty Name="REJECTION_REASON" ColumnName="REJECTION_REASON" />
+                <ScalarProperty Name="TERMINATION_DATE" ColumnName="TERMINATION_DATE" />
+                <ScalarProperty Name="TERMINATION_REASON" ColumnName="TERMINATION_REASON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGCZ_REGISTER_RESTRICTIONS_TBL">
+            <EntityTypeMapping TypeName="Model.AGCZ_REGISTER_RESTRICTIONS_TBL">
+              <MappingFragment StoreEntitySet="AGCZ_REGISTER_RESTRICTIONS_TBL">
+                <ScalarProperty Name="REGISTER" ColumnName="REGISTER" />
+                <ScalarProperty Name="ID_ORDER" ColumnName="ID_ORDER" />
+                <ScalarProperty Name="VAL" ColumnName="VAL" />
+                <ScalarProperty Name="VAL2" ColumnName="VAL2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_ACC_SUBS_INT_VW">
+            <EntityTypeMapping TypeName="Model.CZ_ACC_SUBS_INT_VW">
+              <MappingFragment StoreEntitySet="CZ_ACC_SUBS_INT_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_TYPE_ID" ColumnName="SUBSCRIBER_TYPE_ID" />
+                <ScalarProperty Name="MAIN" ColumnName="MAIN" />
+                <ScalarProperty Name="DEBT_ACCEPT_DATE" ColumnName="DEBT_ACCEPT_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_ACCOUNT_DEBTS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_ACCOUNT_DEBTS_VW">
+              <MappingFragment StoreEntitySet="CZ_ACCOUNT_DEBTS_VW">
+                <ScalarProperty Name="ACCOUNT_DEBT_ID" ColumnName="ACCOUNT_DEBT_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="DEBT_SUBCLASS_NAME" ColumnName="DEBT_SUBCLASS_NAME" />
+                <ScalarProperty Name="INVOICE_NUMBER" ColumnName="INVOICE_NUMBER" />
+                <ScalarProperty Name="DEBT_AMOUNT" ColumnName="DEBT_AMOUNT" />
+                <ScalarProperty Name="DEBT_BALANCE" ColumnName="DEBT_BALANCE" />
+                <ScalarProperty Name="DEBT_BALANCE_UPDATE" ColumnName="DEBT_BALANCE_UPDATE" />
+                <ScalarProperty Name="DEBT_DATE" ColumnName="DEBT_DATE" />
+                <ScalarProperty Name="DEBT_DUE_DATE" ColumnName="DEBT_DUE_DATE" />
+                <ScalarProperty Name="CURRENCY" ColumnName="CURRENCY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_ACCOUNT_INFO_VW">
+            <EntityTypeMapping TypeName="Model.CZ_ACCOUNT_INFO_VW">
+              <MappingFragment StoreEntitySet="CZ_ACCOUNT_INFO_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_ACCOUNT_INFO_XML_VW">
+            <EntityTypeMapping TypeName="Model.CZ_ACCOUNT_INFO_XML_VW">
+              <MappingFragment StoreEntitySet="CZ_ACCOUNT_INFO_XML_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="INFO_VALUE_XML" ColumnName="INFO_VALUE_XML" />
+                <ScalarProperty Name="INFO_VALUE_XSD" ColumnName="INFO_VALUE_XSD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_ACCOUNTS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_ACCOUNTS_VW">
+              <MappingFragment StoreEntitySet="CZ_ACCOUNTS_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="FIELD_VISIT_OUT_ID" ColumnName="FIELD_VISIT_OUT_ID" />
+                <ScalarProperty Name="IDUSR" ColumnName="IDUSR" />
+                <ScalarProperty Name="TOTAL_BALANCE" ColumnName="TOTAL_BALANCE" />
+                <ScalarProperty Name="TAKE_OVER_DATE" ColumnName="TAKE_OVER_DATE" />
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="DEBT_BALANCE_SUM" ColumnName="DEBT_BALANCE_SUM" />
+                <ScalarProperty Name="INTEREST_BALANCE_SUM" ColumnName="INTEREST_BALANCE_SUM" />
+                <ScalarProperty Name="COST_BALANCE_SUM" ColumnName="COST_BALANCE_SUM" />
+                <ScalarProperty Name="PAYMENTS_AMOUNT_SUM" ColumnName="PAYMENTS_AMOUNT_SUM" />
+                <ScalarProperty Name="PRODUCT_NUMBER" ColumnName="PRODUCT_NUMBER" />
+                <ScalarProperty Name="BANK_ACCOUNT_NUM" ColumnName="BANK_ACCOUNT_NUM" />
+                <ScalarProperty Name="BANK_CODE" ColumnName="BANK_CODE" />
+                <ScalarProperty Name="VARIABLE_SYMBOL" ColumnName="VARIABLE_SYMBOL" />
+                <ScalarProperty Name="SPECIFIC_SYMBOL" ColumnName="SPECIFIC_SYMBOL" />
+                <ScalarProperty Name="LAST_PAYMENT_DATE" ColumnName="LAST_PAYMENT_DATE" />
+                <ScalarProperty Name="LAST_PAYMENT_AMOUNT" ColumnName="LAST_PAYMENT_AMOUNT" />
+                <ScalarProperty Name="LAST_CALL_DATE" ColumnName="LAST_CALL_DATE" />
+                <ScalarProperty Name="LAST_CALL_TEXT" ColumnName="LAST_CALL_TEXT" />
+                <ScalarProperty Name="LAST_INSTRUCTION_FOR_FV" ColumnName="LAST_INSTRUCTION_FOR_FV" />
+                <ScalarProperty Name="CAMPAIGN" ColumnName="CAMPAIGN" />
+                <ScalarProperty Name="FV_PASSING_ON_DATE" ColumnName="FV_PASSING_ON_DATE" />
+                <ScalarProperty Name="FV_TERMINATION_DATE" ColumnName="FV_TERMINATION_DATE" />
+                <ScalarProperty Name="FIRST_FV_DEADLINE_DAYS" ColumnName="FIRST_FV_DEADLINE_DAYS" />
+                <ScalarProperty Name="NEXT_FV_DEADLINE_DAYS" ColumnName="NEXT_FV_DEADLINE_DAYS" />
+                <ScalarProperty Name="PA_INSTALMENT_BREAK_DATE_FV" ColumnName="PA_INSTALMENT_BREAK_DATE_FV" />
+                <ScalarProperty Name="CE_RETURN_DATE" ColumnName="CE_RETURN_DATE" />
+                <ScalarProperty Name="LAPSE_DATE" ColumnName="LAPSE_DATE" />
+                <ScalarProperty Name="PAYMENTS_AMOUNT_FV" ColumnName="PAYMENTS_AMOUNT_FV" />
+                <ScalarProperty Name="PA_STATUS_FV" ColumnName="PA_STATUS_FV" />
+                <ScalarProperty Name="PA_TYPE_ID_FV" ColumnName="PA_TYPE_ID_FV" />
+                <ScalarProperty Name="PA_COUNT" ColumnName="PA_COUNT" />
+                <ScalarProperty Name="CE_DEBT_REMISSION_STATUS" ColumnName="CE_DEBT_REMISSION_STATUS" />
+                <ScalarProperty Name="PA_MAX_PERIODS" ColumnName="PA_MAX_PERIODS" />
+                <ScalarProperty Name="DOHL" ColumnName="DOHL" />
+                <ScalarProperty Name="PROBIHAJICI_AKCE" ColumnName="PROBIHAJICI_AKCE" />
+                <ScalarProperty Name="COMMISSION" ColumnName="COMMISSION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_CE_DOCUMENTS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_CE_DOCUMENTS_VW">
+              <MappingFragment StoreEntitySet="CZ_CE_DOCUMENTS_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="CE_DOCUMENT_ID" ColumnName="CE_DOCUMENT_ID" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="DOCUMENT_DESCRIPTION" ColumnName="DOCUMENT_DESCRIPTION" />
+                <ScalarProperty Name="DOCUMENT_LINK" ColumnName="DOCUMENT_LINK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_CLIENTS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_CLIENTS_VW">
+              <MappingFragment StoreEntitySet="CZ_CLIENTS_VW">
+                <ScalarProperty Name="CLIENT_ID" ColumnName="CLIENT_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="NAME_ALIAS" ColumnName="NAME_ALIAS" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_COLLENT_COMMENTS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_COLLENT_COMMENTS_VW">
+              <MappingFragment StoreEntitySet="CZ_COLLENT_COMMENTS_VW">
+                <ScalarProperty Name="COLLENT_COMMENT_ID" ColumnName="COLLENT_COMMENT_ID" />
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="COMMENT_TYPE_NAME" ColumnName="COMMENT_TYPE_NAME" />
+                <ScalarProperty Name="USER_COMMENT" ColumnName="USER_COMMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_KOLLECTO_PARAMETERS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_KOLLECTO_PARAMETERS_VW">
+              <MappingFragment StoreEntitySet="CZ_KOLLECTO_PARAMETERS_VW">
+                <ScalarProperty Name="CODE_PARAM" ColumnName="CODE_PARAM" />
+                <ScalarProperty Name="VALUE_PARAM" ColumnName="VALUE_PARAM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_PA_INSTALLMENT_HISTORY_VW">
+            <EntityTypeMapping TypeName="Model.CZ_PA_INSTALLMENT_HISTORY_VW">
+              <MappingFragment StoreEntitySet="CZ_PA_INSTALLMENT_HISTORY_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="PA_INSTANCE_ID" ColumnName="PA_INSTANCE_ID" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="AMOUNT_PA" ColumnName="AMOUNT_PA" />
+                <ScalarProperty Name="PA_INSTALLMENTS_COUNT" ColumnName="PA_INSTALLMENTS_COUNT" />
+                <ScalarProperty Name="STAUS" ColumnName="STAUS" />
+                <ScalarProperty Name="PA_TYPE_ID" ColumnName="PA_TYPE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_PA_INSTALLMENTS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_PA_INSTALLMENTS_VW">
+              <MappingFragment StoreEntitySet="CZ_PA_INSTALLMENTS_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="PA_INSTALLMENT_ID" ColumnName="PA_INSTALLMENT_ID" />
+                <ScalarProperty Name="DUE_DATE" ColumnName="DUE_DATE" />
+                <ScalarProperty Name="AMOUNT_INSTALLMENT" ColumnName="AMOUNT_INSTALLMENT" />
+                <ScalarProperty Name="UNPAID_AMOUNT_INSTALLMENT" ColumnName="UNPAID_AMOUNT_INSTALLMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_PAYMENTS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_PAYMENTS_VW">
+              <MappingFragment StoreEntitySet="CZ_PAYMENTS_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="BEFORE_FV_FLAG" ColumnName="BEFORE_FV_FLAG" />
+                <ScalarProperty Name="SOLD" ColumnName="SOLD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_PRINT_ADD_INFO_CEZ_VW">
+            <EntityTypeMapping TypeName="Model.CZ_PRINT_ADD_INFO_CEZ_VW">
+              <MappingFragment StoreEntitySet="CZ_PRINT_ADD_INFO_CEZ_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="ODBERNE_MISTO" ColumnName="ODBERNE_MISTO" />
+                <ScalarProperty Name="VARIABILNI_SYMBOL" ColumnName="VARIABILNI_SYMBOL" />
+                <ScalarProperty Name="DATUM_SPLATNOSTI" ColumnName="DATUM_SPLATNOSTI" />
+                <ScalarProperty Name="FAKTUROVANA_CASTKA" ColumnName="FAKTUROVANA_CASTKA" />
+                <ScalarProperty Name="VYSE_DOPLATKU" ColumnName="VYSE_DOPLATKU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_PRINT_ADD_INFO_VW">
+            <EntityTypeMapping TypeName="Model.CZ_PRINT_ADD_INFO_VW">
+              <MappingFragment StoreEntitySet="CZ_PRINT_ADD_INFO_VW">
+                <ScalarProperty Name="ACCOUNT_ID" ColumnName="ACCOUNT_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="CUSTOMER_ID_SECOND" ColumnName="CUSTOMER_ID_SECOND" />
+                <ScalarProperty Name="REGISTER_INFO" ColumnName="REGISTER_INFO" />
+                <ScalarProperty Name="ACC_COMMENT9" ColumnName="ACC_COMMENT9" />
+                <ScalarProperty Name="ACC_COMMENT13" ColumnName="ACC_COMMENT13" />
+                <ScalarProperty Name="ACC_COMMENT14" ColumnName="ACC_COMMENT14" />
+                <ScalarProperty Name="ACC_COMMENT17" ColumnName="ACC_COMMENT17" />
+                <ScalarProperty Name="ACC_COMMENT23" ColumnName="ACC_COMMENT23" />
+                <ScalarProperty Name="ACC_COMMENT27" ColumnName="ACC_COMMENT27" />
+                <ScalarProperty Name="PF_SMLOUVY" ColumnName="PF_SMLOUVY" />
+                <ScalarProperty Name="SLOVY_TO" ColumnName="SLOVY_TO" />
+                <ScalarProperty Name="SLOVY_TO_HAL" ColumnName="SLOVY_TO_HAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_SUBSCRIBER_ADDRESSES_VW">
+            <EntityTypeMapping TypeName="Model.CZ_SUBSCRIBER_ADDRESSES_VW">
+              <MappingFragment StoreEntitySet="CZ_SUBSCRIBER_ADDRESSES_VW">
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_ADDRESS_ID" ColumnName="SUBSCRIBER_ADDRESS_ID" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STREET_NUMBER" ColumnName="STREET_NUMBER" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="PERS_REGION" ColumnName="PERS_REGION" />
+                <ScalarProperty Name="MAIN_ADDRESS" ColumnName="MAIN_ADDRESS" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="ADDRESS_TYPE" ColumnName="ADDRESS_TYPE" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_SUBSCRIBER_CONTACTS_EML_VW">
+            <EntityTypeMapping TypeName="Model.CZ_SUBSCRIBER_CONTACTS_EML_VW">
+              <MappingFragment StoreEntitySet="CZ_SUBSCRIBER_CONTACTS_EML_VW">
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_CONTACT_ID" ColumnName="SUBSCRIBER_CONTACT_ID" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="EMAIL_FLAG" ColumnName="EMAIL_FLAG" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_SUBSCRIBER_CONTACTS_EMP_VW">
+            <EntityTypeMapping TypeName="Model.CZ_SUBSCRIBER_CONTACTS_EMP_VW">
+              <MappingFragment StoreEntitySet="CZ_SUBSCRIBER_CONTACTS_EMP_VW">
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_CONTACT_ID" ColumnName="SUBSCRIBER_CONTACT_ID" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="CITY" ColumnName="CITY" />
+                <ScalarProperty Name="STREET" ColumnName="STREET" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE1" ColumnName="PHONE1" />
+                <ScalarProperty Name="ADDRESS_FULL" ColumnName="ADDRESS_FULL" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_SUBSCRIBER_PHONES_VW">
+            <EntityTypeMapping TypeName="Model.CZ_SUBSCRIBER_PHONES_VW">
+              <MappingFragment StoreEntitySet="CZ_SUBSCRIBER_PHONES_VW">
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="SUBSCRIBER_PHONE_ID" ColumnName="SUBSCRIBER_PHONE_ID" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="VALID" ColumnName="VALID" />
+                <ScalarProperty Name="MAIN_PHONE" ColumnName="MAIN_PHONE" />
+                <ScalarProperty Name="FV_ORIGIN" ColumnName="FV_ORIGIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CZ_SUBSCRIBERS_VW">
+            <EntityTypeMapping TypeName="Model.CZ_SUBSCRIBERS_VW">
+              <MappingFragment StoreEntitySet="CZ_SUBSCRIBERS_VW">
+                <ScalarProperty Name="SUBSCRIBER_ID" ColumnName="SUBSCRIBER_ID" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="J_ATTRIBUTE" ColumnName="J_ATTRIBUTE" />
+                <ScalarProperty Name="BIRTH_DATE" ColumnName="BIRTH_DATE" />
+                <ScalarProperty Name="LAST_NAME2" ColumnName="LAST_NAME2" />
+                <ScalarProperty Name="BONITA_KATASTR" ColumnName="BONITA_KATASTR" />
+                <ScalarProperty Name="BONITA_POCET_EXE" ColumnName="BONITA_POCET_EXE" />
+                <ScalarProperty Name="BONITA_DATUM_LUSTRACE" ColumnName="BONITA_DATUM_LUSTRACE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

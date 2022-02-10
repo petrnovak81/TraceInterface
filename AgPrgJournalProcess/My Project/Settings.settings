@@ -1,0 +1,55 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="LoggingToWinLog_IsEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CriticalErrorsToEmail_EmailAdress" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;novak@agilo.cz&lt;/string&gt;
+  &lt;string&gt;hanzl@agilo.cz&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="CriticalErrorsToEmail_IsEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OneConfirmMailPerDay_EmailAddress" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="OneConfirmMailPerDay_IsEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Email_EnableSsl" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Email_Host" Type="System.String" Scope="User">
+      <Value Profile="(Default)">smtp.seznam.cz</Value>
+    </Setting>
+    <Setting Name="Email_Port" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="Email_CredentialsName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">petrnovak81@seznam.cz</Value>
+    </Setting>
+    <Setting Name="Email_CredentialsPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8106105458</Value>
+    </Setting>
+    <Setting Name="Email_From" Type="System.String" Scope="User">
+      <Value Profile="(Default)">petrnovak81@seznam.cz</Value>
+    </Setting>
+    <Setting Name="Email_Subject" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TRACE Interface Log</Value>
+    </Setting>
+    <Setting Name="Email_DisplayName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">TRACE Interface</Value>
+    </Setting>
+    <Setting Name="ProcessingIntervalSeconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="ZOZ" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

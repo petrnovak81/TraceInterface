@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{465DB629-AAA2-4530-A981-72E0F7B7D926}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>TRACEInterface_test.service</StartupObject>
+    <RootNamespace>TRACEInterface_test</RootNamespace>
+    <AssemblyName>TRACEInterface_test</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Console</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>TRACEInterface_test.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>TRACEInterface_test.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\app\novak\product\11.2.0\client_1\ODP.NET\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.18.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.18.3, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.18.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExceptionBuilder.vb" />
+    <Compile Include="Models\AGCZ_CE_DOCUMENTS_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGCZ_PAYMENTS_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGCZ_REGISTER_RESTRICTIONS_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGCZ_SUBS_ADDRESSES_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGCZ_SUBS_CONTACTS_EML_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGCZ_SUBS_CONTACTS_EMP_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGCZ_SUBS_PHONES_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AGCZ_VISIT_REPORT_TBL.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_ACCOUNTS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_ACCOUNT_DEBTS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_ACCOUNT_INFO_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_ACCOUNT_INFO_XML_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_ACC_SUBS_INT_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_CE_DOCUMENTS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_CLIENTS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_COLLENT_COMMENTS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_FIELD_VISIT_OUT.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_KOLLECTO_PARAMETERS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_PAYMENTS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_PA_INSTALLMENTS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_PA_INSTALLMENT_HISTORY_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_PRINT_ADD_INFO_CEZ_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_PRINT_ADD_INFO_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_SUBSCRIBERS_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_SUBSCRIBER_ADDRESSES_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_SUBSCRIBER_CONTACTS_EML_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_SUBSCRIBER_CONTACTS_EMP_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CZ_SUBSCRIBER_PHONES_VW.vb">
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LogEntry.vb" />
+    <Compile Include="Models\ModelOra.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOra.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelOra.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOra.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelOra.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelOra.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSql.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSql.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSql.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSql.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelSql.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_INT_NewAddresses_Result.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_INT_NewDocuments_Result.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_INT_NewEmails_Result.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_INT_NewEmployers_Result.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_INT_NewPayments_Result.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_INT_NewPhones_Result.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_INT_NewVisitReport_Result.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCashPayment.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblCreditor.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblError.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLogService.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblOtherInfo.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblRegisterRestriction.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisy.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyDocument.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyDohody.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyFinanceInfo.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyHistorieDohod.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyOsoby.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyOsobyAdresy.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyOsobyEmail.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyOsobyPhone.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyOsobyZam.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyPlatbyDosle.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyPrintInfo.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyPrintInfoCEZ.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyRecordHistory.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSpisyTypOsoby.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTMPSpisyRecordHistory.vb">
+      <DependentUpon>ModelSql.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Helper.vb" />
+    <Compile Include="Modules\Module_CZ_VISIT_REPORT_TBL.vb" />
+    <Compile Include="Modules\Module_CZ_PAYMENTS_TBL.vb" />
+    <Compile Include="Modules\Module_CZ_SUBSCRIBER_ADDRESSES_TBL.vb" />
+    <Compile Include="Modules\Module_CZ_SUBSCRIBER_CONTACTS_EMP_TBL.vb" />
+    <Compile Include="Modules\Module_CZ_SUBSCRIBER_CONTACTS_EML_TBL.vb" />
+    <Compile Include="Modules\Module_CZ_CE_DOCUMENTS_TBL.vb" />
+    <Compile Include="Modules\Module_CZ_SUBSCRIBER_PHONES_TBL.vb" />
+    <Compile Include="Modules\Module_tblSpisyPrintInfo.vb" />
+    <Compile Include="Modules\Module_tblSpisyPrintInfoCEZ.vb" />
+    <Compile Include="Modules\Module_tblCreditor.vb" />
+    <Compile Include="Modules\Module_tblOtherInfo.vb" />
+    <Compile Include="Modules\Module_tblSpisy.vb" />
+    <Compile Include="Modules\Module_tblSpisyDocument.vb" />
+    <Compile Include="Modules\Module_tblSpisyDohody.vb" />
+    <Compile Include="Modules\Module_tblSpisyFinanceInfo.vb" />
+    <Compile Include="Modules\Module_tblSpisyHistorieDohod.vb" />
+    <Compile Include="Modules\Module_tblSpisyOsoby.vb" />
+    <Compile Include="Modules\Module_tblSpisyOsobyAdresy.vb" />
+    <Compile Include="Modules\Module_tblSpisyOsobyEmail.vb" />
+    <Compile Include="Modules\Module_tblSpisyOsobyPhone.vb" />
+    <Compile Include="Modules\Module_tblSpisyOsobyZam.vb" />
+    <Compile Include="Modules\Module_tblSpisyPlatbyDosle.vb" />
+    <Compile Include="Modules\Module_tblSpisyRecordHistory.vb" />
+    <Compile Include="Modules\Module_tblSpisyTypOsoby.vb" />
+    <Compile Include="Modules\TMPSpisyRecordHistory.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.vb">
+      <DependentUpon>ProjectInstaller.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectInstaller.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service.Designer.vb">
+      <DependentUpon>Service.vb</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service.resx">
+      <DependentUpon>Service.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\ModelOra.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelOra.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ModelOra.edmx.diagram">
+      <DependentUpon>ModelOra.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Models\ModelSql.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSql.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ModelSql.edmx.diagram">
+      <DependentUpon>ModelSql.edmx</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ModelOra.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelOra.edmx</DependentUpon>
+      <LastGenOutput>ModelOra.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelOra.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelOra.edmx</DependentUpon>
+      <LastGenOutput>ModelOra.vb</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelSql.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSql.edmx</DependentUpon>
+      <LastGenOutput>ModelSql.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelSql.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelSql.edmx</DependentUpon>
+      <LastGenOutput>ModelSql.vb</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
